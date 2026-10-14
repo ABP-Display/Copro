@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration &#8212; Documentation Diacamma réglement 2.7.9.26072908</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=e89e3241"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Dépôts de chèques" href="deposit.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Diacamma réglement 2.7.9.26072908</span></a></h1>
+        <h2 class="heading"><span>Configuration</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="deposit.html">Dépôts de chèques</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Lien vers cette rubrique">¶</a></h1>
+<blockquote>
+<div><p>Menu <em>Administration/Modules (conf.)/Configuration du règlement</em></p>
+</div></blockquote>
+<p>Ce menu vous permet de configurer les comptes courants et les moyens de paiement en usage dans votre structure.</p>
+<section id="code-bancaire">
+<h2>Code bancaire<a class="headerlink" href="#code-bancaire" title="Lien vers cette rubrique">¶</a></h2>
+<p>Dans cet écran, vous avez la possibilité d’enregistrer les références des différents comptes courants ouverts au nom de votre structure.
+A l’aide du bouton « + Ajouter », vous pouvez en créer un nouveau et spécifier : la désignation, le RIB (référence), le code bancaire associé, le journal de mouvement désiré et optionnellement un compte d’attente.
+Les compte doivent être déjà ouvert dans le plan comptable de l’exercice comme compte de trésorerie.</p>
+<p>Dans le cas où vous préciseriez un compte d’attente, les mouvemets comptables générés seront un peu différent.
+Cette option est à utiliser dans les règlements par chèque bancaire (ou assimilé comme des « bons » ou « tickets » subventionnés proposés par certaines collectivités locales).</p>
+<p>En effet, au moment de la saisi de votre règlement, l’écriture sera alors créé sur le compte d’attente.
+Vous serez alors invité d’utiliser l’outil de gestion de bordereaux de chèques et lors de la validation finale de celui-ci,
+une écriture générale réalisera le mouvement financier entre ce compte d’attente et le compte bancaire proprement dit.</p>
+</section>
+<section id="moyen-de-paiement">
+<h2>Moyen de paiement<a class="headerlink" href="#moyen-de-paiement" title="Lien vers cette rubrique">¶</a></h2>
+<p>Vous pouvez ici préciser les moyens de paiement que vous acceptez.</p>
+<p>Actuellement, 6 moyens de paiement sont possibles sous <em>Diacamma</em>, pour chacun d’entre eux, vous devez préciser les paramètres correspondants:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Le virement bancaire</p></li>
+<li><p>Le chèque</p></li>
+<li><p>Le paiement PayPal</p></li>
+</ul>
+<p>Dans le cas de PayPal, si votre <em>Diacamma</em> est accessible via le Net, le paiement de votre débiteur vous est notifié sous votre application et le règlement correspondant généré directement dans votre logiciel.
+Il est conseillé de cocher le champ <em>avec contrôle</em>. Ainsi, le lien de paiement présenté dans un courriel s’assurera dans un premier temps que, sous votre <em>Diacamma</em>, l’élément financier est toujours d’actualité.</p>
+<ul class="simple">
+<li><p>Le règlement en ligne, via une adresse internet</p></li>
+<li><p>Le paiement MoneticoPaiement</p></li>
+</ul>
+<p>Pour MoneticoPaiement, la plateforme de paiement du Crédit Mutuel et du CIC (voir <a class="reference external" href="https://www.monetico-paiement.fr">https://www.monetico-paiement.fr</a>), veuillez prendre contact avec votre agence bancaire pour faire ouvrir votre accès.
+Et si vous <em>Diacamma</em> est accessible via le Net, vous devez déclarer à la plateforme une adresse de retour de type « <a class="reference external" href="https://mon.site.diacamma/diacamma.payoff/validationPaymentMoneticoPaiement">https://mon.site.diacamma/diacamma.payoff/validationPaymentMoneticoPaiement</a> » ( »<a class="reference external" href="https://mon.site.diacamma">https://mon.site.diacamma</a> » étant l’adresse d’accès à votre serveur <em>Diacamma</em>)</p>
+<ul class="simple">
+<li><p>Le paiement Hello-Asso</p></li>
+</ul>
+<p>Pour utiliser la plateforme Hello-Asso pour réaliser vos paiements, connectez vous sur le portail <a class="reference external" href="https://www.helloasso.com">https://www.helloasso.com</a>.
+Sur votre compte de structure, dans le menu « Mon compte &gt; Intégration et API », vous devez recopiez les champs <em>mon clientid</em> et <em>mon clientsecret</em> dans l’interface.
+Et si votre <em>Diacamma</em> est accessible via le Net, le paiement de votre débiteur vous est notifié sous votre application et le règlement correspondant généré directement dans votre logiciel.</p>
+</div></blockquote>
+<p>Ces moyens de paiement peuvent être utilisés par vos débiteurs, via précision en bas de couriel, pour régler ce qu’ils vous doivent.</p>
+</section>
+<section id="parametres">
+<h2>Paramètres<a class="headerlink" href="#parametres" title="Lien vers cette rubrique">¶</a></h2>
+<p>4 Paramètres actuellement :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>compte de caisse : code comptable à mouvementer pour les règlements en espèces</p></li>
+<li><p>compte de frais bancaires : code comptable devant être utilisé pour comptabiliser les frais bancaires liés aux règlements. Une ligne d’écriture est alors ajoutée directement à l’écriture comptable correspondante si le champ « compte de frais bancaires » est renseigné, ce qui permet de saisir le montant des frais.</p></li>
+<li><p>sujet et message par défaut proposés à l’envoie des justificatifs d’un paiement.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="deposit.html">Dépôts de chèques</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

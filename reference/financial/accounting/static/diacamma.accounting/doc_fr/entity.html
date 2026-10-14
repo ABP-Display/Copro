@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Écritures &#8212; Documentation Diacamma comptabilité 2.7.9.26072908</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=e89e3241"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Comptabilité analytique" href="costaccounting.html" />
+    <link rel="prev" title="Tiers comptable" href="third.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Diacamma comptabilité 2.7.9.26072908</span></a></h1>
+        <h2 class="heading"><span>Écritures</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="third.html">Tiers comptable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="costaccounting.html">Comptabilité analytique</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="ecritures">
+<h1>Écritures<a class="headerlink" href="#ecritures" title="Lien vers cette rubrique">¶</a></h1>
+<p>Avant toute saisie d’écriture, assurez-vous de l’existence de vos journaux :</p>
+<blockquote>
+<div><p>Menu <em>Administration/Modules(conf.)/Configuration comptable</em> onglet « Journaux »</p>
+</div></blockquote>
+<p>De même, vous devez contrôler que votre plan comptable est à jour.</p>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Plan comptable</em></p>
+</div></blockquote>
+<section id="saisie-d-une-ecriture">
+<h2>Saisie d’une écriture<a class="headerlink" href="#saisie-d-une-ecriture" title="Lien vers cette rubrique">¶</a></h2>
+<section id="cas-general">
+<h3>Cas général<a class="headerlink" href="#cas-general" title="Lien vers cette rubrique">¶</a></h3>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Écritures comptables</em></p>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/entity_list.png"><img alt="_images/entity_list.png" class="align-center" src="_images/entity_list.png" style="height: 400px;" />
+</a>
+<p>Depuis cet écran, vous avez la possibilité de visualiser les écritures précédemment saisies et vous pouvez en ajouter de nouvelles.
+A l’écran, vous pouvez aussi consulter les écritures saisies après les avoir filtrées sur l’exercice comptable, un journal (ou tous)  et/ou sur l’état des écritures :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tout : aucun filtrage n’est appliqué</p></li>
+<li><p>En cours (brouillard): seulement les écritures provisoires (non encore validées)</p></li>
+<li><p>Validée : seulement les écritures déjà validées</p></li>
+<li><p>Lettrée : seulement les écritures lettrées</p></li>
+<li><p>Non lettrée : seulement les écritures non encore lettrées</p></li>
+</ul>
+</div></blockquote>
+<p>Vous pouvez également indiquer un code comptable pour filtre les écritures associées.</p>
+<p>Pour saisir une nouvelle écriture, cliquez sur le bouton « + Ajouter ».
+Sélectionnez le journal et saisissez la date de l’opération ainsi que le libellé de l’écriture (pièce et numéro…). Cliquez sur le bouton « Modifier ».</p>
+<p>Pour chaque ligne de l’écriture :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Saisissez les premiers chiffres du numéro du compte devant être mouvementé et sélectionnez-le dans votre plan comptable. Un compte doit exister dans le plan comptable de l’exercice pour être mouvementable</p></li>
+<li><p>Si demandé, sélectionnez le tiers et le code analytique de rattachement</p></li>
+<li><p>Saisissez le montant au débit ou au crédit du compte spécifié</p></li>
+<li><p>Cliquez sur le bouton « + Ajouter ».</p></li>
+</ul>
+</div></blockquote>
+<p>Ceci fait, cliquez sur « Ok ». Vous ne pourrez valider la saisie de votre écriture que si elle est équilibrée (débits = crédits).</p>
+<p><strong>Après clôture de l’exercice comptable, il ne sera plus possible de passer une écriture sur l’exercice clos. Avant cela, prenez soin de passer vos dernières écritures.</strong></p>
+<p>Une écriture étant provisoire, le bouton « Inverser » vous permet d’inverser très facilement votre écriture si besoin.
+Quand on débute en comptabilité, on a parfois du mal à savoir si un compte doit être débité ou crédité.
+En saisie, lorsque vous débitez un compte fournisseur et créditez un compte de charge, un message vous alerte sur le fait que vous avez probablement saisi l »écriture d’un avoir ».</p>
+</section>
+<section id="comptabiliser-un-reglement">
+<h3>Comptabiliser un règlement<a class="headerlink" href="#comptabiliser-un-reglement" title="Lien vers cette rubrique">¶</a></h3>
+<p>Un règlement peut être saisi manuellement comme précédemment. Mais bien souvent il est lié à une opération déjà comptabilisée  (ex. achat, appel de fonds) et constatant une dette ou une créance.</p>
+<p>Pour simplifier votre saisie, éditez l’écriture constatant la dette ou la créance réglée. Cliquez sur le bouton « Règlement » : l’application vous propose alors une nouvelle écriture partiellement remplie avec le compte du tiers débité (règlement de dette) ou crédité (règlement de créance).
+Il ne vous reste plus qu’à préciser sur quel compte financier (caisse, banque…) vous voulez imputer le règlement et à contrôler l’écriture générée après l’avoir complétée.</p>
+<p>Une fois l’écriture de règlement validée via cette fonctionnalité, l’écriture d’origine de la dette ou de la créance et celle du règlement sont automatiquement associées. Les lignes concernant le compte de tiers seront lettrées automatiquement.</p>
+</section>
+<section id="ecriture-d-a-nouveaux">
+<h3>Écriture d’à-nouveaux<a class="headerlink" href="#ecriture-d-a-nouveaux" title="Lien vers cette rubrique">¶</a></h3>
+<p>Après clôture d’un exercice comptable, l’écriture d’à-nouveaux est automatiquement générée lors de la phase d’initialisation de l’exercice suivant. Cette écriture, passée dans le journal « Report à nouveau », est automatiquement validée.
+A ce moment, vous pouvez être amené à saisir des opérations spécifiques comme par exemple la ventilation des excédents de l’année précédente.</p>
+<p>Par contre, dans ce journal, vous ne pouvez pas enregistrer de charges ou de produits.</p>
+</section>
+</section>
+<section id="lettrage-d-ecritures">
+<h2>Lettrage d’écritures<a class="headerlink" href="#lettrage-d-ecritures" title="Lien vers cette rubrique">¶</a></h2>
+<p>Comme nous l’avons évoqué dans un précédent chapitre, il est fréquent que des mouvements enregistrés en comptabilité trouvent leur source dans une ou plusieurs opérations liées. Dans ce cas, les lignes d’écritures correspondantes peuvent être lettrées.</p>
+<p>Toutefois, il y a des conditions pour que des lignes d’écriture soient lettrables :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Elles doivent concerner le même compte de tiers (fournisseur ou copropriétaire)</p></li>
+<li><p>Pour être lettrables, le total des débits doit être égal au total des crédits</p></li>
+<li><p>Soit les lignes sont d’un même exercice non clôturé (il faut donc lettrer les comptes de tiers avant clôture de l’exercice)</p></li>
+<li><p>Soit les lignes sont sur deux exercices non clôturés qui ce suivent. Le lettrage sera alors temporaire (avec un « &amp; » en suffix) et corrigé définitivement au moment de la clôture et du report à-nouveau.</p></li>
+</ul>
+</div></blockquote>
+<p>Les lignes lettrées conjointement se voient attribuer le même code lettre.</p>
+<p>Toute ligne lettrée peut être délettrée.</p>
+</section>
+<section id="validation-d-ecritures">
+<h2>Validation d’écritures<a class="headerlink" href="#validation-d-ecritures" title="Lien vers cette rubrique">¶</a></h2>
+<p>Par défaut, une écriture est saisie au brouillard, ce qui permet de la modifier ou de la supprimer tant qu’elle n’est pas validée.
+Cette écriture doit être validée pour entériner votre saisie. En principe, cette validation est confiée à la personne en charge de la vérification de la comptabilisation des opérations.</p>
+<p>Pour réaliser cette action, sélectionnez les écritures contrôlées et cliquez sur le bouton « Clôturer »: L’application affectera alors un numéro aux écritures validées ainsi qu’une date de validation.</p>
+<p>Une fois validée, une écriture devient non modifiable : ce mécanisme assure le caractére intangible et irréversible de votre comptabilité.</p>
+<p>Comme l’erreur est humaine, l’écriture validée ne pouvant pas être modifiée ou supprimée, vous devrez procéder comme suit :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>1 : Contrepasser l’écriture erronée en créant une écriture inverse pour l’annuler. Le libellé doit spécifier la référence de l’écriture annulée avec la mention « Contrepassation… »</p></li>
+<li><p>2 : Enregistrer l’écriture correcte</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Avant clôture de l’exercice comptable, toutes les écritures doivent étre validées</strong>.</p>
+</section>
+<section id="recherche-d-ecriture-s">
+<h2>Recherche d’écriture(s)<a class="headerlink" href="#recherche-d-ecriture-s" title="Lien vers cette rubrique">¶</a></h2>
+<p>Depuis la liste des écritures, le bouton « Recherche » vous permet de définir les critères de recherche d’écritures comptables.</p>
+<a class="reference internal image-reference" href="_images/entity_search.png"><img alt="_images/entity_search.png" class="align-center" src="_images/entity_search.png" style="height: 400px;" />
+</a>
+<p>En cliquant sur « Recherche », l’outil va rechercher dans la base toutes les écritures satisfaisant aux critères saisis.
+La ou les écritures extraites pourront être :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Imprimées</p></li>
+<li><p>Éditées/modifiées</p></li>
+<li><p>Clôturée, lettrées ou délettrées…</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="import-d-ecritures">
+<h2>Import d’écritures<a class="headerlink" href="#import-d-ecritures" title="Lien vers cette rubrique">¶</a></h2>
+<p>Depuis la liste des écritures, le bouton « Import » vous permet d’importer des écritures comptables depuis un fichier CSV, ODS ou XLS.</p>
+<p>Après avoir sélectionné l’exercice d’import, le journal et les informations de format de votre fichier, vous devez associer les champs des écritures aux colonnes de votre document (la première ligne de votre document doit décrire la nature de chaque colonne).</p>
+<a class="reference internal image-reference" href="_images/entity_import.png"><img alt="_images/entity_import.png" class="align-center" src="_images/entity_import.png" style="height: 400px;" />
+</a>
+<p>Vous pouvez alors contrôler vos données avant de les valider.
+L’import réalisé, l’outil vous présentera le résultat des écritures réellement importées.</p>
+<p><strong>Notez que les lignes d’écritures ne seront pas importées si :</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Le code comptable précisé n’existe pas dans le plan comptable de l’exercice</p></li>
+<li><p>La date n’est pas inclue dans l’exercice comptable actif</p></li>
+<li><p>Le principe de la partie double n’est pas respecté car pour toute opération, le total des débits doit être égal au total des crédits</p></li>
+</ul>
+</div></blockquote>
+<p>Bien que cela ne bloque pas l’import, le tiers et le code analytique seront laissés vides si ceux indiqués ne sont pas référencés dans votre dossier comptable. Vous devez donc contrôler l’importation et la modifier si besoin.</p>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="third.html">Tiers comptable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="costaccounting.html">Comptabilité analytique</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

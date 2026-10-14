@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#173e35" />
+    <meta
+      name="description"
+      content="Copro., projet libre de gestion de copropriété : fonctionnalités, utilisation et installation."
+    />
+    <title>Copro. — Une gestion partagée de votre copropriété</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/copro-mark.svg" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <link rel="preload" as="image" href="./assets/copro-mark.svg" />
+    <div class="copro-presentation">
+      <a href="#presentation-content" class="presentation-skip"
+        >Aller au contenu</a
+      >
+      <header class="presentation-header">
+        <a class="presentation-brand" href="./index.html"
+          ><span class="brand-mark copro-brand-mark"
+            ><img
+              src="./assets/copro-mark.svg"
+              width="42"
+              height="42"
+              alt=""
+              aria-hidden="true"
+              draggable="false" /></span
+          ><span>Copro.</span></a
+        >
+        <nav aria-label="Présentation du projet">
+          <a href="#fonctionnalites">Fonctionnalités</a
+          ><a href="#utilisation">Utilisation</a
+          ><a href="#installation">Installation</a>
+        </nav>
+        <a class="presentation-access" href="https://copro.ydoxide.fr/connexion"
+          >Ouvrir mon espace
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+        ></a>
+      </header>
+      <main id="presentation-content">
+        <section class="presentation-hero presentation-container">
+          <div class="presentation-hero-copy">
+            <p class="presentation-kicker">
+              <span></span> UN PROJET LIBRE, POUR VOTRE IMMEUBLE
+            </p>
+            <h1>
+              Votre copropriété.<br />Votre collectif.<br /><em
+                >Votre façon de gérer.</em
+              >
+            </h1>
+            <p class="presentation-lead">
+              Copro. rassemble les comptes, les documents et la préparation de
+              vos assemblées dans un espace clair. Pensé pour avancer ensemble,
+              même sans être spécialiste.
+            </p>
+            <div class="presentation-cta">
+              <a
+                class="presentation-primary"
+                href="https://copro.ydoxide.fr/connexion"
+                >Accéder à Copro.
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path></svg></a
+              ><a class="presentation-secondary" href="#installation"
+                >Installer le projet</a
+              >
+            </div>
+            <p class="presentation-hero-note">
+              Open source · Auto-hébergement · Projet en développement
+            </p>
+          </div>
+          <div
+            class="presentation-demo"
+            aria-label="Exemple illustratif, données fictives"
+          >
+            <div class="demo-top">
+              <span class="demo-dot"></span><span>Résidence des Tilleuls</span
+              ><span class="demo-label">EXEMPLE</span>
+            </div>
+            <div class="demo-body">
+              <p class="presentation-kicker">VOTRE ESPACE COMMUN</p>
+              <h2>Tout se prépare<br />ensemble.</h2>
+              <div class="demo-stats">
+                <div><strong>12</strong><span>copropriétaires</span></div>
+                <div><strong>24</strong><span>lots</span></div>
+                <div><strong>1</strong><span>collectif</span></div>
+              </div>
+              <div class="demo-task">
+                <span class="demo-icon"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 3h14v18H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 14h14M7 7h8m-8 4h6"
+                    ></path></svg
+                ></span>
+                <div>
+                  <strong>Suivre les comptes</strong
+                  ><span>Appels de fonds et dépenses réunis</span>
+                </div>
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m5 12 4 4L19 6"></path>
+                </svg>
+              </div>
+              <div class="demo-task">
+                <span class="demo-icon"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                    <path
+                      d="M7 3v4m10-4v4M3 10h18m-14 4h2m4 0h2m-8 4h2"
+                    ></path></svg
+                ></span>
+                <div>
+                  <strong>Préparer la prochaine AG</strong
+                  ><span>Ordre du jour et résolutions</span>
+                </div>
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg>
+              </div>
+              <div class="demo-task">
+                <span class="demo-icon"
+                  ><svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8V6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
+                    ></path></svg
+                ></span>
+                <div>
+                  <strong>Partager les bonnes pièces</strong
+                  ><span>Documents choisis par le gestionnaire</span>
+                </div>
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 12h16m-6-6 6 6-6 6"></path>
+                </svg>
+              </div>
+              <p class="demo-caption">
+                Illustration du projet, sans données de votre copropriété.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          class="presentation-principles"
+          aria-label="Les principes du projet"
+        >
+          <div class="presentation-container">
+            <p>
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4 4L19 6"></path></svg
+              ><span>Des informations lisibles</span>
+            </p>
+            <p>
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="9" cy="8" r="3"></circle>
+                <path
+                  d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5"
+                ></path></svg
+              ><span>Une gestion partagée</span>
+            </p>
+            <p>
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"></path>
+                <path d="m8 12 3 3 5-6"></path></svg
+              ><span>Des accès contrôlés</span>
+            </p>
+            <p>
+              <svg
+                width="19"
+                height="19"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 21V7l8-4 8 4v14M2 21h20M9 21v-5h6v5"></path>
+                <path d="M8 8h1m6 0h1M8 12h1m6 0h1"></path></svg
+              ><span>Une installation chez vous</span>
+            </p>
+          </div>
+        </section>
+        <section
+          id="fonctionnalites"
+          class="presentation-section presentation-container"
+        >
+          <div class="presentation-section-heading">
+            <p class="presentation-kicker">
+              CE QUE VOUS POUVEZ FAIRE AUJOURD’HUI
+            </p>
+            <h2>Un espace commun.<br />Des tâches plus simples.</h2>
+            <p>
+              Les fonctions ci-dessous sont présentes dans la version actuelle.
+              Les modules en première version restent à compléter.
+            </p>
+          </div>
+          <div class="presentation-modules">
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                    <path
+                      d="M7 3v4m10-4v4M3 10h18m-14 4h2m4 0h2m-8 4h2"
+                    ></path></svg></span
+                ><span class="module-status partial">Première version</span>
+              </div>
+              <h3>Des dossiers suivis dans la durée</h3>
+              <p>
+                Rassemblez les travaux, les sinistres et les devis. Retrouvez les
+                fournisseurs, leurs contrats, préavis et attestations avec les
+                dates à vérifier.
+              </p>
+              <div class="module-detail">
+                Fournisseurs · contrats · devis · échéances
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 11v6m0-10v.1"></path></svg></span
+                ><span class="module-status available">Disponible</span>
+              </div>
+              <h3>Les points à suivre, dès l’accueil</h3>
+              <p>
+                Consultez les dates proches, les factures restant à régler et
+                les soldes débiteurs à vérifier. Préparez une relance modifiable
+                avec ses preuves.
+              </p>
+              <div class="module-detail">
+                Métriques · brouillons · validation humaine
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="9" cy="8" r="3"></circle>
+                    <path
+                      d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5"
+                    ></path></svg></span
+                ><span class="module-status available">Disponible</span>
+              </div>
+              <h3>Votre collectif, au même endroit</h3>
+              <p>
+                Copropriétaires, lots et tantièmes. Retrouvez les bonnes
+                informations et préparez les accès de chaque membre.
+              </p>
+              <div class="module-detail">
+                Annuaire · lots · accès par courriel
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20 8V6a2 2 0 0 0-2-2H6a3 3 0 0 0-3 3v11a2 2 0 0 0 2 2h15V8H6a1 1 0 0 1 0-2"
+                    ></path>
+                    <path d="M20 12h-4v4h4"></path></svg></span
+                ><span class="module-status available">Disponible</span>
+              </div>
+              <h3>Des comptes que l’on peut suivre</h3>
+              <p>
+                Appels de fonds, dépenses, règlements et écritures équilibrées.
+                Consultez la trésorerie, les budgets et les rapports.
+              </p>
+              <div class="module-detail">
+                Balance · grand livre · exports CSV
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m9 3 7 4-5 9-7-4Zm-3 13H3v5h18v-5h-6"></path>
+                    <path d="M7 17h10"></path></svg></span
+                ><span class="module-status partial">Première version</span>
+              </div>
+              <h3>Une AG guidée, jusqu’au procès-verbal</h3>
+              <p>
+                Préparez les convocations et pouvoirs, enregistrez les votes,
+                produisez le PV et conservez les preuves des signatures et
+                notifications réalisées à l’extérieur.
+              </p>
+              <div class="module-detail">
+                Votes conservés · PV · suivi des notifications
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 8V6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"
+                    ></path></svg></span
+                ><span class="module-status available">Disponible</span>
+              </div>
+              <h3>Des documents qui se retrouvent</h3>
+              <p>
+                Classez les pièces, conservez leurs versions et choisissez les
+                documents à partager. Les téléchargements passent par les
+                contrôles d’accès.
+              </p>
+              <div class="module-detail">
+                PDF et images · versions · archivage
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+                    <path d="M9 4v16m7-11-3 3 3 3"></path></svg></span
+                ><span class="module-status partial">Première version</span>
+              </div>
+              <h3>Un espace pour les copropriétaires</h3>
+              <p>
+                Un portail de lecture pour retrouver son compte personnel, les
+                lots, les documents et les annonces publiées, depuis un ordinateur
+                ou un téléphone.
+              </p>
+              <div class="module-detail">
+                Partage explicite · données privées protégées
+              </div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"
+                  ><svg
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+                    <path
+                      d="M8 6h8M8 11h1m6 0h1m-8 4h1m6 0h1m-8 4h1m6 0h1"
+                    ></path></svg></span
+                ><span class="module-status available">Disponible</span>
+              </div>
+              <h3>Les bons calculs, sans ressaisie</h3>
+              <p>
+                Vérifiez une majorité, répartissez un montant au centime ou
+                simulez un échéancier. Les outils restent séparés des écritures
+                comptables.
+              </p>
+              <div class="module-detail">
+                Annuaire réutilisé · saisie libre possible
+              </div>
+            </article>
+          </div>
+        </section>
+        <section id="utilisation" class="presentation-how">
+          <div class="presentation-container">
+            <div class="presentation-section-heading">
+              <p class="presentation-kicker">PRENDRE SES REPÈRES</p>
+              <h2>Du premier lot<br />à la prochaine assemblée.</h2>
+              <p>
+                Un parcours progressif pour construire votre espace de gestion.
+              </p>
+            </div>
+            <div class="presentation-steps">
+              <article>
+                <span>01</span>
+                <h3>Décrire votre immeuble</h3>
+                <p>
+                  Renseignez la copropriété, ses membres et ses lots. Vérifiez
+                  les tantièmes et les clés de charges.
+                </p>
+              </article>
+              <article>
+                <span>02</span>
+                <h3>Organiser votre gestion</h3>
+                <p>
+                  Créez l’exercice, préparez les appels de fonds, saisissez les
+                  dépenses et contrôlez les rapports.
+                </p>
+              </article>
+              <article>
+                <span>03</span>
+                <h3>Préparer et partager</h3>
+                <p>
+                  Classez les documents, préparez les résolutions et publiez les
+                  informations utiles aux membres.
+                </p>
+              </article>
+            </div>
+            <div class="presentation-role-note">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 11v6m0-10v.1"></path>
+              </svg>
+              <p>
+                <strong>À chacun son espace.</strong> Les gestionnaires
+                préparent et modifient les données. Les copropriétaires
+                consultent les informations globales et les documents publiés.
+                Les gestionnaires enregistrent les votes de séance ; les membres
+                retrouvent les résumés de décisions publiés.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          id="installation"
+          class="presentation-section presentation-container presentation-install"
+        >
+          <div>
+            <p class="presentation-kicker">VOTRE INSTANCE, VOS DONNÉES</p>
+            <h2>Installer Copro.<br />à votre rythme.</h2>
+            <p>
+              La voie Docker réunit React, Django et PostgreSQL. Le code est
+              disponible sous licence GPL-3.0, sans abonnement logiciel imposé
+              par ce projet.
+            </p>
+            <ul>
+              <li>
+                Docker et Docker Compose, ou Docker Desktop en mode Linux.
+              </li>
+              <li>
+                Trois secrets distincts à renseigner dans le fichier
+                <code>.env</code>.
+              </li>
+              <li>Un navigateur pour utiliser votre espace.</li>
+              <li>Une sauvegarde de la base et des documents à prévoir.</li>
+            </ul>
+            <a
+              class="presentation-text-link"
+              href="https://github.com/Ydoxide/copro./blob/master/README.md"
+              target="_blank"
+              rel="noreferrer"
+              >Lire le guide complet
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+            ></a>
+            <p class="presentation-install-note">
+              L’hébergement et sa maintenance restent à votre charge. Une
+              instance gère actuellement une seule copropriété.
+            </p>
+          </div>
+          <div class="presentation-code">
+            <details class="static-install" open>
+              <summary>Docker · recommandé</summary>
+              <pre><code>git clone https://github.com/Ydoxide/copro..git copro
+cd copro
+cp .env.example .env
+# Renseigner les trois secrets avant de démarrer
+docker compose up -d --build
+docker compose ps</code></pre>
+            </details>
+            <details class="static-install">
+              <summary>Développement local</summary>
+              <pre><code># Backend : Python 3.12, environnement virtuel activé
+cd backend
+pip install -r requirements.txt
+# Définir DJANGO_SECRET_KEY et ADMIN_PASSWORD
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver 127.0.0.1:8000
+
+# Dans un second terminal : Node.js 22
+cd frontend
+npm ci
+npm run dev</code></pre>
+              <p>
+                Python 3.12 et Node.js 22. Le développement natif utilise SQLite
+                par défaut ; ce parcours n’a pas été validé sous Windows.
+              </p>
+            </details>
+            <p>
+              Après démarrage :
+              <a href="https://copro.ydoxide.fr/connexion">ouvrir l’espace</a>
+              sur le port 8081. L’identifiant initial est <code>admin</code> ;
+              son mot de passe est celui défini dans
+              <code>ADMIN_PASSWORD</code>.
+            </p>
+          </div>
+        </section>
+        <section id="evolutions" class="presentation-roadmap">
+          <div class="presentation-container">
+            <div class="presentation-section-heading">
+              <p class="presentation-kicker">LE PROJET CONTINUE</p>
+              <h2>Une direction claire.<br />Un périmètre transparent.</h2>
+              <p>
+                Copro. vise une gestion plus complète du quotidien d’un syndic
+                bénévole. Ces évolutions sont prévues, elles ne sont pas encore
+                livrées et n’ont pas de date garantie.
+              </p>
+            </div>
+            <div class="roadmap-grid">
+              <article>
+                <span>01</span>
+                <div>
+                  <h3>Comptabilité à approfondir</h3>
+                  <p>
+                    Modèles réglementaires des annexes, mode simplifié,
+                    formats bancaires supplémentaires et ordres SEPA.
+                    Le cycle comptable est disponible.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h3>AG et services connectés</h3>
+                  <p>
+                    Visio, vote direct par les membres, signature qualifiée et
+                    recommandé connecté. Le parcours papier et preuves est disponible.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h3>Obligations et échéances</h3>
+                  <p>
+                    Un calendrier contextualisé, des sources vérifiables et des
+                    explications sur les obligations de l’immeuble.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+              <article>
+                <span>04</span>
+                <div>
+                  <h3>Suivi des travaux à approfondir</h3>
+                  <p>
+                    Avancement détaillé, affectation des paiements et lien
+                    complet entre dossiers et comptabilité.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+              <article>
+                <span>05</span>
+                <div>
+                  <h3>Communication à compléter</h3>
+                  <p>
+                    Envoi SMTP, rappels programmés et suivi des échanges. Les
+                    brouillons et leur validation sont déjà disponibles.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+              <article>
+                <span>06</span>
+                <div>
+                  <h3>Indicateurs à approfondir</h3>
+                  <p>
+                    Règles de suivi personnalisables et tableaux de bord plus
+                    détaillés. Les analyses actuelles utilisent les données
+                    saisies, sans moteur IA.
+                  </p>
+                  <small>À développer</small>
+                </div>
+              </article>
+            </div>
+            <p class="roadmap-note">
+              La reprise des fonctionnalités de Diacamma est progressive. Le
+              projet actuel ne propose pas de certification de conformité, de
+              migration automatique des données ni d’IA entraînée pour le
+              syndic.
+            </p>
+          </div>
+        </section>
+        <section
+          class="presentation-section presentation-container presentation-faq"
+        >
+          <div>
+            <p class="presentation-kicker">AVANT DE COMMENCER</p>
+            <h2>Quelques réponses<br />pour avancer.</h2>
+          </div>
+          <div>
+            <details>
+              <summary>
+                Est-ce un service hébergé ?<svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </summary>
+              <p>
+                Cette page présente un logiciel à installer. Il n’existe pas
+                d’inscription publique ni de service d’hébergement fourni par ce
+                projet. Les accès sont créés par le gestionnaire de l’instance.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Est-ce que toutes les fonctions de Diacamma sont reprises ?<svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </summary>
+              <p>
+                Non. La référence Diacamma est conservée, mais la nouvelle
+                interface et ses modules sont développés progressivement. Des
+                parcours financiers avancés et les procédures complètes d’AG
+                restent à compléter.
+              </p>
+            </details>
+            <details>
+              <summary>
+                L’IA gère-t-elle déjà la copropriété ?<svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </summary>
+              <p>
+                Non. Aucune fonction IA n’est actuellement intégrée. L’objectif
+                envisagé est une assistance qui propose des actions avec leurs
+                sources, puis attend une validation humaine.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Les membres voient-ils toutes les données ?<svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </summary>
+              <p>
+                Non. Le portail de lecture expose les informations globales et
+                les documents publiés. Les coordonnées et soldes individuels des
+                autres propriétaires restent privés.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Comment contribuer ?<svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </summary>
+              <p>
+                Consultez le dépôt, signalez un problème reproductible ou
+                proposez une amélioration. Conservez les notices de licence et
+                testez vos modifications avant de les partager.
+              </p>
+            </details>
+          </div>
+        </section>
+        <section class="presentation-final presentation-container">
+          <span class="brand-mark copro-brand-mark"
+            ><img
+              src="./assets/copro-mark.svg"
+              width="42"
+              height="42"
+              alt=""
+              aria-hidden="true"
+              draggable="false"
+          /></span>
+          <h2>Un immeuble se gère mieux<br />quand on avance ensemble.</h2>
+          <div class="presentation-cta">
+            <a
+              class="presentation-primary"
+              href="https://copro.ydoxide.fr/connexion"
+              >Ouvrir mon espace
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 12h16m-6-6 6 6-6 6"></path></svg></a
+            ><a
+              class="presentation-secondary"
+              href="https://github.com/Ydoxide/copro."
+              target="_blank"
+              rel="noreferrer"
+              >Voir le code source</a
+            >
+          </div>
+        </section>
+      </main>
+      <footer class="presentation-footer presentation-container">
+        <a class="presentation-brand" href="./index.html"
+          ><span class="brand-mark copro-brand-mark"
+            ><img
+              src="./assets/copro-mark.svg"
+              width="42"
+              height="42"
+              alt=""
+              aria-hidden="true"
+              draggable="false" /></span
+          ><span>Copro.</span></a
+        >
+        <p>Projet libre · GPL-3.0 · React, Django et PostgreSQL</p>
+        <a
+          href="https://github.com/Ydoxide/copro."
+          target="_blank"
+          rel="noreferrer"
+          >Code et documentation
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 12h16m-6-6 6 6-6 6"></path></svg
+        ></a>
+      </footer>
+    </div>
+  </body>
+</html>

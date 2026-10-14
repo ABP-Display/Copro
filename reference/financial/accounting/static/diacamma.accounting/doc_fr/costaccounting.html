@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comptabilité analytique &#8212; Documentation Diacamma comptabilité 2.7.9.26072908</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=e89e3241"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Modèle d’écriture" href="model.html" />
+    <link rel="prev" title="Écritures" href="entity.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Diacamma comptabilité 2.7.9.26072908</span></a></h1>
+        <h2 class="heading"><span>Comptabilité analytique</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="entity.html">Écritures</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="model.html">Modèle d’écriture</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="comptabilite-analytique">
+<h1>Comptabilité analytique<a class="headerlink" href="#comptabilite-analytique" title="Lien vers cette rubrique">¶</a></h1>
+<p>Pour réaliser une analyse financière des différentes activités de votre structure et déterminer le résultat de chacune d’elles, vous pouvez mettre en place une comptabilité analytique.</p>
+<blockquote>
+<div><p>Menu <em>Administration/Modules(conf.)/Configuration comptable</em></p>
+</div></blockquote>
+<p>Après avoir ouvert l’onglet « Paramètres » - bouton « Modifier », cochez le paramètre <em>Comptabilité analytique</em>. A noter qu’en activant ce paramètre, toutes les charges et les produits devront obligatoirement être repris en comptabilité analytique.</p>
+<p>La comptabilité analytique proposée par le logiciel est une version simplifiée. En effet, il n’est pas possible de ventiler une charge ou un produit sur plusieurs codes analytiques.</p>
+<section id="les-codes-analytiques">
+<h2>Les codes analytiques<a class="headerlink" href="#les-codes-analytiques" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Comptabilités analytiques</em></p>
+</div></blockquote>
+<p>Vous accédez à la liste des codes analytiques créés.</p>
+<p>Depuis cet écran vous pouvez créer, modifier ou supprimer un code analytique.</p>
+<p>Chaque code a un titre, un descriptif et un statut (ouvert ou clôturé).
+En mode « liste », figure le résultat comptable (les produits diminués des charges) de chaque code analytique.</p>
+<a class="reference internal image-reference" href="_images/costaccount_list.png"><img alt="_images/costaccount_list.png" class="align-center" src="_images/costaccount_list.png" style="height: 400px;" />
+</a>
+<p>Par défaut, un filtrage vous permet de ne voir que  les codes analytiques ouverts. Vous pouvez paramétrer le filtre à l’aide des boutons de liste.</p>
+</section>
+<section id="imputation-analytique-d-une-charge-ou-d-un-produit">
+<h2>Imputation analytique d’une charge ou d’un produit<a class="headerlink" href="#imputation-analytique-d-une-charge-ou-d-un-produit" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Ecritures comptables</em></p>
+</div></blockquote>
+<p>Si vous avez des codes analytiques ouverts, vous pouvez imputer une charge ou un produit sur l’un d’entre eux.</p>
+<a class="reference internal image-reference" href="_images/costaccount_assign.png"><img alt="_images/costaccount_assign.png" class="align-center" src="_images/costaccount_assign.png" style="height: 200px;" />
+</a>
+<p>Que l’écriture correspondante soit validée ou non, affichez cette écriture  et éditez-la.
+Sélectionnez le  mouvement relatif à la charge ou au produit à imputer en analytique et bouton « Modifier ».
+Renseignez le code analytique de rattachement.</p>
+<p>Il est aussi possible de réaliser cette imputation par lot.
+Sélectionnez les mouvements à affecter et cliquez sur le bouton <em>Analytique</em>. Choisissez alors le nouveau code à utiliser
+pour l’ensemble des mouvements (charges ou  produits) sélectionnés.</p>
+</section>
+<section id="impressions-analytiques">
+<h2>Impressions analytiques<a class="headerlink" href="#impressions-analytiques" title="Lien vers cette rubrique">¶</a></h2>
+<p>Depuis la liste des codes analytiques, vous pouvez réaliser un rapport type « Compte de résultat de comptabilité analytique ».
+Pour cela, affichez les codes analytiques. Sélectionnez-les (un ou plusieurs) et cliquez sur le bouton « Rapport ».
+Tout comme le Compte de résultat de la Comptabilité générale, ce rapport reprend pour chaque code analytique sélectionné, le montant des charges et des produits ainsi que le budget. Cela permet de comparer, là encore le résultat réel d’une activité au résultat attendu.</p>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="entity.html">Écritures</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="model.html">Modèle d’écriture</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

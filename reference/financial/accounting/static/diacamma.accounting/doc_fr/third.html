@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tiers comptable &#8212; Documentation Diacamma comptabilité 2.7.9.26072908</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=e89e3241"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Écritures" href="entity.html" />
+    <link rel="prev" title="Exercice comptable" href="fiscalyear.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Diacamma comptabilité 2.7.9.26072908</span></a></h1>
+        <h2 class="heading"><span>Tiers comptable</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="fiscalyear.html">Exercice comptable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="entity.html">Écritures</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="tiers-comptable">
+<h1>Tiers comptable<a class="headerlink" href="#tiers-comptable" title="Lien vers cette rubrique">¶</a></h1>
+<p><strong>Préambule</strong> :
+Les opérations réalisées par votre structure avec ses partenaires donnent lieu à des échanges. Les flux physiques (échanges de biens et de services) et les flux monétaires (échanges de monnaie) doivent être constatés en comptabilité.</p>
+<p>Pour chacun de vos partenaires, que ce soit des personnes physiques (individus) ou des personnes morales (administrations, associations, sociétés…) vous devez, afin de comptabiliser distinctement les opérations réalisées avec lui, lui ouvrir une subdivision d’un compte général appelé aussi compte auxiliaire (ou compte nominatif).</p>
+<p>Exemple : vous achetez régulièrement des fournitures de bureau à la SARL « Papeterie du Centre » dont la gérante est Mme VERGER Louise</p>
+<dl class="simple">
+<dt>Sous DIACAMMA :</dt><dd><dl class="simple">
+<dt>Fonction<span class="classifier">Gérante                                  –&gt;</span></dt><dd><dl class="simple">
+<dt>Personne physique<span class="classifier">VERGER Louise</span></dt><dd><dl class="simple">
+<dt>Personne morale<span class="classifier">Papeterie du Centre (SARL) avec pour membre VERGER Louise, gérante</span></dt><dd><p>Tiers comptable : Papeterie du Centre - Code 401</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<section id="creation-d-un-tiers-comptable">
+<h2>Création d’un tiers comptable<a class="headerlink" href="#creation-d-un-tiers-comptable" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Tiers</em></p>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/third_list.png"><img alt="_images/third_list.png" class="align-center" src="_images/third_list.png" style="height: 400px;" />
+</a>
+<p>La liste des tiers précédemment enregistrés s’affiche à l’écran. Dans cette liste, notez la présence des membres de votre structure.
+Vous pouvez filtrer cette liste par contact ou type de tiers et imprimer la liste obtenue.</p>
+<p>Pour ajouter un nouveau tiers comptable, cliquez sur « + Créer » et sélectionnez le contact (personne physique ou morale) associé à ce tiers comptable.</p>
+<a class="reference internal image-reference" href="_images/third_add.png"><img alt="_images/third_add.png" class="align-center" src="_images/third_add.png" style="height: 400px;" />
+</a>
+<p>Depuis cet écran, vous pouvez aussi créer un nouveau contact à l’aide du bouton « + Créer » avant de le sélectionner.</p>
+<img alt="_images/third_edit.png" src="_images/third_edit.png" />
+<p>Il est possible d’associer un tiers comptable à un ou plusieurs comptes comptables : fournisseur, client…. Cela permet en comptabilité de distinguer les opérations selon la nature des échanges que vous avez avec lui.</p>
+</section>
+<section id="situation-d-un-tiers">
+<h2>Situation d’un tiers<a class="headerlink" href="#situation-d-un-tiers" title="Lien vers cette rubrique">¶</a></h2>
+<p>L’onglet « Ecritures comptables » de la fiche d’un tiers vous donne une vue sur les écritures comptables le concernant,
+avec possibilité de les filtrer.</p>
+<a class="reference internal image-reference" href="_images/third_state.png"><img alt="_images/third_state.png" class="align-center" src="_images/third_state.png" style="height: 400px;" />
+</a>
+</section>
+<section id="champs-personnalises-de-tiers">
+<h2>Champs personnalisés de tiers<a class="headerlink" href="#champs-personnalises-de-tiers" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Administration/Modules (conf.)/Configuration comptable</em> - onglet « Champ personnalisé de tiers »</p>
+</div></blockquote>
+<p>Grâce à l’ajout de vos propres champs dans la fiche type de tiers comptable, vous allez pouvoir personnaliser cette fiche.
+La méthode est similaire à celle utilisée pour personnaliser la fiche des contacts.</p>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="fiscalyear.html">Exercice comptable</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="entity.html">Écritures</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

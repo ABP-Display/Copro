@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-21 09:37+0100\n"
+"PO-Revision-Date: 2026-01-21 09:37+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: system/__init__.py:33
+msgid "French system acounting"
+msgstr "French system acounting"
+
+#: system/__init__.py:34
+msgid "Belgium system acounting"
+msgstr "Belgium system acounting"
+
+#: system/__init__.py:35
+msgid "Morocco system acounting"
+msgstr "Morocco system acounting"
+
+#: system/default.py:42
+msgid "Fiscal year closing - Result"
+msgstr "Fiscal year closing - Result"
+
+#: system/default.py:43
+msgid "Fiscal year closing - Third"
+msgstr "Fiscal year closing - Third"
+
+#: system/default.py:160
+msgid "profit"
+msgstr "profit"
+
+#: system/default.py:162
+msgid "deficit"
+msgstr "deficit"
+
+#: system/default.py:168
+msgid "Profit and deficit"
+msgstr "Profit and deficit"
+
+#: system/default.py:171
+#, python-format
+msgid ""
+"{[i]}You have a %(type)s of %(value)s.{[br/]}You must to define the account "
+"to affect.{[br/]}{[/i]}"
+msgstr ""
+"{[i]}You have a %(type)s of %(value)s.{[br/]}You must to define the account "
+"to affect.{[br/]}{[/i]}"
+
+#: system/default.py:172
+#, python-format
+msgid ""
+"{[br/]}After validation, you begin '%s'.{[br/]}{[br/]}{[i]}{[u]}Warning:{[/"
+"u]} Your retained earnings must be completed.{[/i]}"
+msgstr ""
+"{[br/]}After validation, you begin '%s'.{[br/]}{[br/]}{[i]}{[u]}Warning:{[/"
+"u]} Your retained earnings must be completed.{[/i]}"
+
+#: system/default.py:197
+msgid "Affect of profit/deficit"
+msgstr "Affect of profit/deficit"
+
+#: system/default.py:231
+#, python-format
+msgid ""
+"Do you want to begin '%s'? {[br/]}{[br/]}{[i]}{[u]}Warning:{[/u]} Your "
+"retained earnings must be completed.{[/i]}"
+msgstr ""
+"Do you want to begin '%s'? {[br/]}{[br/]}{[i]}{[u]}Warning:{[/u]} Your "
+"retained earnings must be completed.{[/i]}"
+
+#: system/default.py:316
+msgid "Retained earnings - Balance sheet"
+msgstr "Retained earnings - Balance sheet"
+
+#: system/default.py:333
+msgid "Retained earnings - Third party debt"
+msgstr "Retained earnings - Third party debt"
+
+#: system/default.py:358
+#, python-format
+msgid "Link problem for: {[br]} - %s{[br]}"
+msgstr "Link problem for: {[br]} - %s{[br]}"
+
+#: system/default.py:377
+msgid "immobilizations & stock"
+msgstr "immobilizations & stock"
+
+#: system/default.py:380 system/default.py:391 system/default.py:402
+#: system/default.py:414 system/default.py:425
+msgid "Sub-total"
+msgstr "Sub-total"
+
+#: system/default.py:388
+msgid "receivables"
+msgstr "receivables"
+
+#: system/default.py:399
+msgid "values & availabilities"
+msgstr "values & availabilities"
+
+#: system/default.py:411
+msgid "capital"
+msgstr "capital"
+
+#: system/default.py:422
+msgid "liabilities"
+msgstr "liabilities"
+
+#: system/default.py:436 system/default.py:437
+msgid "Total"
+msgstr "Total"
+
+#: system/default.py:454
+msgid "result (deficit)"
+msgstr "result (deficit)"
+
+#: system/default.py:456
+msgid "result (profit)"
+msgstr "result (profit)"

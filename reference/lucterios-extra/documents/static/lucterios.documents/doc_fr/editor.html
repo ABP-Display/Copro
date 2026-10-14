@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Editeur de documents &#8212; Documentation Lucterios documents 2.7.3.25091516</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=438f30e5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Configurer les dossiers" href="configuration.html" />
+    <link rel="prev" title="Gestion de fichiers" href="shared_document.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Lucterios documents 2.7.3.25091516</span></a></h1>
+        <h2 class="heading"><span>Editeur de documents</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="shared_document.html">Gestion de fichiers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="configuration.html">Configurer les dossiers</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="editeur-de-documents">
+<h1>Editeur de documents<a class="headerlink" href="#editeur-de-documents" title="Lien vers cette rubrique">¶</a></h1>
+<p>Il est possible de configurer l’outil afin de pouvoir éditer certains documents directement via l’interface « en ligne ».</p>
+<p>Des outils d’édition, libres et gratuits, sont actuellement configurables afin de les utiliser pour consulter et modifier des documents.</p>
+<p><strong>Note :</strong> Ces outils sont gérés par des équipes complètement différentes, il se peut que certains de leurs comportements ne correspondent pas à vos attentes.</p>
+<section id="etherpad">
+<h2>Etherpad<a class="headerlink" href="#etherpad" title="Lien vers cette rubrique">¶</a></h2>
+<p>Éditeur pour document textuel.</p>
+<p>Site Web</p>
+<blockquote>
+<div><p><a class="reference external" href="https://etherpad.org/">https://etherpad.org/</a></p>
+</div></blockquote>
+<p>Installation</p>
+<blockquote>
+<div><p>Le tutoriel de framasoft explique bien comment l’installer: <a class="reference external" href="https://framacloud.org/fr/cultiver-son-jardin/etherpad.html">https://framacloud.org/fr/cultiver-son-jardin/etherpad.html</a></p>
+</div></blockquote>
+<p>Configurer</p>
+<blockquote>
+<div><blockquote>
+<div><p>Éditer le fichier « settings.py » contenu dans le répertoire de votre instance.
+Ajouter et adapter la ligne ci-dessous:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>url : adresse d’accès d’Etherpad</p></li>
+<li><p>apikey : contenu de la clef de sécurité (fichier APIKEY.txt contenu dans l’installation d’etherpad)</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># extra</span>
+<span class="n">ETHERPAD</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://localhost:9001&#39;</span><span class="p">,</span> <span class="s1">&#39;apikey&#39;</span><span class="p">:</span> <span class="s1">&#39;jfks5dsdS65lfGHsdSDQ4fsdDG4lklsdq6Gfs4Gsdfos8fs&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Usage</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Dans le gestionnaire de documents, vous avez plusieurs actions qui apparaissent alors:</dt><dd><ul class="simple">
+<li><p>Un bouton « + Fichier » vous permettant de créer un document txt ou html depuis la liste d’un dossier.</p></li>
+<li><p>Un bouton « Editeur » pour ouvrir l’éditeur Etherpad depuis la fiche du document.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/etherpad.png"><img alt="_images/etherpad.png" class="align-center" src="_images/etherpad.png" style="height: 400px;" />
+</a>
+</section>
+<section id="ethercalc">
+<h2>Ethercalc<a class="headerlink" href="#ethercalc" title="Lien vers cette rubrique">¶</a></h2>
+<p>Éditeur pour tableau de calcul.</p>
+<p>Site Web</p>
+<blockquote>
+<div><p><a class="reference external" href="https://ethercalc.net/">https://ethercalc.net/</a>
+<a class="reference external" href="https://github.com/audreyt/ethercalc">https://github.com/audreyt/ethercalc</a></p>
+</div></blockquote>
+<p>Installation</p>
+<blockquote>
+<div><p>Sur le wiki des sources, une petit explication indique comment l’installer.</p>
+</div></blockquote>
+<p>Configurer</p>
+<blockquote>
+<div><blockquote>
+<div><p>Editer le fichier « settings.py » contenu dans le répertoire de votre instance.
+Ajouter et adapter la ligne ci-dessous:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>url : adresse d’accès d’Ethercal</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># extra</span>
+<span class="n">ETHERCALC</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Usage</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Dans le gestionnaire de documents, vous avez plusieurs actions qui apparaissent alors:</dt><dd><ul class="simple">
+<li><p>Un bouton « + Fichier » vous permettant de créer un document csv, ods ou xmlx depuis la liste d’un dossier.</p></li>
+<li><p>Un bouton « Editeur » pour ouvrir l’éditeur Ethercalc depuis la fiche du document.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/ethercalc.png"><img alt="_images/ethercalc.png" class="align-center" src="_images/ethercalc.png" style="height: 400px;" />
+</a>
+</section>
+<section id="onlyoffice-docs-community-edition">
+<h2>OnlyOffice Docs Community Edition<a class="headerlink" href="#onlyoffice-docs-community-edition" title="Lien vers cette rubrique">¶</a></h2>
+<p>Éditeurs en ligne pour les documents texte, les feuilles de calcul et les présentations.</p>
+<p>Site Web</p>
+<blockquote>
+<div><p><a class="reference external" href="https://www.onlyoffice.com/fr/office-suite.aspx">https://www.onlyoffice.com/fr/office-suite.aspx</a></p>
+</div></blockquote>
+<p>Installation</p>
+<blockquote>
+<div><p>Nous vous recommandons l’installation via Docker comme expliqué ici:
+<a class="reference external" href="https://helpcenter.onlyoffice.com/installation/docs-community-install-docker.aspx">https://helpcenter.onlyoffice.com/installation/docs-community-install-docker.aspx</a></p>
+</div></blockquote>
+<p>Configurer</p>
+<blockquote>
+<div><p>Editer le fichier « settings.py » contenu dans le répertoire de votre instance.
+Ajouter et adapter la ligne ci-dessous:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>url : adresse d’accès d’OnlyOffice</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># extra</span>
+<span class="n">ONLYOFFICE</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;http://localhost:8100&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Usage</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Dans le gestionnaire de documents, vous avez plusieurs actions qui apparaissent alors:</dt><dd><ul class="simple">
+<li><p>Un bouton « + Fichier » vous permettant de créer un document csv, xlsx, ods, docx, odt, txt, pptx ou odp depuis la liste d’un dossier.</p></li>
+<li><p>Un bouton « Editeur » pour ouvrir l’éditeur OnlyOffice depuis la fiche du document.</p></li>
+<li><p>A noter que vous avez également la possibilité de visualiser, en lecture seule, les documents xls, doc, ppt ou pdf</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/onlyoffice.png"><img alt="_images/onlyoffice.png" class="align-center" src="_images/onlyoffice.png" style="height: 400px;" />
+</a>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="shared_document.html">Gestion de fichiers</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="configuration.html">Configurer les dossiers</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2025, sd-libre.
+    </div>
+  </body>
+</html>

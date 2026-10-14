@@ -1,0 +1,169 @@
+.cycle-page {
+  --border: #dfe7e1;
+  display: grid;
+  gap: 22px;
+}
+.cycle-page .panel {
+  padding: 26px;
+  min-width: 0;
+}
+.cycle-page h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+.cycle-page p {
+  line-height: 1.65;
+}
+.cycle-page .alert.success {
+  background: #edf5ea;
+  color: #365c36;
+  border-color: #d4e6ca;
+}
+.cycle-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: end;
+}
+.cycle-toolbar label,
+.cycle-selector {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cycle-toolbar input,
+.cycle-toolbar select,
+.cycle-selector select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 16px;
+  background: white;
+  max-width: 100%;
+}
+.cycle-intro {
+  background: linear-gradient(125deg, #fff, #f3f8f5);
+}
+.cycle-intro > p {
+  max-width: 850px;
+}
+.cycle-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.cycle-task p {
+  margin: 7px 0 0;
+}
+.cycle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cycle-checks {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+.cycle-checks > div {
+  display: flex;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border-radius: 12px;
+  background: #fff7ea;
+  color: #765321;
+}
+.cycle-number {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cycle-empty {
+  padding: 15px 0;
+}
+.cycle-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.cycle-metrics > div {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  background: #f4f7f5;
+  border-radius: 12px;
+}
+.cycle-metrics strong {
+  font-size: 23px;
+  font-variant-numeric: tabular-nums;
+}
+.cycle-report {
+  display: grid;
+  gap: 22px;
+}
+.cycle-opening-dialog {
+  width: min(1100px, calc(100vw - 40px));
+}
+.cycle-opening-dialog .dialog-body {
+  padding: 24px;
+  max-height: 65vh;
+  overflow: auto;
+}
+.cycle-opening-dialog label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+}
+.cycle-opening-dialog input,
+.cycle-opening-dialog select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.cycle-opening-row {
+  display: grid;
+  grid-template-columns: 100px repeat(3, minmax(120px, 1fr)) 95px 95px 30px;
+  gap: 10px;
+  align-items: end;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  .cycle-opening-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cycle-task {
+    align-items: start;
+    flex-direction: column;
+  }
+  .cycle-metrics {
+    grid-template-columns: 1fr;
+  }
+  .cycle-page .panel {
+    padding: 20px;
+  }
+}
+@media print {
+  .sidebar,
+  .topbar,
+  .cycle-toolbar,
+  .cycle-page > .alert {
+    display: none !important;
+  }
+  .cycle-report .panel {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  .cycle-report {
+    display: block;
+  }
+  .cycle-page .table-scroll {
+    overflow: visible;
+  }
+}

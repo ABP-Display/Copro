@@ -1,0 +1,7 @@
+lucterios==2.7.9.26070711
+lucterios-contacts~=2.7.0
+lucterios-documents~=2.7.0
+diacamma-financial~=2.7.0
+psycopg2-binary~=2.9.0
+gunicorn~=23.0
+whitenoise~=6.0

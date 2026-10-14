@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 15:30+0000\n"
+"PO-Revision-Date: 2024-08-28 13:33+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.3\n"
+
+#: __init__.py:42 views.py:713
+msgid "Lucterios documents"
+msgstr "Lucterios documents"
+
+#: editors.py:68
+msgid "File not found!"
+msgstr "File not found!"
+
+#: editors.py:102
+msgid "shared link"
+msgstr "shared link"
+
+#: models.py:54 models_legacy.py:41
+msgid "parent"
+msgstr "parent"
+
+#: models.py:55 models.py:121 models.py:293 models_legacy.py:39
+#: models_legacy.py:65
+msgid "name"
+msgstr "name"
+
+#: models.py:56 models.py:122 models.py:294 models_legacy.py:40
+#: models_legacy.py:66
+msgid "description"
+msgstr "description"
+
+#: models.py:58 models.py:109 models.py:262 models.py:295 models_legacy.py:43
+#: models_legacy.py:67
+msgid "modifier"
+msgstr "modifier"
+
+#: models.py:59 models.py:263 models.py:296 models_legacy.py:68 views.py:457
+msgid "date modification"
+msgstr "date of modification"
+
+#: models.py:61
+msgid "indentification"
+msgstr "indentification"
+
+#: models.py:62
+msgid "info"
+msgstr "info"
+
+#: models.py:63
+msgid "group"
+msgstr "group"
+
+#: models.py:101
+msgid "container"
+msgstr "container"
+
+#: models.py:102
+msgid "containers"
+msgstr "containers"
+
+#: models.py:108 models_legacy.py:42
+msgid "viewer"
+msgstr "viewer"
+
+#: models.py:129 models.py:134
+msgid "001@Info"
+msgstr "001@Info"
+
+#: models.py:130 models.py:135
+msgid "001@Permission"
+msgstr "001@Permission"
+
+#: models.py:251 models_legacy.py:58 models_legacy.py:64
+msgid "folder"
+msgstr "folder"
+
+#: models.py:252 models_legacy.py:59
+msgid "folders"
+msgstr "folders"
+
+#: models.py:265 models_legacy.py:69
+msgid "creator"
+msgstr "creator"
+
+#: models.py:266 models_legacy.py:70
+msgid "date creation"
+msgstr "date of creation"
+
+#: models.py:478 models_legacy.py:88
+msgid "document"
+msgstr "document"
+
+#: models.py:479 models_legacy.py:89
+msgid "documents"
+msgstr "documents"
+
+#: models.py:539
+msgid "default documents"
+msgstr "default documents"
+
+#: models.py:582
+msgid "documents-signature"
+msgstr "image of stamp or signature"
+
+#: models.py:586
+msgid "# documents (administrator)"
+msgstr "# documents (administrator)"
+
+#: models.py:587
+msgid "# documents (editor)"
+msgstr "# documents (editor)"
+
+#: models.py:592 views.py:61
+msgid "Document"
+msgstr "Document"
+
+#: views.py:64
+msgid "Management of document's folders"
+msgstr "Management of document's folders"
+
+#: views.py:66
+msgid "Folders"
+msgstr "Folders"
+
+#: views.py:79
+msgid "Add folder"
+msgstr "Add folder"
+
+#: views.py:80
+msgid "Modify folder"
+msgstr "Modify folder"
+
+#: views.py:102
+msgid "Delete folder"
+msgstr "Delete folder"
+
+#: views.py:147 views.py:150
+msgid "Import"
+msgstr "Import"
+
+#: views.py:156
+msgid "zip file"
+msgstr "zip file"
+
+#: views.py:183 views.py:186
+msgid "Extract"
+msgstr "Extract"
+
+#: views.py:228
+msgid "Office"
+msgstr "Office"
+
+#: views.py:228
+msgid "Office tools"
+msgstr "Office tools"
+
+#: views.py:230
+msgid "Documents management"
+msgstr "Documents management"
+
+#: views.py:230
+msgid "Documents storage tools"
+msgstr "Documents storage tools"
+
+#: views.py:236 views.py:249
+msgid "No allow to view!"
+msgstr "Not allowed to display !"
+
+#: views.py:261
+msgid "Add document"
+msgstr "Add document"
+
+#: views.py:262
+msgid "Modify document"
+msgstr "Modify document"
+
+#: views.py:273 views.py:393 views.py:511
+msgid "No allow to write!"
+msgstr "Not allowed to write !"
+
+#: views.py:281
+msgid "Show document"
+msgstr "Show document"
+
+#: views.py:294
+msgid "Editor"
+msgstr "Editor"
+
+#: views.py:298
+msgid "Edit document"
+msgstr "Edit document"
+
+#: views.py:331 views.py:465
+msgid "File"
+msgstr "File"
+
+#: views.py:334
+msgid "Create document"
+msgstr "Create document"
+
+#: views.py:376
+msgid "document type"
+msgstr "document type"
+
+#: views.py:384
+msgid "Delete document"
+msgstr "Delete document"
+
+#: views.py:399
+msgid "Management of documents"
+msgstr "Management of documents"
+
+#: views.py:401
+msgid "Documents"
+msgstr "Document management"
+
+#: views.py:415
+msgid "current folder:"
+msgstr "current folder:"
+
+#: views.py:470
+msgid "Back"
+msgstr "Back"
+
+#: views.py:476
+msgid "To find a document following a set of criteria."
+msgstr "To find a document following a set of criteria."
+
+#: views.py:478
+msgid "Document search"
+msgstr "Document search"
+
+#: views.py:498
+msgid "Select"
+msgstr "Select"
+
+#: views.py:501
+msgid "delete shared link"
+msgstr "delete shared link"
+
+#: views.py:502
+msgid "create shared link"
+msgstr "create shared link"
+
+#: views.py:521
+msgid "Download document"
+msgstr "Download document"
+
+#: views.py:545
+msgid "File not found !"
+msgstr "File not found !"
+
+#: views.py:675
+msgid "Document management"
+msgstr "Document management"
+
+#: views.py:685
+msgid "no file currently available"
+msgstr "no file currently available"
+
+#: views.py:687
+msgid "one file currently available"
+msgstr "one file currently available"
+
+#: views.py:689
+#, python-format
+msgid "%d files currently available"
+msgstr "%d files currently available"
+
+#: views.py:713
+msgid "Parameters"
+msgstr "Parameters"
+
+#~ msgid "Available group viewers"
+#~ msgstr "Available viewers group"
+
+#~ msgid "Chosen group viewers"
+#~ msgstr "Chosen viewers group"
+
+#~ msgid "Available group modifiers"
+#~ msgstr "Available modifiers group"
+
+#~ msgid "Chosen group modifiers"
+#~ msgstr "Chosen modifiers group"
+
+#~ msgid "Folder"
+#~ msgstr "Folder"
+
+#~ msgid "No allow to delete folder!"
+#~ msgstr "No allow to delete folder!"

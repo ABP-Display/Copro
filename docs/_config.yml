@@ -1,0 +1,7 @@
+# La racine et assets/ forment la vitrine publique.
+# La documentation et les aperçus ne sont pas publiés.
+exclude:
+  - guides
+  - reference
+  - apercus
+  - README.md

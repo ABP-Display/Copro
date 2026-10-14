@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+.venv/
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.sqlite3
+.local-data/
+backend/media/
+*.tsbuildinfo
+
+dist-pages/

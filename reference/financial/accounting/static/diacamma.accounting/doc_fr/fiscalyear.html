@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exercice comptable &#8212; Documentation Diacamma comptabilité 2.7.9.26072908</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=e89e3241"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Tiers comptable" href="third.html" />
+    <link rel="prev" title="Définitions" href="definition.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Diacamma comptabilité 2.7.9.26072908</span></a></h1>
+        <h2 class="heading"><span>Exercice comptable</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="definition.html">Définitions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="third.html">Tiers comptable</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="exercice-comptable">
+<h1>Exercice comptable<a class="headerlink" href="#exercice-comptable" title="Lien vers cette rubrique">¶</a></h1>
+<section id="parametrages">
+<h2>Paramétrages<a class="headerlink" href="#parametrages" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Administration/Modules (conf.)/Configuration comptable</em></p>
+</div></blockquote>
+<p>Ouvrez l’onglet « Paramètres » et éditez-les avec le bouton « Modifier ». Paramétrez la devise et sa précision, la taille des codes comptables. Précisez aussi si vous avez l’intention ou non de mettre en place une comptabilité analytique.</p>
+<a class="reference internal image-reference" href="_images/parameters.png"><img alt="_images/parameters.png" class="align-center" src="_images/parameters.png" style="height: 300px;" />
+</a>
+<ul class="simple">
+<li><p><strong>Devise (iso)</strong> : Devise utilisée dans la comptabilité (au format international</p></li>
+<li><p><strong>Devise (précision)</strong> : Nombre de chiffre après la virgule de la devise</p></li>
+<li><p><strong>Taille des codes comptables</strong> : Taille minimum des code comptables, des zéro seront ajouté en plus éventuellement.</p></li>
+<li><p><strong>Comptabilité analytique obligatoire</strong> : Rend obligatoire l’utilisation de code analytique sur les lignes d’écritures de produit ou de charge.</p></li>
+<li><p><strong>Code comptable (filtre de rapport)</strong> : Début de code comptable utiliser pour prédéfinir des filtrages dans des rapports.</p></li>
+<li><p><strong>Date du jour pour une nouvelle écriture</strong> : Si non coché, rend la date d’écriture non rempli, obligeant à la saisir.</p></li>
+</ul>
+</section>
+<section id="creation-d-un-exercice-comptable">
+<h2>Création d’un exercice comptable<a class="headerlink" href="#creation-d-un-exercice-comptable" title="Lien vers cette rubrique">¶</a></h2>
+<p>Lors de la mise en place de votre comptabilité sous <em>Diacamma Syndic</em>, vous aurez à spécifier le système comptable qui sera utilisé (ex. Plan comptable général français). <strong>Attention :</strong> une fois choisie, cette option ne sera plus modifiable.</p>
+<blockquote>
+<div><p>Menu <em>Administration/Modules (conf.)/Configuration comptable</em> - Onglet « Liste d’exercices »</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/fiscalyear_list.png"><img alt="_images/fiscalyear_list.png" class="align-center" src="_images/fiscalyear_list.png" style="height: 400px;" />
+</a>
+<p>Vérifiez que le système comptable a été choisi et cliquez sur « + Créer » afin de renseigner les bornes du nouvel exercice.</p>
+<a class="reference internal image-reference" href="_images/fiscalyear_create.png"><img alt="_images/fiscalyear_create.png" class="align-center" src="_images/fiscalyear_create.png" style="height: 200px;" />
+</a>
+<p>Pour le premier exercice sous <em>Diacamma Syndic</em>, saisissez la date de début et la date de fin de l’exercice puis cliquez sur le bouton « OK ». Les exercices suivants ont comme date de début le lendemain de la date de clôture de l’exercice précédent et seule la date de fin est à saisir.</p>
+<p>Notez que le logiciel associe à chaque exercice un répertoire de stockage du <em>Gestionnaire de documents</em> : certains documents
+officiels seront sauvegardés dans celui-ci. Le bouton « Contrôle » vous permet à tout moment de  vérifier que vos documents officiels ont bien été générés.</p>
+<p>Votre nouvel exercice figure maintenant dans la liste des exercices. Il est <strong>[en création]</strong>. Lorsque plusieurs exercices ont été créés, vous devez activer celui sur lequel vous souhaitez travailler par défaut, à l’aide du bouton « Activé ».</p>
+<blockquote>
+<div><p><em>Onglet « Journaux » et Onglet « Champ personnalisé des tiers »</em></p>
+</div></blockquote>
+<p>Depuis ce même écran de configuration, vous pouvez également modifier ou ajouter des journaux. Des champs personnalisés peuvent aussi être ajoutés à la fiche modèle de tiers comptable. Ceci peut être intéressant si vous voulez réaliser des recherches/filtrages sur des informations propres à votre fonctionnement.</p>
+<p>Maintenant, vous devez fermer la fenêtre « Configuration comptable » et créer le plan comptable de votre structure.</p>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Plan comptable</em></p>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/account_list.png"><img alt="_images/account_list.png" class="align-center" src="_images/account_list.png" style="height: 400px;" />
+</a>
+<p>Avec le bouton « + Initiaux », générez automatiquement votre propre plan comptable général à partir du plan de comptes type fourni par le logiciel.
+Adaptez celui-ci aux besoins de votre structure avec les boutons « Ajouter » et « Supprimer ».</p>
+<blockquote>
+<div><ul>
+<li><dl class="simple">
+<dt><strong>Première tenue de comptabilité sous Diacamma</strong><span class="classifier">vous migrez sous Diacamma et avez des à-nouveaux à saisir.</span></dt><dd><p>Avec le bouton « + Initiaux », générez automatiquement votre propre plan comptable général à partir du plan de comptes type.
+Adaptez celui-ci aux besoins de votre structure avec les boutons « Ajouter » et « Supprimer ».
+Quittez l’écran <em>Plan comptable</em> et ouvrez le menu <em>Comptabilité/Gestion comptable/Ecritures comptables</em>.
+Saisissez vos soldes à-nouveaux en une seule écriture, en prenant bien soin de la contrôler, dans le journal « Report à nouveau ».
+Ceci fait, réouvrez le menu <em>Comptabilité/Gestion comptable/Plan comptable</em>.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><strong>Exercice comptable suivant</strong><span class="classifier">Il ne s’agit pas de votre premier exercice sous <em>Diacamma</em>.</span></dt><dd><p>Si ce n’est pas déjà réalisé, avec le bouton « Importer » (et non « Initiaux »), vous devez importer le plan comptable de l’exercice précédent.
+Contrôlez l’importation et mettez à jour, si besoin, le plan comptable de l’exercice.
+Suite à votre dernière assemblée générale, les excédents n-1 doivent être normalement ventilés avant clôture de l’exercice n-1. Si ce n’est pas le cas, vous devez passer cette écriture.
+Clôturez l’exercice n-1. Son état est maintenant <strong>[terminé]</strong>. Le nouvel exercice est toujours <strong>[en création]</strong>.
+Utilisez le bouton « Report à nouveau » afin que les soldes n-1 des comptes d’actif et de passif soient repris dans la comptabilité du nouvel exercice. Vous pouvez constater à l’écran que les soldes des comptes de bilan non soldés fin n-1 ont été repris. L’écriture correspondante  au journal « Report à nouveau » est générée et validée automatiquement.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>Afin d’achever l’ouverture de votre nouvel exercice, vous devez maintenant cliquez sur « Commencer ».</strong>
+<strong>Votre exercice est maintenant [en cours]</strong>.</p>
+</section>
+<section id="creation-modification-et-edition-de-comptes-du-plan-comptable">
+<h2>Création, modification et édition de comptes du plan comptable<a class="headerlink" href="#creation-modification-et-edition-de-comptes-du-plan-comptable" title="Lien vers cette rubrique">¶</a></h2>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Plan comptable</em></p>
+</div></blockquote>
+<p>A tout moment vous pouvez ajouter un nouveau compte dans votre plan comptable.</p>
+<a class="reference internal image-reference" href="_images/account_new.png"><img alt="_images/account_new.png" class="align-center" src="_images/account_new.png" style="height: 200px;" />
+</a>
+<p>Référez-vous à la règlementation de votre pays. Votre structure peut avoir l’obligation de respecter certaines obligations pour ce qui est de leur plan comptable.</p>
+<p>Un compte peut être modifié, tant pour ce qui est de son numéro que de son intitulé. Les imputations (lignes d’écritures) qui lui sont associées seront automatiquement modifiées. Le changement n’est permis que si le nouveau compte relève de la même catégorie comptable (charge, produit…).</p>
+<p>Lorsque vous consultez un compte (bouton « Editer » ou double-clic), les écritures associées au compte sont affichées.</p>
+<a class="reference internal image-reference" href="_images/account_edit.png"><img alt="_images/account_edit.png" class="align-center" src="_images/account_edit.png" style="height: 400px;" />
+</a>
+<p>Il vous est aussi possible de supprimer un compte du plan comptable à la condition qu’aucune écriture ne lui soit associée.</p>
+<p><strong>Remarque :</strong> Pour les comptes de charges et de produits, il vous est possible de définir une rubrique.
+Cette rubrique sera utilisé pour ordonnancer votre compte de résultat.</p>
+</section>
+<section id="cloture-d-un-exercice">
+<h2>Clôture d’un exercice<a class="headerlink" href="#cloture-d-un-exercice" title="Lien vers cette rubrique">¶</a></h2>
+<p>En fin d’exercice comptable, celui-ci est clôturé. Cette opération, définitive, se réalise sous le contrôle de votre
+vérificateur aux comptes.</p>
+<p>Au préalable, vous devez :</p>
+<blockquote>
+<div><ul>
+<li><p>Passer vos écritures d’inventaire (charges à payer, produits à recevoir, créances douteuses…)</p></li>
+<li><p>Contrôler que toutes les charges et les produits ont bien été imputés en comptabilité analytique</p></li>
+<li><p>Vérifier que vos dépenses et vos recettes sont bien ventilées sur vos différentes catégories</p></li>
+<li><p>Vérifier que toutes vos dépenses ont été ventilées sur les copropriétaires, pour ce qui est des copropriétés</p></li>
+<li><p>Affecter vos excédents conformément aux délibérations de votre assemblée générale</p></li>
+<li><p>Valider les écritures provisoires au brouillard</p></li>
+<li><p>Lettrer les comptes de tiers</p></li>
+<li><p>Créer l’exercice suivant si cela n’a pas été réalisé</p></li>
+<li><p>Sauvegarder votre dossier</p>
+<blockquote>
+<div><p>Menu <em>Comptabilité/Gestion comptable/Plan comptable</em></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Cliquez sur le bouton « Clôturer ».</p>
+<p>La clôture a pour effet de :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Solder les comptes de gestion</p></li>
+<li><p>Interdire tout ajout d’écriture</p></li>
+<li><p>Arrêter les comptes de bilan et les comptes de tiers (copropriétaires, fournisseurs…)</p></li>
+<li><p>Assurer qu’il ne pourra plus être apporté de modification à l’exercice clôturé</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Remarques :</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Tant qu’un exercice n’est pas clôturé, vous pouvez enregistrer des opérations sur celui-ci et le suivant</p></li>
+<li><p>Certaines structures ont des règles de clôture spécifique (exemple les ASL): bien verifier votre règlementation comptable en la matière.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="definition.html">Définitions</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="third.html">Tiers comptable</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

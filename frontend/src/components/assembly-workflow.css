@@ -1,0 +1,353 @@
+.ag-workflow {
+  display: grid;
+  gap: 22px;
+  --ag-line: #e1e7df;
+}
+.assembly-toolbar .checkbox-field {display:flex;align-items:center;gap:9px;white-space:nowrap;flex-shrink:0;margin-bottom:10px}
+.ag-workflow .panel {
+  padding: 26px;
+  min-width: 0;
+}
+.ag-progress ol {
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 22px 0 0;
+}
+.ag-progress li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #7c887d;
+  padding: 8px 12px;
+  background: #f5f7f3;
+  border-radius: 10px;
+}
+.ag-progress li span {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #e6ece1;
+}
+.ag-progress li[aria-current] {
+  color: #2e5138;
+  background: #eaf1e5;
+  font-weight: 600;
+}
+.ag-progress li[aria-current] span {
+  color: white;
+  background: #46664c;
+}
+.ag-form {
+  border: 0;
+  padding: 0;
+  display: grid;
+  gap: 17px;
+  min-width: 0;
+  margin: 22px 0 0;
+}
+.ag-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: #354c40;
+  min-width: 0;
+}
+.ag-form input:not([type="checkbox"]),
+.ag-form select,
+.ag-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--ag-line);
+  border-radius: 9px;
+  background: white;
+  padding: 12px 13px;
+  color: #253c32;
+  font: inherit;
+}
+.ag-form textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+.ag-form select {
+  text-overflow: ellipsis;
+}
+.ag-form .checkbox-field {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.ag-form .checkbox-field input {
+  margin-top: 4px;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+  min-width: 16px;
+}
+.assembly-toolbar .checkbox-field input {width:16px;height:16px;flex:0 0 16px}
+.ag-form > .button {
+  justify-self: start;
+  white-space: normal;
+  max-width: 100%;
+}
+.ag-form-group {
+  padding: 20px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--ag-line);
+  border-radius: 12px;
+  background: #fafbf8;
+}
+.ag-form-group h3 {
+  font-size: 15px;
+  margin: 0 0 5px;
+}
+.ag-templates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+.ag-template {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 17px;
+  text-align: left;
+  border: 1px solid var(--ag-line);
+  border-radius: 12px;
+  background: #fafbf8;
+  color: #344e3e;
+  font: inherit;
+  cursor: pointer;
+}
+.ag-template:hover {
+  background: #eef3e9;
+  border-color: #bdcdb6;
+}
+.ag-template small {
+  display: block;
+  color: #82907f;
+  font-size: 11px;
+  margin-top: 6px;
+}
+.ag-template:disabled {
+  opacity: 0.5;
+}
+.ag-help {
+  padding: 14px 17px;
+  background: #f0f4eb;
+  border: 1px solid #e0e8d8;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #4a6049;
+}
+.ag-success {
+  padding: 13px 17px;
+  background: #edf5ea;
+  color: #365c36;
+  border: 1px solid #d4e6ca;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.ag-row-actions,
+.ag-document-switch {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ag-row-actions .button {
+  white-space: normal;
+  font-size: 11px;
+}
+.ag-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+.ag-vote-result {
+  padding: 18px;
+  border-left: 3px solid #a2b895;
+  background: #f7f9f3;
+  border-radius: 0 10px 10px 0;
+  margin: 18px 0;
+}
+.ag-vote-result .ag-form {
+  padding-top: 10px;
+}
+.ag-vote-result .button {
+  font-size: 12px;
+}
+.ag-totals {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.ag-totals span {
+  background: #f5f7f1;
+  border: 1px solid var(--ag-line);
+  border-radius: 10px;
+  padding: 14px 19px;
+  color: #71806e;
+  font-size: 12px;
+}
+.ag-totals strong {
+  display: block;
+  font-size: 19px;
+  color: #354b36;
+  margin-top: 7px;
+}
+.ag-document-switch {
+  margin-bottom: 20px;
+}
+.ag-document-switch .button {
+  font-size: 12px;
+}
+.ag-print-document {
+  background: white;
+  border: 1px solid var(--ag-line);
+  border-radius: 10px;
+  padding: 30px;
+  overflow-wrap: anywhere;
+}
+.ag-print-document table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 12px;
+}
+.ag-print-document td,
+.ag-print-document th {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  padding: 12px;
+  border: 1px solid var(--ag-line);
+}
+.ag-print-document .ag-signature-cell {
+  height: 75px;
+}
+.ag-signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  min-height: 120px;
+  margin: 30px 0;
+}
+.ag-signatures span {
+  flex: 1;
+  font-size: 12px;
+}
+.ag-decision {
+  padding: 18px 0;
+  border-top: 1px solid var(--ag-line);
+}
+.ag-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #1e31275e;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.ag-modal {
+  background: #fff;
+  border-radius: 19px;
+  box-shadow: 0 24px 80px #10251d29;
+  width: min(750px, 100%);
+  max-height: 90dvh;
+  overflow: auto;
+  border: 0;
+  padding: 0;
+}
+.ag-modal::backdrop {
+  background: #1e31275e;
+}
+.ag-modal .dialog-body {
+  padding: 26px;
+}
+@media (max-width: 650px) {
+  .ag-templates {
+    grid-template-columns: 1fr;
+  }
+  .ag-workflow .panel {
+    padding: 18px;
+  }
+  .ag-progress ol {
+    gap: 6px;
+  }
+  .ag-progress li {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+  .ag-modal-backdrop {
+    padding: 10px;
+  }
+  .ag-print-document {
+    padding: 16px;
+  }
+  .ag-print-document table {
+    font-size: 10px;
+  }
+  .ag-print-document td,
+  .ag-print-document th {
+    padding: 6px;
+  }
+  .ag-form-group {
+    padding: 15px;
+  }
+}
+@media print {
+  body:has(.ag-print-document) .main-sidebar,
+  body:has(.ag-print-document) .sidebar,
+  body:has(.ag-print-document) .sidebar-edge-toggle,
+  body:has(.ag-print-document) .topbar,
+  body:has(.ag-print-document) .page-header,
+  body:has(.ag-print-document) .page-heading,
+  body:has(.ag-print-document) .assembly-worknote,
+  body:has(.ag-print-document) footer,
+  body:has(.ag-print-document) .assembly-toolbar,
+  body:has(.ag-print-document) .meeting-summary,
+  body:has(.ag-print-document) .ag-no-print,
+  body:has(.ag-print-document) .ag-workflow > :not(.ag-documents) {
+    display: none !important;
+  }
+  .ag-workflow {
+    display: block;
+  }
+  .ag-documents {
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .ag-print-document {
+    border: 0;
+    padding: 0;
+  }
+  .ag-print-document h3,
+  .ag-print-document h4 {
+    break-after: avoid;
+  }
+  .ag-print-document tr {
+    break-inside: avoid;
+  }
+  .ag-signatures {
+    break-inside: avoid;
+  }
+  .ag-print-document table {
+    font-size: 10px;
+  }
+  body:has(.ag-print-document) .main-shell,
+  body:has(.ag-print-document) main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

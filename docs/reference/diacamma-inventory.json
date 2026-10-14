@@ -1,0 +1,3216 @@
+[
+  {
+    "module": "condominium",
+    "models": [
+      {
+        "name": "Set",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 67
+      },
+      {
+        "name": "SetCost",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 454
+      },
+      {
+        "name": "OwnerEntryLineAccount",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 490
+      },
+      {
+        "name": "LoadCount",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 500
+      },
+      {
+        "name": "LoadCountSet",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 520
+      },
+      {
+        "name": "Partition",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 616
+      },
+      {
+        "name": "OwnerLink",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 712
+      },
+      {
+        "name": "OwnerContact",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 733
+      },
+      {
+        "name": "RecoverableLoadRatio",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 755
+      },
+      {
+        "name": "PartitionExceptional",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 783
+      },
+      {
+        "name": "PropertyLotCustomField",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 802
+      },
+      {
+        "name": "PropertyLot",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 834
+      },
+      {
+        "name": "CallFundsSupporting",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 969
+      },
+      {
+        "name": "CallFunds",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1062
+      },
+      {
+        "name": "CallDetail",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1305
+      },
+      {
+        "name": "Expense",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1385
+      },
+      {
+        "name": "ExpenseDetail",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1677
+      },
+      {
+        "name": "ExpenseRatio",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1746
+      },
+      {
+        "name": "Payment",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1766
+      },
+      {
+        "name": "PaymentSet",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1785
+      },
+      {
+        "name": "Owner",
+        "source": "reference/diacamma/diacamma/condominium/models.py",
+        "line": 1812
+      }
+    ],
+    "actions": [
+      {
+        "name": "OwnerAndPropertyLotList",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 43,
+        "declarations": [
+          "MenuManage.describ('condominium.change_set', FORMTYPE_NOMODAL, 'condominium.manage', _('Manage of owners and property lots'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerAndPropertyLotPrint",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 122,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', close=CLOSE_NO)",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerSearch",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 133,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_SEARCH, short_icon='mdi:mdi-domain')",
+          "MenuManage.describ('condominium.change_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerAdd",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 142,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerModify",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 159,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES)",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerDel",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 168,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('condominium.delete_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerShow",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 177,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.change_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerContactSave",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 210,
+        "declarations": [
+          "ActionsManage.affect_other(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerContactAdd",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 227,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('accounting.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerContactShow",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 250,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerContactDel",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 267,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerLoadCount",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 276,
+        "declarations": [
+          "ActionsManage.affect_other(_('load count'), short_icon='mdi:mdi-text-box-outline', close=CLOSE_NO)",
+          "MenuManage.describ('payoff.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerReport",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 314,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', unique=SELECT_MULTI)",
+          "ActionsManage.affect_show(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', close=CLOSE_NO)",
+          "MenuManage.describ('condominium.change_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerShowPayable",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 334,
+        "declarations": [
+          "ActionsManage.affect_show(_('Payment'), short_icon='mdi:mdi-account-cash-outline', close=CLOSE_NO, condition=lambda xfer: xfer.item.payoff_have_payment() and len(PaymentMethod.objects.all()) > 0)",
+          "MenuManage.describ('condominium.change_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerPayableEmail",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 350,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Send'), short_icon='mdi:mdi-email-outline', close=CLOSE_NO, unique=SELECT_MULTI, condition=lambda xfer, gridname='': can_send_email(xfer))",
+          "ActionsManage.affect_show(_('Send'), short_icon='mdi:mdi-email-outline', close=CLOSE_NO, condition=lambda xfer: can_send_email(xfer))",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentMultiPay",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 363,
+        "declarations": [
+          "ActionsManage.affect_grid(_('payoff'), short_icon='mdi:mdi-pencil-plus-outline', close=CLOSE_NO)",
+          "MenuManage.describ('payoff.add_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentRefund",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 381,
+        "declarations": [
+          "ActionsManage.affect_grid(_('refund'), short_icon='mdi:mdi-pencil-plus', close=CLOSE_NO, condition=lambda xfer, gridname: xfer.item.get_total_payoff_waiting() > 0.001)",
+          "MenuManage.describ('payoff.add_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentVentilatePay",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 430,
+        "declarations": [
+          "ActionsManage.affect_grid(_('ventilate'), short_icon='mdi:mdi-text-box-outline', close=CLOSE_NO)",
+          "MenuManage.describ('payoff.add_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentDel",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 444,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('condominium.delete_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PropertyLotAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 468,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PropertyLotDel",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 483,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('condominium.delete_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PropertyLotImport",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 492,
+        "declarations": [
+          "ActionsManage.affect_other(_('Import'), short_icon='mdi:mdi-upload')",
+          "MenuManage.describ('condominium.add_owner')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentOwneShow",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 519,
+        "declarations": [
+          "MenuManage.describ(current_owner, FORMTYPE_MODAL, 'core.general', _('View situation of your condominium.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentOwnePrint",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 533,
+        "declarations": [
+          "MenuManage.describ(current_owner)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CondominiumConvert",
+        "source": "reference/diacamma/diacamma/condominium/views.py",
+        "line": 538,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsList",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 25,
+        "declarations": [
+          "MenuManage.describ('condominium.change_callfunds', FORMTYPE_NOMODAL, 'condominium.manage', _('Manage of calls of funds'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsAddCurrent",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 61,
+        "declarations": [
+          "ActionsManage.affect_list(_('Add current'), short_icon='mdi:mdi-pencil-plus', condition=CallFundsAddCurrent_cond)",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 75,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus', condition=lambda xfer, gridname='': xfer.getparam('status_filter', CallFunds.STATUS_VALID) == CallFunds.STATUS_BUILDING)",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES, condition=lambda xfer: xfer.item.status == CallFunds.STATUS_BUILDING)",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsShow",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 85,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.change_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsPayableEmail",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 110,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Send'), short_icon='mdi:mdi-email-outline', close=CLOSE_NO, unique=SELECT_MULTI, condition=lambda xfer, gridname='': can_printing(xfer) and can_send_email(xfer))",
+          "ActionsManage.affect_show(_('Send'), short_icon='mdi:mdi-email-outline', close=CLOSE_NO, condition=lambda xfer: xfer.item.status in (CallFunds.STATUS_VALID, CallFunds.STATUS_ENDED) and can_send_email(xfer))",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsPrint",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 124,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', unique=SELECT_MULTI, condition=can_printing)",
+          "ActionsManage.affect_show(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', close=CLOSE_NO, condition=lambda xfer: xfer.item.status in (CallFunds.STATUS_VALID, CallFunds.STATUS_ENDED))",
+          "MenuManage.describ('condominium.change_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsDel",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 151,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.getparam('status_filter', -1) in (0, 1))",
+          "MenuManage.describ('condominium.delete_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallFundsTransition",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 175,
+        "declarations": [
+          "ActionsManage.affect_transition('status', close=CLOSE_YES, multi_list=('close',))",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallDetailAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 184,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=lambda xfer, gridname='': xfer.item.status == CallFunds.STATUS_BUILDING)",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.item.status == CallFunds.STATUS_BUILDING)",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CallDetailDel",
+        "source": "reference/diacamma/diacamma/condominium/views_callfunds.py",
+        "line": 194,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.status == CallFunds.STATUS_BUILDING)",
+          "MenuManage.describ('condominium.add_callfunds')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CondominiumCheckOwner",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 70,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CondominiumConf",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 80,
+        "declarations": [
+          "MenuManage.describ('CORE.change_parameter', FORMTYPE_MODAL, 'core.extensions', _('Management of parameters of condominium'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerLinkAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 103,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "OwnerLinkDel",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 113,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "RecoverableLoadRatioAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 128,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "RecoverableLoadRatioDel",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 138,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetList",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 152,
+        "declarations": [
+          "MenuManage.describ('condominium.change_set', FORMTYPE_NOMODAL, 'condominium.manage', _('Manage of class loads'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetPrint",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 174,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', close=CLOSE_NO)",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 186,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_NO, condition=lambda xfer: xfer.item.is_active)",
+          "MenuManage.describ('condominium.add_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetShow",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 206,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetDel",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 225,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('condominium.delete_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetCheckFromKeys",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 234,
+        "declarations": [
+          "ActionsManage.affect_list(_('Check from keys'), short_icon='mdi:mdi-refresh', close=CLOSE_NO, condition=lambda xfer: Set.objects.all().count() == 0)",
+          "MenuManage.describ('condominium.add_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetClose",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 246,
+        "declarations": [
+          "ActionsManage.affect_show(_('Finished'), short_icon='mdi:mdi-check', condition=lambda xfer: xfer.item.is_active)",
+          "MenuManage.describ('condominium.delete_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PartitionAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 291,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': isinstance(xfer.item, Set) and (not xfer.item.is_link_to_lots) and xfer.item.is_active)",
+          "MenuManage.describ('condominium.add_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PartitionImport",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 300,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Import'), short_icon='mdi:mdi-upload', condition=lambda xfer, gridname='': isinstance(xfer.item, Set) and (not xfer.item.is_link_to_lots) and xfer.item.is_active)",
+          "MenuManage.describ('condominium.add_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SetListCost",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 335,
+        "declarations": [
+          "ActionsManage.affect_show(_('Costs'), short_icon='mdi:mdi-home-city-outline')",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ClassCategoryCosts",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 372,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Report'), short_icon='mdi:mdi-finance', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ClassCategoryBudget",
+        "source": "reference/diacamma/diacamma/condominium/views_classload.py",
+        "line": 391,
+        "declarations": [
+          "MenuManage.describ('accounting.change_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseList",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 28,
+        "declarations": [
+          "MenuManage.describ('condominium.change_expense', FORMTYPE_NOMODAL, 'condominium.manage', _('Manage of expenses'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseSearch",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 68,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_SEARCH, short_icon='mdi:mdi-home-export-outline')",
+          "MenuManage.describ('condominium.change_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 78,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus', condition=lambda xfer, gridname='': xfer.getparam('status_filter', Expense.STATUS_BUILDING) in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING, Expense.STATUS_BUILDING_WAITING))",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES, condition=lambda xfer: xfer.item.status in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING))",
+          "MenuManage.describ('condominium.add_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseShow",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 88,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('condominium.change_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseDel",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 102,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.getparam('status_filter', Expense.STATUS_BUILDING) == Expense.STATUS_BUILDING)",
+          "MenuManage.describ('condominium.delete_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseTransition",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 111,
+        "declarations": [
+          "ActionsManage.affect_transition('status', close=CLOSE_NO, multi_list=('close',))",
+          "MenuManage.describ('condominium.add_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseMultiPay",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 119,
+        "declarations": [
+          "ActionsManage.affect_grid(_('payoff'), short_icon='mdi:mdi-home-export-outline', close=CLOSE_NO, unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.getparam('status_filter', Expense.STATUS_BUILDING_WAITING) == Expense.STATUS_VALID)",
+          "MenuManage.describ('payoff.add_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseDetailAddModify",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 132,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=lambda xfer, gridname='': xfer.item.status in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING))",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.item.status in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING))",
+          "MenuManage.describ('condominium.add_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseDetailDel",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 142,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.status in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING))",
+          "MenuManage.describ('condominium.add_expense')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExpenseDetailShowSet",
+        "source": "reference/diacamma/diacamma/condominium/views_expense.py",
+        "line": 151,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Show set'), short_icon='mdi:mdi-home-city-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.item.status in (Expense.STATUS_BUILDING, Expense.STATUS_WAITING))",
+          "MenuManage.describ('condominium.change_set')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CondominiumReport",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 48,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FinancialStatus",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 117,
+        "declarations": [
+          "MenuManage.describ('condominium.change_owner', FORMTYPE_NOMODAL, 'condominium.print', _('Show financial status report'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ManageAccounting",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 176,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "GeneralManageAccounting",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 244,
+        "declarations": [
+          "MenuManage.describ('condominium.change_owner', FORMTYPE_NOMODAL, 'condominium.print', _('Show General manage accounting report'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentManageAccounting",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 278,
+        "declarations": [
+          "MenuManage.describ('condominium.change_owner', FORMTYPE_NOMODAL, 'condominium.print', _('Show Current manage accounting report'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ExceptionalManageAccounting",
+        "source": "reference/diacamma/diacamma/condominium/views_report.py",
+        "line": 332,
+        "declarations": [
+          "MenuManage.describ('condominium.change_owner', FORMTYPE_NOMODAL, 'condominium.print', _('Show Exeptional manage accounting report'))"
+        ],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 110
+  },
+  {
+    "module": "syndic",
+    "models": [],
+    "actions": [],
+    "upstream_tests": 4
+  },
+  {
+    "module": "accounting",
+    "models": [
+      {
+        "name": "ThirdCustomField",
+        "source": "reference/financial/accounting/models.py",
+        "line": 61
+      },
+      {
+        "name": "Third",
+        "source": "reference/financial/accounting/models.py",
+        "line": 77
+      },
+      {
+        "name": "AccountThird",
+        "source": "reference/financial/accounting/models.py",
+        "line": 235
+      },
+      {
+        "name": "FiscalYear",
+        "source": "reference/financial/accounting/models.py",
+        "line": 300
+      },
+      {
+        "name": "CostAccounting",
+        "source": "reference/financial/accounting/models.py",
+        "line": 645
+      },
+      {
+        "name": "ChartsAccount",
+        "source": "reference/financial/accounting/models.py",
+        "line": 768
+      },
+      {
+        "name": "Journal",
+        "source": "reference/financial/accounting/models.py",
+        "line": 930
+      },
+      {
+        "name": "AccountLink",
+        "source": "reference/financial/accounting/models.py",
+        "line": 978
+      },
+      {
+        "name": "EntryAccount",
+        "source": "reference/financial/accounting/models.py",
+        "line": 1099
+      },
+      {
+        "name": "EntryLineAccount",
+        "source": "reference/financial/accounting/models.py",
+        "line": 1407
+      },
+      {
+        "name": "ModelEntry",
+        "source": "reference/financial/accounting/models.py",
+        "line": 1741
+      },
+      {
+        "name": "ModelLineEntry",
+        "source": "reference/financial/accounting/models.py",
+        "line": 1789
+      },
+      {
+        "name": "Budget",
+        "source": "reference/financial/accounting/models.py",
+        "line": 1871
+      }
+    ],
+    "actions": [
+      {
+        "name": "ThirdList",
+        "source": "reference/financial/accounting/views.py",
+        "line": 60,
+        "declarations": [
+          "MenuManage.describ('accounting.change_third', FORMTYPE_NOMODAL, 'financial', _('Management of third account'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdSearch",
+        "source": "reference/financial/accounting/views.py",
+        "line": 132,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_SEARCH, short_icon='mdi:mdi-account-search', condition=lambda xfer: xfer.get_components('thirdtype'))",
+          "MenuManage.describ('accounting.change_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdSave",
+        "source": "reference/financial/accounting/views.py",
+        "line": 140,
+        "declarations": [
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdDisable",
+        "source": "reference/financial/accounting/views.py",
+        "line": 171,
+        "declarations": [
+          "ActionsManage.affect_list(_('Disabled'), short_icon='mdi:mdi-account-off')",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdAdd",
+        "source": "reference/financial/accounting/views.py",
+        "line": 201,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus', unique=SELECT_NONE)",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdEdit",
+        "source": "reference/financial/accounting/views.py",
+        "line": 230,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', condition=lambda xfer: len(Third.get_fields_to_show()) > 0)",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdShow",
+        "source": "reference/financial/accounting/views.py",
+        "line": 240,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.change_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdTransition",
+        "source": "reference/financial/accounting/views.py",
+        "line": 249,
+        "declarations": [
+          "ActionsManage.affect_transition('status')",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdDel",
+        "source": "reference/financial/accounting/views.py",
+        "line": 257,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('accounting.delete_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ThirdListing",
+        "source": "reference/financial/accounting/views.py",
+        "line": 266,
+        "declarations": [
+          "ActionsManage.affect_list(_('Listing'), short_icon='mdi:mdi-printer-pos-edit-outline')",
+          "MenuManage.describ('accounting.change_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AccountThirdAddModify",
+        "source": "reference/financial/accounting/views.py",
+        "line": 324,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', unique=SELECT_NONE)",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AccountThirdDel",
+        "source": "reference/financial/accounting/views.py",
+        "line": 334,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('accounting.add_third')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountList",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 57,
+        "declarations": [
+          "ActionsManage.affect_other(_('Charts of account'), short_icon='mdi:mdi-bank-transfer')",
+          "MenuManage.describ('accounting.change_chartsaccount', FORMTYPE_NOMODAL, 'bookkeeping', _('Editing and modifying of Charts of accounts for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountAddModify",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 115,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=lambda xfer, gridname='': xfer.item.year.status != 2)",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', condition=lambda xfer: xfer.item.year.status != 2)",
+          "MenuManage.describ('accounting.add_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountShow",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 135,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.change_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountDel",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 144,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.year.status != 2)",
+          "MenuManage.describ('accounting.delete_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountImportFiscalYear",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 153,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Import'), short_icon='mdi:mdi-upload-box-outline', unique=SELECT_NONE, condition=lambda xfer, gridname: xfer.item.year.status != 2 and xfer.item.year.last_fiscalyear is not None)",
+          "MenuManage.describ('accounting.add_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountMerge",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 167,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Merge'), short_icon='mdi:mdi-set-merge', close=CLOSE_NO, unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.year.status != 2)",
+          "MenuManage.describ('accounting.add_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountInitial",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 190,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Initial'), short_icon='mdi:mdi-pencil-plus-outline', close=CLOSE_NO, unique=SELECT_NONE, condition=lambda xfer, gridname='': xfer.item.year.status != 2 and signal_and_lock.Signal.call_signal('initial_account', None) > 0)",
+          "MenuManage.describ('accounting.add_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ChartsAccountListing",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 229,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LISTING, short_icon='mdi:mdi-printer-pos-edit-outline')",
+          "MenuManage.describ('accounting.change_chartsaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearReportLastYear",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 263,
+        "declarations": [
+          "ActionsManage.affect_list(_('Last fiscal year'), short_icon='mdi:mdi-calendar-arrow-right', condition=lambda xfer: xfer.item.year.status == FiscalYear.STATUS_BUILDING and xfer.item.year.last_fiscalyear is not None and xfer.item.year.has_no_lastyear_entry and (xfer.item.year.last_fiscalyear.status == FiscalYear.STATUS_FINISHED))",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearBegin",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 281,
+        "declarations": [
+          "ActionsManage.affect_list(_('Begin'), short_icon='mdi:mdi-check', condition=lambda xfer: xfer.item.year.status == FiscalYear.STATUS_BUILDING, intop=True)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearClose",
+        "source": "reference/financial/accounting/views_accounts.py",
+        "line": 294,
+        "declarations": [
+          "ActionsManage.affect_list(_('Closing'), short_icon='mdi:mdi-check', condition=lambda xfer: xfer.item.year.status == FiscalYear.STATUS_RUNNING, intop=True)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "Configuration",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 122,
+        "declarations": [
+          "ActionsManage.affect_other(_('Accounting configuration'), short_icon='mdi:mdi-calendar-star-four-points')",
+          "MenuManage.describ('accounting.change_fiscalyear', FORMTYPE_MODAL, 'financial.conf', _('Management of fiscal year and financial parameters'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ConfigurationAccountingSystem",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 228,
+        "declarations": [
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearActive",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 243,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Activate'), short_icon='mdi:mdi-check', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearExport",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 255,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Export'), short_icon='mdi:mdi-checkbook', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.change_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearCheckReport",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 288,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Check'), short_icon='mdi:mdi-finance', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearAddModify",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 303,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearInitAccount",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 321,
+        "declarations": [
+          "ActionsManage.affect_other(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearDel",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 336,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.delete_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "JournalAddModify",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 353,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "JournalDel",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 363,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('accounting.delete_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "JournalDefault",
+        "source": "reference/financial/accounting/views_admin.py",
+        "line": 372,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Default'), short_icon='mdi:mdi-star-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BudgetList",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 25,
+        "declarations": [
+          "MenuManage.describ('accounting.change_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BudgetPrint",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 111,
+        "declarations": [
+          "MenuManage.describ('accounting.change_budget')",
+          "ActionsManage.affect_list(TITLE_PRINT, short_icon='mdi:mdi-printer-outline')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BudgetAddModify",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 127,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, condition=condition_changebudget)",
+          "ActionsManage.affect_list(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=condition_changebudget)",
+          "MenuManage.describ('accounting.add_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BudgetDel",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 175,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_SINGLE, condition=condition_changebudget)",
+          "MenuManage.describ('accounting.delete_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingBudget",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 200,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Budget'), short_icon='mdi:mdi-bank-transfer', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.change_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BudgetImport",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 215,
+        "declarations": [
+          "ActionsManage.affect_list(_('Import'), short_icon='mdi:mdi-upload-box-outline', condition=lambda xfer: not xfer.getparam('readonly', False))",
+          "MenuManage.describ('accounting.add_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearBudget",
+        "source": "reference/financial/accounting/views_budget.py",
+        "line": 294,
+        "declarations": [
+          "ActionsManage.affect_list(_('Budget'), short_icon='mdi:mdi-bank-transfer')",
+          "MenuManage.describ('accounting.change_budget')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountList",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 70,
+        "declarations": [
+          "MenuManage.describ('accounting.change_entryaccount', FORMTYPE_NOMODAL, 'bookkeeping', _('Edition of accounting entry for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountSearch",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 206,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_SEARCH, short_icon='mdi:mdi-text-search-variant', modal=FORMTYPE_NOMODAL, close=CLOSE_YES, condition=lambda xfer: xfer.url_text.endswith('AccountList'))",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountListing",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 246,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LISTING, short_icon='mdi:mdi-printer-pos-edit-outline')",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountImport",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 312,
+        "declarations": [
+          "ActionsManage.affect_list(_('Import'), short_icon='mdi:mdi-upload-box-outline')",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountBatchClose",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 354,
+        "declarations": [
+          "ActionsManage.affect_list(_('Multi-close'), short_icon='mdi:mdi-checkbook')",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountDel",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 423,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.year.status in [0, 1] and xfer.getparam('filter', 0) != 2)",
+          "MenuManage.describ('accounting.delete_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountClose",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 439,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Closed'), short_icon='mdi:mdi-check', unique=SELECT_MULTI, condition=lambda xfer, gridname='': not hasattr(xfer.item, 'year') or (xfer.item.year.status in [0, 1] and xfer.getparam('filter', 0) != 2))",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountLink",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 465,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Link/Unlink'), short_icon='mdi:mdi-link-variant', unique=SELECT_MULTI, condition=lambda xfer, gridname='': not hasattr(xfer.item, 'year') or xfer.item.year.status in [0, 1])",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountCostAccounting",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 495,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Cost'), short_icon='mdi:mdi-pencil-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': len(CostAccounting.objects.filter(status=0)) > 0)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountOpenFromLine",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 549,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountShow",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 577,
+        "declarations": [
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountEdit",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 594,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', unique=SELECT_NONE, condition=lambda xfer, gridname='': xfer.item.year.status in [0, 1] and xfer.getparam('filter', 0) != 2)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountUnlock",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 630,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountAfterSave",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 642,
+        "declarations": [
+          "ActionsManage.affect_other('', short_icon='mdi:mdi-checkbook')",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountValidate",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 656,
+        "declarations": [
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountReverse",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 685,
+        "declarations": [
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountCreateLinked",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 701,
+        "declarations": [
+          "ActionsManage.affect_show(_('Payment'), short_icon='mdi:mdi-checkbook', condition=lambda xfer: xfer.item.entrylineaccount_set.filter(link__isnull=False).count() == 0 and xfer.item.has_third and (not xfer.item.has_cash) and (xfer.item.year.status != FiscalYear.STATUS_FINISHED))",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryAccountModelSelector",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 717,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Model'), short_icon='mdi:mdi-pencil-plus-outline', unique=SELECT_NONE, condition=lambda xfer, gridname='': xfer.item.year.status in [0, 1] and xfer.getparam('filter', 0) != 2)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryLineAccountAdd",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 769,
+        "declarations": [
+          "ActionsManage.affect_other(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', close=CLOSE_YES)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryLineAccountEdit",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 787,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, close=CLOSE_YES)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EntryLineAccountDel",
+        "source": "reference/financial/accounting/views_entries.py",
+        "line": 813,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_SINGLE, close=CLOSE_YES)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EInvoicingManage",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 39,
+        "declarations": [
+          "MenuManage.describ(right_importEinvoice, FORMTYPE_NOMODAL, 'financial', _('Manage e-invoicing from platform connecting'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EInvoiceAddSeller",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 76,
+        "declarations": [
+          "MenuManage.describ('contacts.add_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "UpdateContactEInvoice",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 94,
+        "declarations": [
+          "MenuManage.describ(right_importEinvoice)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ImportEInvoice",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 117,
+        "declarations": [
+          "MenuManage.describ(right_importEinvoice)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EInvoiceRefuseInvoicing",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 428,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SearchContactEInvoice",
+        "source": "reference/financial/accounting/views_invoicing.py",
+        "line": 473,
+        "declarations": [
+          "MenuManage.describ(right_importEinvoice)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingList",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 21,
+        "declarations": [
+          "MenuManage.describ('accounting.change_entryaccount', FORMTYPE_NOMODAL, 'bookkeeping', _('Edition of costs accounting'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingReportByDate",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 60,
+        "declarations": [
+          "ActionsManage.affect_list(_('By date'), short_icon='mdi:mdi-printer-outline')",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingDefault",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 106,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Default'), short_icon='mdi:mdi-star-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.getparam('status', 0) != 1)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingClose",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 119,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Close'), short_icon='mdi:mdi-check', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.getparam('status', 0) != 1)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingAddModify",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 138,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', unique=SELECT_NONE, condition=lambda xfer, gridname='': xfer.getparam('status', 0) != 1)",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE, condition=lambda xfer, gridname='': xfer.getparam('status', 0) != 1)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingDel",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 155,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.getparam('status', 0) != 1)",
+          "MenuManage.describ('accounting.delete_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingRecreate",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 175,
+        "declarations": [
+          "ActionsManage.affect_list(_('Recreate'), short_icon='mdi:mdi-pencil-plus-outline', condition=condition_recreate)",
+          "MenuManage.describ('accounting.add_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelEntryList",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 194,
+        "declarations": [
+          "MenuManage.describ('accounting.change_entryaccount', FORMTYPE_NOMODAL, 'bookkeeping', _('Edition of entry model'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelEntryAddModify",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 204,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus', unique=SELECT_NONE)",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelEntryShow",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 214,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelEntryDel",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 223,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('accounting.delete_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelLineEntryAddModify",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 233,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', unique=SELECT_NONE)",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('accounting.add_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ModelLineEntryDel",
+        "source": "reference/financial/accounting/views_other.py",
+        "line": 243,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('accounting.delete_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearReport",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 53,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearBalanceSheet",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 302,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear', FORMTYPE_NOMODAL, 'bookkeeping_report', _('Show balance sheet for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearIncomeStatement",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 340,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear', FORMTYPE_NOMODAL, 'bookkeeping_report', _('Show income statement for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearLedger",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 447,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear', FORMTYPE_NOMODAL, 'bookkeeping_report', _('Show ledger for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearLedgerShow",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 563,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearTrialBalance",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 580,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear', FORMTYPE_NOMODAL, 'bookkeeping_report', _('Show trial balance for current fiscal year'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FiscalYearReportPrint",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 671,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingReportPrint",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 721,
+        "declarations": [
+          "MenuManage.describ('accounting.change_fiscalyear')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingReport",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 745,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingIncomeStatement",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 841,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Report'), short_icon='mdi:mdi-printer-pos-outline', unique=SELECT_MULTI, modal=FORMTYPE_NOMODAL)",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingLedger",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 953,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Ledger'), short_icon='mdi:mdi-printer-pos-outline', unique=SELECT_MULTI, modal=FORMTYPE_NOMODAL)",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CostAccountingTrialBalance",
+        "source": "reference/financial/accounting/views_reports.py",
+        "line": 973,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Trial balance'), short_icon='mdi:mdi-printer-pos-outline', unique=SELECT_MULTI, modal=FORMTYPE_NOMODAL)",
+          "MenuManage.describ('accounting.change_entryaccount')"
+        ],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 141
+  },
+  {
+    "module": "payoff",
+    "models": [
+      {
+        "name": "Supporting",
+        "source": "reference/financial/payoff/models.py",
+        "line": 60
+      },
+      {
+        "name": "BankAccount",
+        "source": "reference/financial/payoff/models.py",
+        "line": 415
+      },
+      {
+        "name": "Payoff",
+        "source": "reference/financial/payoff/models.py",
+        "line": 475
+      },
+      {
+        "name": "DepositSlip",
+        "source": "reference/financial/payoff/models.py",
+        "line": 773
+      },
+      {
+        "name": "DepositDetail",
+        "source": "reference/financial/payoff/models.py",
+        "line": 892
+      },
+      {
+        "name": "PaymentMethod",
+        "source": "reference/financial/payoff/models.py",
+        "line": 939
+      },
+      {
+        "name": "BankTransaction",
+        "source": "reference/financial/payoff/models.py",
+        "line": 1000
+      }
+    ],
+    "actions": [
+      {
+        "name": "PayoffAddModify",
+        "source": "reference/financial/payoff/views.py",
+        "line": 54,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=lambda xfer, gridname='': xfer.item.can_add_pay())",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.add_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PayoffDel",
+        "source": "reference/financial/payoff/views.py",
+        "line": 104,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('payoff.delete_payoff')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SupportingThird",
+        "source": "reference/financial/payoff/views.py",
+        "line": 113,
+        "declarations": [
+          "ActionsManage.affect_other(_('change'), short_icon='mdi:mdi-pencil-outline')",
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SupportingThirdValid",
+        "source": "reference/financial/payoff/views.py",
+        "line": 179,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SupportingPrint",
+        "source": "reference/financial/payoff/views.py",
+        "line": 196,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PayableEmail",
+        "source": "reference/financial/payoff/views.py",
+        "line": 230,
+        "declarations": [
+          "ActionsManage.affect_show(_('Send'), short_icon='mdi:mdi-email-outline', condition=can_send_email)",
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PayableShow",
+        "source": "reference/financial/payoff/views.py",
+        "line": 377,
+        "declarations": [
+          "ActionsManage.affect_show(_('Payment'), short_icon='mdi:mdi-account-cash-outline', condition=lambda xfer: xfer.item.payoff_have_payment() and len(xfer.item.get_payment_method()) > 0)",
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PayoffConf",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 35,
+        "declarations": [
+          "MenuManage.describ('payoff.change_bankaccount', FORMTYPE_MODAL, 'financial.conf', _('Management of parameters and configuration of payoff'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BankAccountAddModify",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 66,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.add_bankaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BankAccountDelete",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 76,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('payoff.delete_bankaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BankAccountUp",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 85,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Up'), short_icon='mdi:mdi-arrow-up-bold-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.add_bankaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentMethodAddModify",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 98,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.add_bankaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PaymentMethodDelete",
+        "source": "reference/financial/payoff/views_conf.py",
+        "line": 108,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('payoff.delete_bankaccount')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipList",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 28,
+        "declarations": [
+          "MenuManage.describ('payoff.change_depositslip', FORMTYPE_NOMODAL, 'financial', _('Manage deposit of cheque'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositShowPayoff",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 69,
+        "declarations": [
+          "ActionsManage.affect_list(_('payoffs'), short_icon='mdi:mdi-checkbook')",
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipAddModify",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 171,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', condition=lambda xfer: xfer.item.status == DepositSlip.STATUS_BUILDING, close=CLOSE_YES)",
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipShow",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 181,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.change_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipDel",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 208,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('payoff.delete_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipTransition",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 217,
+        "declarations": [
+          "ActionsManage.affect_transition('status')",
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositSlipPrint",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 225,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_PRINT, short_icon='mdi:mdi-printer-outline', condition=lambda xfer: xfer.item.status != 0 or len(xfer.item.depositdetail_set.all()) > 0)",
+          "MenuManage.describ('payoff.change_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositDetailAddModify",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 242,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', condition=lambda xfer, gridname='': xfer.item.status == DepositSlip.STATUS_BUILDING)",
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositDetailSave",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 314,
+        "declarations": [
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DepositDetailDel",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 326,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI, condition=lambda xfer, gridname='': xfer.item.status == DepositSlip.STATUS_BUILDING)",
+          "MenuManage.describ('payoff.add_depositslip')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BankTransactionList",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 341,
+        "declarations": [
+          "MenuManage.describ(right_banktransaction, FORMTYPE_NOMODAL, 'financial', _('show bank transactions'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "BankTransactionShow",
+        "source": "reference/financial/payoff/views_deposit.py",
+        "line": 350,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('payoff.change_banktransaction')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CheckPaymentGeneric",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 48,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ValidationPaymentGeneric",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 105,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CheckPaymentPaypal",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 235,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ValidationPaymentPaypal",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 245,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CheckPaymentMoneticoPaiement",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 329,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ValidationPaymentMoneticoPaiement",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 339,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CheckPaymentHelloAsso",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 401,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ValidationPaymentHelloAsso",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 411,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CheckPaymentStripe",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 474,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ValidationPaymentStripe",
+        "source": "reference/financial/payoff/views_externalpayment.py",
+        "line": 484,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 2
+  },
+  {
+    "module": "contacts",
+    "models": [
+      {
+        "name": "CustomField",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 46
+      },
+      {
+        "name": "CustomizeObject",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 247
+      },
+      {
+        "name": "PostalCode",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 379
+      },
+      {
+        "name": "Function",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 403
+      },
+      {
+        "name": "StructureType",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 420
+      },
+      {
+        "name": "ContactCustomField",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 437
+      },
+      {
+        "name": "AbstractContact",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 453
+      },
+      {
+        "name": "LegalEntity",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 588
+      },
+      {
+        "name": "Individual",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 675
+      },
+      {
+        "name": "Responsability",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 751
+      },
+      {
+        "name": "CategoryPossession",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 784
+      },
+      {
+        "name": "PossessionCustomField",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 801
+      },
+      {
+        "name": "Possession",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 817
+      },
+      {
+        "name": "OurDetailPrintPlugin",
+        "source": "reference/lucterios-extra/contacts/models.py",
+        "line": 911
+      }
+    ],
+    "actions": [
+      {
+        "name": "CurrentLegalEntityModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 57,
+        "declarations": [
+          "MenuManage.describ(None)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentLegalEntityShow",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 69,
+        "declarations": [
+          "MenuManage.describ(None)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "Account",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 81,
+        "declarations": [
+          "MenuManage.describ(None, FORMTYPE_MODAL, 'core.general', _('View your account.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AccountAddModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 160,
+        "declarations": [
+          "MenuManage.describ(None)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentStructure",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 170,
+        "declarations": [
+          "MenuManage.describ('', FORMTYPE_MODAL, 'core.general', _('Our structure and its management'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentStructurePrint",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 195,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CreateAccount",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 214,
+        "declarations": [
+          "MenuManage.describ(right_create_account, FORMTYPE_MODAL, 'core.general', _('To ask an account'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CurrentStructureAddModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 320,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "Configuration",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 334,
+        "declarations": [
+          "MenuManage.describ('CORE.change_parameter', FORMTYPE_MODAL, 'contact.conf', _('Management functions of individuals and categories of legal entities.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FunctionAddModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 388,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FunctionDel",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 398,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CustomFieldAppendPrintModel",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 406,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CustomFieldAddModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 437,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CustomFieldDel",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 452,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CustomFieldUp",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 461,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Up'), short_icon='mdi:mdi-arrow-up-bold-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "StructureTypeAddModify",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 473,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "StructureTypeDel",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 483,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PostalCodeList",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 491,
+        "declarations": [
+          "MenuManage.describ('contacts.change_postalcode', FORMTYPE_MODAL, 'contact.conf', _('Management of postal codes associated with their communes.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PostalCodeAdd",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 514,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('contacts.add_postalcode')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ContactImport",
+        "source": "reference/lucterios-extra/contacts/views.py",
+        "line": 523,
+        "declarations": [
+          "MenuManage.describ('contacts.add_abstractcontact', FORMTYPE_MODAL, 'contact.conf', _('Tool to import contacts from CSV file.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityAddModify",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 60,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES)",
+          "MenuManage.describ('contacts.add_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityShow",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 70,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityPrint",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 84,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_PRINT, short_icon='mdi:mdi-printer-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityDel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 94,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityList",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 102,
+        "declarations": [
+          "MenuManage.describ('contacts.change_abstractcontact', FORMTYPE_NOMODAL, 'contact.actions', _('Management of a structure or organization of people (company, association, administration, ...)'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityListing",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 127,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LISTING, short_icon='mdi:mdi-printer-pos-edit-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntityLabel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 143,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LABEL, short_icon='mdi:mdi-printer-pos-star-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualAddModify",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 160,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES)",
+          "MenuManage.describ('contacts.add_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualShow",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 170,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualShowResp",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 179,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualPrint",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 194,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_PRINT, short_icon='mdi:mdi-printer-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualDel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 204,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualList",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 212,
+        "declarations": [
+          "MenuManage.describ('contacts.change_abstractcontact', FORMTYPE_NOMODAL, 'contact.actions', _('Management of men and women registered'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualLabel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 244,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LABEL, short_icon='mdi:mdi-printer-pos-star-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualListing",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 260,
+        "declarations": [
+          "ActionsManage.affect_list(TITLE_LISTING, short_icon='mdi:mdi-printer-pos-edit-outline')",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualUserRemove",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 277,
+        "declarations": [
+          "ActionsManage.affect_other('', short_icon='mdi:mdi-delete-outline')",
+          "MenuManage.describ('auth.add_user')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualUserAdd",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 291,
+        "declarations": [
+          "ActionsManage.affect_show('', short_icon='mdi:mdi-pencil-plus')",
+          "MenuManage.describ('auth.add_user')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualUserValid",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 323,
+        "declarations": [
+          "MenuManage.describ('auth.add_user')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ResponsabilityAdd",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 356,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "MenuManage.describ('contacts.add_responsability')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ResponsabilityModify",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 395,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.add_responsability')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ResponsabilityDel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 404,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_responsability')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "IndividualSearch",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 412,
+        "declarations": [
+          "MenuManage.describ('contacts.change_abstractcontact', FORMTYPE_NOMODAL, 'contact.actions', _('To find an individual following a set of criteria.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "LegalEntitySearch",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 433,
+        "declarations": [
+          "MenuManage.describ('contacts.change_abstractcontact', FORMTYPE_NOMODAL, 'contact.actions', _('To find a legal entity following a set of criteria.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AbstractContactFindDouble",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 454,
+        "declarations": [
+          "MenuManage.describ('contacts.add_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AbstractContactShow",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 477,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.change_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "AbstractContactDel",
+        "source": "reference/lucterios-extra/contacts/views_contacts.py",
+        "line": 506,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_abstractcontact')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ConfPossession",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 49,
+        "declarations": [
+          "MenuManage.describ('CORE.change_parameter', FORMTYPE_MODAL, 'contact.conf', _('Configure and manage possessions.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CategoryAddModify",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 70,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('contacts.add_possession')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "CategoryDel",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 80,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_possession')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionList",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 95,
+        "declarations": [
+          "MenuManage.describ(right_to_possession_list, FORMTYPE_NOMODAL, 'contact.possessions', _('Management of possession list'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionSearch",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 103,
+        "declarations": [
+          "MenuManage.describ(right_to_possession_list, FORMTYPE_NOMODAL, 'contact.possessions', _('To find a possession following a set of criteria.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionAddModify",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 134,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES)",
+          "MenuManage.describ(right_to_possession_addmodify)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionShow",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 157,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ(right_to_possession_show)"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionContact",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 190,
+        "declarations": [
+          "MenuManage.describ(right_to_possession_contact, FORMTYPE_MODAL, 'core.general', _('View your possessions.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionDel",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 206,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('contacts.delete_possession')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionOwnerSave",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 214,
+        "declarations": [
+          "MenuManage.describ('contacts.add_possession')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "PossessionOwner",
+        "source": "reference/lucterios-extra/contacts/views_possessions.py",
+        "line": 226,
+        "declarations": [
+          "ActionsManage.affect_other(TITLE_EDIT, short_icon='mdi:mdi-pencil-outline', close=CLOSE_NO)",
+          "MenuManage.describ('contacts.add_possession')"
+        ],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 47
+  },
+  {
+    "module": "documents",
+    "models": [
+      {
+        "name": "AbstractContainer",
+        "source": "reference/lucterios-extra/documents/models.py",
+        "line": 52
+      },
+      {
+        "name": "FolderContainer",
+        "source": "reference/lucterios-extra/documents/models.py",
+        "line": 107
+      },
+      {
+        "name": "DocumentContainer",
+        "source": "reference/lucterios-extra/documents/models.py",
+        "line": 257
+      },
+      {
+        "name": "DefaultDocumentsPrintPlugin",
+        "source": "reference/lucterios-extra/documents/models.py",
+        "line": 536
+      }
+    ],
+    "actions": [
+      {
+        "name": "FolderList",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 65,
+        "declarations": [
+          "MenuManage.describ('documents.change_folder', FORMTYPE_NOMODAL, 'documents.conf', _(\"Management of document's folders\"))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FolderAddModify",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 75,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline')",
+          "ActionsManage.affect_grid(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('documents.add_folder')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FolderDel",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 101,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('documents.delete_folder')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FolderImportExport",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 108,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FolderImport",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 149,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Import'), short_icon='mdi:mdi-folder-zip-outline', unique=SELECT_NONE)",
+          "MenuManage.describ('documents.add_folder')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FolderExtract",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 185,
+        "declarations": [
+          "ActionsManage.affect_grid(_('Extract'), short_icon='mdi:mdi-folder-zip-outline', unique=SELECT_NONE)",
+          "MenuManage.describ('documents.add_folder')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentAddModify",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 257,
+        "declarations": [
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES, condition=docshow_modify_condition)",
+          "MenuManage.describ('documents.add_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentShow",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 280,
+        "declarations": [
+          "MenuManage.describ('documents.change_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentEditor",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 297,
+        "declarations": [
+          "ActionsManage.affect_show(_('Editor'), short_icon='mdi:mdi-file-outline', modal=FORMTYPE_NOMODAL, close=CLOSE_YES, condition=lambda xfer: xfer.item.get_doc_editors(wantWrite=False) is not None)",
+          "MenuManage.describ('documents.add_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "ContainerAddFile",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 333,
+        "declarations": [
+          "ActionsManage.affect_grid(_('File'), short_icon='mdi:mdi-pencil-plus-outline', condition=file_createnew_condition)",
+          "MenuManage.describ('documents.add_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentDel",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 383,
+        "declarations": [
+          "MenuManage.describ('documents.delete_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentMosaic",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 400,
+        "declarations": [
+          "MenuManage.describ('documents.change_document', FORMTYPE_NOMODAL, 'documents.actions', _('Management of documents'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentSearch",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 477,
+        "declarations": [
+          "MenuManage.describ('documents.change_document', FORMTYPE_NOMODAL, 'documents.actions', _('To find a document following a set of criteria.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DocumentChangeShared",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 504,
+        "declarations": [
+          "ActionsManage.affect_show(_('delete shared link'), short_icon='mdi:mdi-file-key-outline', condition=lambda xfer: docshow_modify_condition(xfer) and xfer.item.sharekey is not None)",
+          "ActionsManage.affect_show(_('create shared link'), short_icon='mdi:mdi-file-key-outline', condition=lambda xfer: docshow_modify_condition(xfer) and xfer.item.sharekey is None)",
+          "MenuManage.describ('documents.add_document')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "DownloadFile",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 517,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "UploadFile",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 552,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "FileContentView",
+        "source": "reference/lucterios-extra/documents/views.py",
+        "line": 634,
+        "declarations": [],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 15
+  },
+  {
+    "module": "mailing",
+    "models": [
+      {
+        "name": "MessageLine",
+        "source": "reference/lucterios-extra/mailing/models.py",
+        "line": 60
+      },
+      {
+        "name": "MessageLineSet",
+        "source": "reference/lucterios-extra/mailing/models.py",
+        "line": 73
+      },
+      {
+        "name": "Message",
+        "source": "reference/lucterios-extra/mailing/models.py",
+        "line": 96
+      },
+      {
+        "name": "EmailSent",
+        "source": "reference/lucterios-extra/mailing/models.py",
+        "line": 533
+      }
+    ],
+    "actions": [
+      {
+        "name": "Configuration",
+        "source": "reference/lucterios-extra/mailing/views.py",
+        "line": 46,
+        "declarations": [
+          "MenuManage.describ('CORE.change_parameter', FORMTYPE_MODAL, 'contact.conf', _('Change mailing and SMS parameters'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SendEmailTry",
+        "source": "reference/lucterios-extra/mailing/views.py",
+        "line": 131,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "SendSmsTry",
+        "source": "reference/lucterios-extra/mailing/views.py",
+        "line": 173,
+        "declarations": [
+          "MenuManage.describ('CORE.add_parameter')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageList",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 37,
+        "declarations": [],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageEmailList",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 52,
+        "declarations": [
+          "MenuManage.describ('mailing.change_message', FORMTYPE_NOMODAL, 'mailing.actions', _('Manage list of message for mailing.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageSMSList",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 71,
+        "declarations": [
+          "MenuManage.describ('mailing.change_message', FORMTYPE_NOMODAL, 'mailing.actions', _('Manage list of message for SMS.'))"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageAddModify",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 97,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CREATE, short_icon='mdi:mdi-pencil-plus')",
+          "ActionsManage.affect_show(TITLE_MODIFY, short_icon='mdi:mdi-pencil-outline', close=CLOSE_YES, condition=lambda xfer: xfer.item.status == 0)",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageClone",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 115,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_CLONE, short_icon='mdi:mdi-content-copy', unique=SELECT_SINGLE)",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageShow",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 142,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_EDIT, short_icon='mdi:mdi-text-box-outline', unique=SELECT_SINGLE)",
+          "MenuManage.describ('mailing.change_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageSendEmailTry",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 166,
+        "declarations": [
+          "ActionsManage.affect_show(_('EMail try'), short_icon='mdi:mdi-email-outline', condition=lambda xfer: xfer.item.message_type == 0 and will_mail_send() and (xfer.item.status == 0))",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageSendSMSTry",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 207,
+        "declarations": [
+          "ActionsManage.affect_show(_('SMS try'), short_icon='mdi:mdi-message-reply-text-outline', condition=lambda xfer: xfer.item.message_type == 1 and AbstractProvider.is_current_active() and (xfer.item.status == 0))",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageTransition",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 242,
+        "declarations": [
+          "ActionsManage.affect_transition('status')",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageSentInfo",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 258,
+        "declarations": [
+          "ActionsManage.affect_show(_('Info'), short_icon='mdi:mdi-information-slab-circle-outline', modal=FORMTYPE_NOMODAL, condition=lambda xfer: xfer.item.emailsent_set.count() > 0)",
+          "MenuManage.describ('mailing.change_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageLetter",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 298,
+        "declarations": [
+          "ActionsManage.affect_show(_('Letters'), short_icon='mdi:mdi-file-sign', condition=lambda xfer: xfer.item.message_type == 0 and xfer.item.status == 1 and (not xfer.item.is_dynamic))",
+          "MenuManage.describ('mailing.change_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageDel",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 316,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_MULTI)",
+          "MenuManage.describ('mailing.delete_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageValidRecipient",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 324,
+        "declarations": [
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageAddRecipient",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 337,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_ADD, short_icon='mdi:mdi-pencil-plus-outline', model_name='recipient_list', condition=lambda xfer, gridname: xfer.item.status == 0)",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageDelRecipient",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 348,
+        "declarations": [
+          "ActionsManage.affect_grid(TITLE_DELETE, short_icon='mdi:mdi-delete-outline', unique=SELECT_SINGLE, model_name='recipient_list', condition=lambda xfer, gridname: xfer.item.status == 0)",
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageValidInsertDoc",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 361,
+        "declarations": [
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageInsertDoc",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 372,
+        "declarations": [
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageRemoveDoc",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 380,
+        "declarations": [
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "MessageShowDoc",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 394,
+        "declarations": [
+          "MenuManage.describ('mailing.add_message')"
+        ],
+        "react_parity_verified": false
+      },
+      {
+        "name": "EmailSentAddForStatistic",
+        "source": "reference/lucterios-extra/mailing/views_message.py",
+        "line": 406,
+        "declarations": [
+          "MenuManage.describ('')"
+        ],
+        "react_parity_verified": false
+      }
+    ],
+    "upstream_tests": 47
+  }
+]

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="fr" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration de la messagerie &#8212; Documentation Lucterios courier 2.7.7.26070318</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=736d73b9"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Envoi de SMS" href="sms.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Documentation Lucterios courier 2.7.7.26070318</span></a></h1>
+        <h2 class="heading"><span>Configuration de la messagerie</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="sms.html">Envoi de SMS</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="configuration-de-la-messagerie">
+<h1>Configuration de la messagerie<a class="headerlink" href="#configuration-de-la-messagerie" title="Lien vers cette rubrique">¶</a></h1>
+<blockquote>
+<div><p>Menu Administration/Modules (conf.)/Paramètres de courrier &amp; SMS</p>
+</div></blockquote>
+<p>Vous pouvez configurer ici des réglages pour l’envoi de couriel et de SMS.</p>
+<section id="configuration-du-couriel">
+<h2>Configuration du couriel<a class="headerlink" href="#configuration-du-couriel" title="Lien vers cette rubrique">¶</a></h2>
+<p>Le serveur SMTP permettra au logiciel d’envoyer directement des messages à vos contacts.
+Configurez donc ici les règlages de votre serveur.
+Vous pouvez également préciser un <em>Fichier privé DKIM</em> et <em>Sélecteur DKIM</em> afin de signer vos envois de courriel.
+Les paramètres <em>durée (en min) d’un lot de courriel</em> et <em>nombre de courriels par lot</em> sont utilisés pour l’envoie des messages en publipostage.</p>
+<p>Un bouton <em>Envoyer</em> permet de tester vos règlages en envoyant un courriel de test à un destinataire choisi.
+Il existe des outils permettant de vérifier si vos messages respectent des règles afin d’éviter d’être considéré comme des “pourriel”.
+En autre, l’outil <a class="reference external" href="https://www.mail-tester.com">https://www.mail-tester.com</a> (gratuit jusqu’à 3 fois par jour) vous permet, en envoyant un message à l’adresse précisée, de vous établir une note de confiance.</p>
+<p>Vous pouvez, entre autre, envoyer d’un nouveau mot de passe de connexion.
+N’oubliez pas alors de préciser un petit message d’explication via le paramètre <em>Message de confirmation de connexion</em>.</p>
+</section>
+<section id="configuration-du-sms">
+<h2>Configuration du SMS<a class="headerlink" href="#configuration-du-sms" title="Lien vers cette rubrique">¶</a></h2>
+<p>En configurant un fournisseur de SMS, vous pourrez alors envoyer des SMS à vos contacts.</p>
+<p>Pour chaque fournisseur, vous devrez préciser le champ « Expression d’analyse de numéro (SMS) ».
+Il correspond à une expression régulière afin de savoir comment transformer un numéro de téléphone en numéro international.
+Par défaut, il correspond au numéro français: <em>^0([67][0-9]{8})$|+33{0}</em></p>
+<blockquote>
+<div><p>Il vérifie que le numéro comporte 10 chiffres.
+Il commance par “06” ou “07”.
+Il remplacera le “0” par “+33”.</p>
+</div></blockquote>
+<p>Suivant les besoins et les demandes, d’autres fournisseurs pourront être ajoutés à l’avenir.</p>
+<section id="mailjet-sms">
+<h3>Mailjet SMS<a class="headerlink" href="#mailjet-sms" title="Lien vers cette rubrique">¶</a></h3>
+<p>Mailjet (<a class="reference external" href="https://www.mailjet.com/">https://www.mailjet.com/</a>) est une entreprise française qui propose, entre autres, d’envoyer des SMS.</p>
+<p>Pour utiliser ce fournisseur, vous devez créer un compte sur leur site web.</p>
+<p>Rendez vous ensuite sur leur portail SMS (<a class="reference external" href="https://app.mailjet.com/sms">https://app.mailjet.com/sms</a>) où vous pourrez configurer votre accès au SMS:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Générer votre token d’accès</p></li>
+<li><p>Créditer votre solde de SMS prépayé</p></li>
+</ul>
+</div></blockquote>
+<p>Notez que le coùt d’un SMS dépend de sa taille et de sa destination.</p>
+<p>Vous devrez ensuite indiquer dans « Options pour fournisseur SMS » votre « api token » généré précédement
+ainsi qu’un « alias » qui sera l’identifiant présent dans le SMS envoyé.</p>
+<p>Une fois votre configuration terminer, un bouton <em>Envoyer</em> permet de tester vos règlages en envoyant un SMS de contrôle à un numéro choisi.</p>
+</section>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="sms.html">Envoi de SMS</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contenu</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>

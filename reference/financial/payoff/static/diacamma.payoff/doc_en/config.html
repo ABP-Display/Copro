@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration &#8212; Diacamma payoff 2.7.9.26072908 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/haiku.css?v=fce32b03" />
+    <script src="_static/documentation_options.js?v=6012de43"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Depositing checks" href="deposit.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>Diacamma payoff 2.7.9.26072908 documentation</span></a></h1>
+        <h2 class="heading"><span>Configuration</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="Top">
+      
+        <p>
+        «&#160;&#160;<a href="deposit.html">Depositing checks</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content" role="main">
+        
+        
+  <section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h1>
+<p>Menu “Administration/Payoff configuration” allows you some configurations for your structure.</p>
+<section id="bank-account">
+<h2>Bank account<a class="headerlink" href="#bank-account" title="Link to this heading">¶</a></h2>
+<p>In this screen, you can record your various bank accounts you have.
+For each, you can enter all of the information on a RIB.
+This will allow you to edit a comprehensive summary of your check deposits.</p>
+</section>
+<section id="payment-method">
+<h2>Payment method<a class="headerlink" href="#payment-method" title="Link to this heading">¶</a></h2>
+<p>Here you can specify the means of payment that you support.
+Currently, 3 methods of payment are taken into account by _Diacamma_
+  - Bank transfer
+  - The check
+  - The PayPal payment
+For each of them, you must specify the relative parameters.</p>
+<p>It is a means of payment can be used for your debtors to settle by its means what they owe you.
+In the case of PayPal, if your _Diacamma_ is accessible via the Internet, the software can be communicated directly to the payment and add a corresponding payment.</p>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>Currently two parameters:</dt><dd><ul class="simple">
+<li><p>cash Account: indicates the account code to charge for payments in cash.</p></li>
+<li><p>bank charges account: a precise accounting code to directly post, following a settlement, bank charges inherent in this settlement.</p></li>
+</ul>
+</dd>
+</dl>
+<p>A write line is added directly to the corresponding accounting entry.
+If this code is empty, no bank charges will be requested.</p>
+</section>
+</section>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="Bottom">
+      
+        <p>
+        «&#160;&#160;<a href="deposit.html">Depositing checks</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2026, sd-libre.
+    </div>
+  </body>
+</html>
