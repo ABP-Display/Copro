@@ -1,4 +1,4 @@
-# Copro — gestion de copropriété
+# Copro. — gestion de copropriété
 
 Nouvelle application indépendante : React / TypeScript, Django et PostgreSQL.
 Le projet historique Diacamma est conservé dans `reference/diacamma/`, avec
