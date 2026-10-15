@@ -1,17 +1,17 @@
 {
   "schema_version": 2,
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "scope": "Copro. / France / syndics bénévoles et coopératifs. Cible une ou plusieurs copropriétés ; application actuelle mono-copropriété. Cabinet professionnel exclu.",
   "source": "docs/reference/cahier-fonctionnalites.md",
   "source_revision": "benevole-cooperatif-2026-10-14",
   "source_sha256": "8f1630da188856feb6a802a98224d438c3566b33aa87ce3f220fdc98a58a56dd",
-  "method": "Les 156 puces des sections 4 à 7 sont évaluées intégralement dans la cible bénévole/coopérative. Les fragments exclusivement professionnels sont exclus et tracés. Complet : parcours livré dans les limites explicites ; partiel : socle présent et au moins un volet manquant ; absent : aucun parcours natif. Les 11 rôles du §3 et deux besoins transverses sont documentés séparément sans les additionner (recoupements). Les affirmations juridiques à corriger sont conservées dans source_text et annotées. Aucun pourcentage de conformité ou de parité Diacamma.",
+  "method": "Les 156 puces des sections 4 à 7 sont évaluées intégralement dans la cible bénévole/coopérative. Les fragments exclusivement professionnels sont exclus et tracés. Complet : parcours livré dans les limites explicites ; partiel : socle présent et au moins un volet manquant ; absent : aucun parcours natif. Les 11 rôles du §3 et deux besoins transverses sont documentés séparément sans les additionner (recoupements). Les affirmations juridiques à corriger sont conservées dans source_text et annotées. Aucun pourcentage de conformité globale.",
   "summary": {
     "total": 156,
-    "complete": 18,
-    "partial": 91,
-    "absent": 47,
-    "usable_features": 58,
+    "complete": 19,
+    "partial": 94,
+    "absent": 43,
+    "usable_features": 64,
     "roles_reviewed": 11,
     "supplementary_needs": 2
   },
@@ -34,13 +34,13 @@
     "Courriels préparés dans la messagerie ; pas d’envoi SMTP intégré pour les accès"
   ],
   "verification": {
-    "backend_tests": 147,
+    "backend_tests": 172,
     "backend_tests_result": "passed",
     "frontend": "TypeScript + Vite production build passed",
     "database": "PostgreSQL / base de test séparée",
     "legal": "Vérifications ponctuelles des sources officielles ; pas de certification juridique/comptable.",
-    "manual_ui": "Écrans et formulaires comptables contrôlés ; AG/PV/notifications/formulaires sur instance isolée fictive, mobile compris. Aucun envoi ni écriture de test dans les données réelles.",
-    "note": "146 tests de la suite complète réussis, puis un scénario supplémentaire de fonds après mutation réussi ; validation finale réunie à 147 tests. Compilation vérifiée et migrations appliquées après sauvegarde.",
+    "manual_ui": "Mandat fictif, soumission/recherche de devis, avis nominatif, préparation par trésorier, reprise par syndic, rapport indépendant et alerte après changement ; consultation des relevés et affichage mobile. Instance isolée fictive.",
+    "note": "172 tests PostgreSQL (dont 25 conseil), build TypeScript/Vite, migrations et contrôles navigateur sur une instance fictive séparée ; aucune attribution de droits ni écriture d’essai dans les données réelles.",
     "scope_review": "156 exigences conservées ; les parcours papier/manuels ne prouvent pas les prestataires connectés ou une certification de conformité."
   },
   "requirements": [
@@ -407,7 +407,7 @@
       "section": "4.2",
       "text": "Saisie des factures fournisseurs, OCR et reconnaissance automatique, workflow de validation (gestionnaire → conseil syndical selon les seuils).",
       "status": "partiel",
-      "assessment": "Facture rattachée à un fournisseur réel ou saisi librement, pièce de GED liée et dette auxiliaire enregistrée. Ajouter OCR et circuit de validation selon seuils/conseil.",
+      "assessment": "Factures avec fournisseur et pièce, préparation sans écriture par un trésorier, demandes figées, avis du conseil et seuil/quorum contrôlés avant règlement. OCR absent.",
       "evidence": [
         "backend/finance/models.py",
         "backend/finance/services.py",
@@ -417,11 +417,18 @@
         "backend/finance/test_banking_suppliers.py",
         "backend/finance/forms.py",
         "backend/finance/views.py",
-        "frontend/src/components/Finance.tsx"
+        "frontend/src/components/Finance.tsx",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ],
       "priority": "P0",
-      "next_step": "Facture rattachée à un fournisseur réel ou saisi librement, pièce de GED liée et dette auxiliaire enregistrée. Ajouter OCR et circuit de validation selon seuils/conseil.",
-      "delivered_in_this_change": false,
+      "next_step": "Compléter la reconnaissance documentaire selon le besoin ; les analyses restent locales sans moteur IA puissant.",
+      "delivered_in_this_change": true,
       "source_text": "Saisie des factures fournisseurs, OCR et reconnaissance automatique, workflow de validation (gestionnaire → conseil syndical selon les seuils)."
     },
     {
@@ -1196,24 +1203,40 @@
       "id": "4.6.01",
       "section": "4.6",
       "text": "Composition et mandats (durée, renouvellement), rôle (président, membres).",
-      "status": "absent",
-      "assessment": "Créer mandats, membres, président et dates de renouvellement.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Composition, responsabilités, dates, pièces, renouvellement par nouveau mandat et retrait motivé ; droits effectifs selon les mandats. Parcours limité aux copropriétaires avec accès pour les fonctions de conseil ; autres personnes éligibles et suivi avancé des renouvellements à compléter.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ],
       "priority": "P1",
-      "next_step": "Créer mandats, membres, président et dates de renouvellement.",
-      "delivered_in_this_change": false,
+      "next_step": "Étendre les personnes éligibles et les rappels/renouvellements assistés.",
+      "delivered_in_this_change": true,
       "source_text": "Composition et mandats (durée, renouvellement), rôle (président, membres)."
     },
     {
       "id": "4.6.02",
       "section": "4.6",
       "text": "Espace dédié : budget en temps réel, factures, contrats, travaux, relevés bancaires (consultation selon droits).",
-      "status": "absent",
-      "assessment": "Créer rôle conseil syndical et accès dédiés ; le rôle gestionnaire actuel donne trop de droits pour cet usage.",
-      "evidence": [],
+      "status": "complet",
+      "assessment": "Espace dédié en lecture : budget/réalisé, balance, écritures, factures/règlements, banques, relevés/rapprochements, contrats, travaux/sinistres et pièces versionnées. Accès contrôlé côté serveur sans droits de gestion ; l’instance demeure mono-copropriété.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ],
       "priority": "P1",
-      "next_step": "Créer rôle conseil syndical et accès dédiés ; le rôle gestionnaire actuel donne trop de droits pour cet usage.",
-      "delivered_in_this_change": false,
+      "next_step": "Maintenir les contrôles de permissions et prévoir l’isolation avant une deuxième copropriété.",
+      "delivered_in_this_change": true,
       "source_text": "Espace dédié : budget en temps réel, factures, contrats, travaux, relevés bancaires (consultation selon droits)."
     },
     {
@@ -1221,15 +1244,22 @@
       "section": "4.6",
       "text": "Validation en ligne des devis, engagements de dépenses, mises en concurrence.",
       "status": "partiel",
-      "assessment": "Sélection d’un devis par gestionnaire présente. Ajouter validation du conseil, seuils et droits distincts.",
+      "assessment": "Avis motivés du conseil sur devis/factures/préparations, seuil et avis distincts, blocage de sélection/règlement sans contrôle ; auteur et pièces conservés. Engagements/commandes et mise en concurrence formalisée restent à compléter.",
       "evidence": [
         "backend/operations/models.py",
         "backend/operations/views.py",
-        "backend/operations/tests.py"
+        "backend/operations/tests.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ],
       "priority": "P1",
-      "next_step": "Sélection d’un devis par gestionnaire présente. Ajouter validation du conseil, seuils et droits distincts.",
-      "delivered_in_this_change": false,
+      "next_step": "Relier le circuit aux engagements, commandes et procédures de mise en concurrence.",
+      "delivered_in_this_change": true,
       "source_text": "Validation en ligne des devis, engagements de dépenses, mises en concurrence."
     },
     {
@@ -1249,17 +1279,24 @@
       "section": "4.6",
       "text": "Accès aux pièces comptables pour le contrôle des comptes (rendez-vous, consultation, copie).",
       "status": "partiel",
-      "assessment": "Consultation possible pour gestionnaires uniquement. Ajouter accès du conseil en lecture aux pièces et contrôle des comptes.",
+      "assessment": "Conseil et contrôleur consultent et téléchargent les pièces privées de gestion sans modifier les comptes. Rapport indépendant final conservé et changements ultérieurs signalés. Prise de rendez-vous spécialisée absente.",
       "evidence": [
         "backend/finance/models.py",
         "backend/finance/services.py",
         "backend/finance/reporting.py",
         "backend/finance/test_advanced.py",
-        "backend/finance/test_payments.py"
+        "backend/finance/test_payments.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ],
       "priority": "P1",
-      "next_step": "Consultation possible pour gestionnaires uniquement. Ajouter accès du conseil en lecture aux pièces et contrôle des comptes.",
-      "delivered_in_this_change": false,
+      "next_step": "Compléter demandes de pièces, rendez-vous et rapport propre à la mission du conseil.",
+      "delivered_in_this_change": true,
       "source_text": "Accès aux pièces comptables pour le contrôle des comptes (rendez-vous, consultation, copie)."
     },
     {
@@ -1986,18 +2023,25 @@
       "section": "4.15",
       "text": "Mandat du syndic : désignation en AG, durée, éventuelle indemnité (à voter), renouvellement, révocation et passation à un successeur.",
       "status": "partiel",
-      "assessment": "Mandats datés du syndic bénévole et membres copropriétaires du conseil reliés au vote/PV, conditions et alertes avant fin. Révocation/passation et présidence coopérative restent à structurer.",
+      "assessment": "Mandats datés reliés aux votes/PV ou pièces de désignation, droits automatiques de syndic, retrait motivé et renouvellement par nouvelle période. Indemnité, personnes/cas particuliers et export complet de passation restent à compléter.",
       "evidence": [
         "backend/governance/models.py",
         "backend/governance/workflow.py",
         "backend/governance/workflow_views.py",
         "backend/governance/test_workflow.py",
         "frontend/src/components/AssemblyWorkflow.tsx",
-        "docs/guides/AG-OUTILS.md"
+        "docs/guides/AG-OUTILS.md",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ],
       "priority": "P0",
-      "next_step": "Aucun mandat structuré, désignation, indemnité, renouvellement ou révocation. Les réunions/résolutions et contrats génériques ne constituent pas la gestion du mandat. Créer ce parcours avec dates, décision source et passation.",
-      "delivered_in_this_change": false,
+      "next_step": "Terminer les indemnités, cas particuliers et passation complète.",
+      "delivered_in_this_change": true,
       "source_text": "Mandat du syndic : désignation en AG, durée, éventuelle indemnité (à voter), renouvellement, révocation et passation à un successeur."
     },
     {
@@ -2005,7 +2049,7 @@
       "section": "4.15",
       "text": "Mode guidé pas à pas : calendrier annuel (clôture, budget, convocation, AG, PV, appels de fonds), checklist des tâches obligatoires, explication en langage simple de la règle juridique à chaque étape.",
       "status": "partiel",
-      "assessment": "Étapes guidées de comptabilité/clôture et d’AG, explications et alertes locales. Checklist légale annuelle selon tous les profils et régimes encore incomplète.",
+      "assessment": "Parcours comptables et AG présents. Guide AG intégré en six étapes avec vérifications, FAQ, lexique, mémo et impression. Calendrier et checklist légale annuelle selon tous les profils et régimes encore incomplets.",
       "evidence": [
         "frontend/src/components/Navigation.tsx",
         "frontend/src/components/Assemblies.tsx",
@@ -2023,10 +2067,13 @@
         "backend/finance/reconciliation.py",
         "backend/finance/test_cycle.py",
         "frontend/src/components/AccountingCycle.tsx",
-        "docs/guides/COMPTABILITE-CYCLE.md"
+        "docs/guides/COMPTABILITE-CYCLE.md",
+        "frontend/src/components/AssemblyGuide.tsx",
+        "frontend/src/components/assembly-guide-content.ts",
+        "docs/guides/AG-PREMIERS-PAS.md"
       ],
       "priority": "P0",
-      "next_step": "Accueil avec points à suivre, pages explicatives des catégories et rappels du calculateur présents. Pas de parcours annuel guidé ni checklist obligatoire liée à la clôture, au budget et aux étapes d’AG.",
+      "next_step": "Relier les parcours comptables et AG dans un calendrier annuel, avec checklist contextualisée selon le profil de l’immeuble et les obligations applicables.",
       "delivered_in_this_change": false,
       "source_text": "Mode guidé pas à pas : calendrier annuel (clôture, budget, convocation, AG, PV, appels de fonds), checklist des tâches obligatoires, explication en langage simple de la règle juridique à chaque étape."
     },
@@ -2034,12 +2081,20 @@
       "id": "4.15.03",
       "section": "4.15",
       "text": "Contrôle croisé par le conseil syndical : validation des paiements, accès en lecture aux comptes, rapport de contrôle des comptes, afin de limiter les erreurs et les soupçons.",
-      "status": "absent",
-      "assessment": "Aucun rôle conseil syndical, circuit de validation des paiements ou rapport de contrôle distinct. Le rôle gestionnaire donne des droits globaux ; les synthèses publiées ne remplacent pas le contrôle des comptes.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Conseil en lecture des comptes/pièces et avis distincts avant règlement selon une règle documentée ; rapport du contrôleur indépendant avec pièces et empreinte des comptes. Le rapport propre au conseil et les délégations collectives avancées restent à compléter.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ],
       "priority": "P0",
-      "next_step": "Aucun rôle conseil syndical, circuit de validation des paiements ou rapport de contrôle distinct. Le rôle gestionnaire donne des droits globaux ; les synthèses publiées ne remplacent pas le contrôle des comptes.",
-      "delivered_in_this_change": false,
+      "next_step": "Étendre les rapports de mission du conseil et les contrôles propres aux délégations collectives.",
+      "delivered_in_this_change": true,
       "source_text": "Contrôle croisé par le conseil syndical : validation des paiements, accès en lecture aux comptes, rapport de contrôle des comptes, afin de limiter les erreurs et les soupçons."
     },
     {
@@ -2079,12 +2134,20 @@
       "id": "4.15.06",
       "section": "4.15",
       "text": "Syndic coopératif : séparation claire entre les fonctions de syndic et de président du conseil syndical, vote du quitus sans conflit d'intérêts apparent.",
-      "status": "absent",
-      "assessment": "Aucun mode coopératif, mandat de conseil syndical, vice-président, contrôleur des comptes ou rapport de contrôle. Distinguer les fonctions exercées par le président-syndic et le contrôle indépendant, sans supposer deux titulaires distincts. Cas des petites copropriétés à traiter séparément.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Mode coopératif, présidence/syndic réunis et dépendants d’un mandat de conseil, vice-présidence, contrôleur indépendant et rapport natifs. Cas dérogatoires des petites copropriétés, personnes non propriétaires éligibles et gouvernance collective détaillée à compléter.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ],
       "priority": "P0",
-      "next_step": "Aucun mode coopératif, mandat de conseil syndical, vice-président, contrôleur des comptes ou rapport de contrôle. Distinguer les fonctions exercées par le président-syndic et le contrôle indépendant, sans supposer deux titulaires distincts. Cas des petites copropriétés à traiter séparément.",
-      "delivered_in_this_change": false,
+      "next_step": "Compléter les cas dérogatoires, les réunions et la passation ; ne pas présenter président et syndic comme deux titulaires nécessairement distincts.",
+      "delivered_in_this_change": true,
       "source_text": "Syndic coopératif : séparation claire entre les fonctions de syndic et de président du conseil syndical, vote du quitus sans conflit d'intérêts apparent."
     },
     {
@@ -2094,13 +2157,16 @@
       "source_text": "Aide intégrée : fiches pratiques, modèles de courriers, FAQ juridique, renvois vers des ressources d'information (par exemple associations de copropriétaires, ADIL).",
       "delivered_in_this_change": false,
       "status": "partiel",
-      "assessment": "Explications des catégories, aide du calculateur et guides du dépôt présents. Pas de centre d’aide intégré avec fiches pratiques, FAQ, bibliothèque de courriers et ressources ADIL contextualisées.",
-      "next_step": "Explications des catégories, aide du calculateur et guides du dépôt présents. Pas de centre d’aide intégré avec fiches pratiques, FAQ, bibliothèque de courriers et ressources ADIL contextualisées.",
+      "assessment": "Explications des catégories, aide du calculateur et guides du dépôt présents. Guide AG intégré avec six étapes, FAQ d’utilisation, lexique, mémo et impression. Les fiches juridiques, courriers et ressources contextualisées restent à compléter.",
+      "next_step": "Étendre l’aide intégrée aux autres parcours ; ajouter des fiches pratiques sourcées, modèles de courriers et ressources ADIL contextualisées.",
       "evidence": [
         "frontend/src/components/Navigation.tsx",
         "frontend/src/components/Assemblies.tsx",
         "frontend/src/components/Tools.tsx",
-        "backend/governance/calculations.py"
+        "backend/governance/calculations.py",
+        "frontend/src/components/AssemblyGuide.tsx",
+        "frontend/src/components/assembly-guide-content.ts",
+        "docs/guides/AG-PREMIERS-PAS.md"
       ],
       "priority": "P1"
     },
@@ -2399,7 +2465,7 @@
       "section": "6",
       "text": "Import / export de données, outils de migration.",
       "status": "partiel",
-      "assessment": "CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise des données Diacamma/Excel et export complet manquants.",
+      "assessment": "CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise contrôlée des données externes et export complet manquants.",
       "evidence": [
         "backend/finance/models.py",
         "backend/finance/services.py",
@@ -2408,7 +2474,7 @@
         "backend/finance/test_payments.py"
       ],
       "priority": "P1",
-      "next_step": "CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise des données Diacamma/Excel et export complet manquants.",
+      "next_step": "CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise contrôlée des données externes et export complet manquants.",
       "delivered_in_this_change": false,
       "source_text": "Import / export de données, outils de migration."
     },
@@ -2434,15 +2500,17 @@
       "section": "6",
       "text": "Aide contextuelle et rappel des règles juridiques dans les écrans (ex. majorité requise à côté d'une résolution).",
       "status": "partiel",
-      "assessment": "Pages de catégorie et explications des calculateurs présentes. Compléter chaque procédure au fur et à mesure de sa livraison.",
+      "assessment": "Pages de catégorie et explications des calculateurs présentes. Guide AG accessible depuis le menu et chaque rubrique AG, avec liens vers les écrans de travail. Aide contextuelle à généraliser aux autres procédures.",
       "evidence": [
         "frontend/src/App.tsx",
         "frontend/src/components/Navigation.tsx",
         "frontend/src/components/CategoryOverview.tsx",
-        "frontend/src/components/OperationsViews.tsx"
+        "frontend/src/components/OperationsViews.tsx",
+        "frontend/src/components/AssemblyGuide.tsx",
+        "frontend/src/components/assembly-guide-content.ts"
       ],
       "priority": "P1",
-      "next_step": "Pages de catégorie et explications des calculateurs présentes. Compléter chaque procédure au fur et à mesure de sa livraison.",
+      "next_step": "Généraliser les guides et rappels contextualisés aux autres procédures, avec sources et validation métier des règles affichées.",
       "delivered_in_this_change": false,
       "source_text": "Aide contextuelle et rappel des règles juridiques dans les écrans (ex. majorité requise à côté d'une résolution)."
     },
@@ -2679,19 +2747,26 @@
       "id": "3.R01",
       "name": "Administrateur de la plateforme",
       "status": "partiel",
-      "assessment": "Paramétrage et activation/rôle gestionnaire ; aucune gestion de plusieurs copropriétés.",
+      "assessment": "Administrateur principal : attribution/retrait des accès, règles et comptes externes tracés. Une copropriété seulement ; sécurité forte et passation à compléter.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
         "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
       "id": "3.R02",
       "name": "Syndic bénévole",
       "status": "partiel",
-      "assessment": "Droits gestionnaire globaux et mandat daté lié au PV ; permissions par mandat/rôle et passation encore absentes.",
+      "assessment": "Mandat de syndic bénévole donnant accès à la gestion pendant sa période, désignation documentée et retrait motivé. Indemnités et passation complète à compléter.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
@@ -2699,50 +2774,78 @@
         "backend/core/test_access.py",
         "backend/governance/models.py",
         "backend/governance/workflow.py",
-        "backend/governance/workflow_views.py"
+        "backend/governance/workflow_views.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
       "id": "3.R03",
       "name": "Syndic coopératif / président",
-      "status": "absent",
-      "assessment": "Mode coopératif, mandat du conseil et fonctions cumulées non modélisés.",
+      "status": "partiel",
+      "assessment": "Président/syndic coopératif avec droits de gestion dépendants du mandat de membre du conseil ; contrôle séparé. Cas dérogatoires et gouvernance collective avancée à compléter.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
         "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
       "id": "3.R04",
       "name": "Trésorier / référent comptable",
-      "status": "absent",
-      "assessment": "Aucun droit délégué par module ni restriction spécifique de clôture.",
+      "status": "partiel",
+      "assessment": "Lecture des comptes, dépôt de pièces et préparation/correction de factures sans écriture ni règlement. Préparation des appels/budgets et rapprochement délégués restent à étendre.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
         "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
       "id": "3.R05",
       "name": "Président du conseil en mode bénévole",
-      "status": "absent",
-      "assessment": "Aucun rôle de consultation étendue ou validation dédiée.",
+      "status": "partiel",
+      "assessment": "Mandat de présidence lié au mandat de membre du conseil ; lecture et avis motivés sans droits de gestion. Réunions et délégations détaillées absentes.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
         "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
       "id": "3.R06",
       "name": "Membre du conseil syndical",
       "status": "partiel",
-      "assessment": "Mandat d’un membre copropriétaire lié au vote/PV et durée ; pas de droits propres au conseil ni workflow de contrôle.",
+      "assessment": "Mandats datés, accès de lecture aux pièces et comptes, avis du conseil distincts de la préparation. Réunions, tâches et délégations détaillées à compléter.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
@@ -2750,7 +2853,14 @@
         "backend/core/test_access.py",
         "backend/governance/models.py",
         "backend/governance/workflow.py",
-        "backend/governance/workflow_views.py"
+        "backend/governance/workflow_views.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     },
     {
@@ -2806,13 +2916,20 @@
     {
       "id": "3.R11",
       "name": "Contrôleur des comptes / expert externe",
-      "status": "absent",
-      "assessment": "Pas de lecture comptable dédiée et temporaire ; prévoir le contrôle en mode coopératif, sans imposer un expert externe.",
+      "status": "complet",
+      "assessment": "Contrôleur propriétaire ou extérieur, compte temporaire protégé, accès de lecture, dépôt de pièces, rapport indépendant final avec preuves et état comptable contrôlé. Aucun droit de gestion ou d’avis du conseil ; pas de réécriture du rapport final.",
       "evidence": [
         "backend/core/models.py",
         "backend/core/access.py",
         "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
       ]
     }
   ],
@@ -3309,7 +3426,7 @@
       "id": "U44",
       "name": "Reprise des soldes",
       "available": "Balance initiale équilibrée, tiers et fonds par lot, correction conservée.",
-      "limit": "Pas d’import Excel/Diacamma automatique.",
+      "limit": "Pas d’import automatique de données externes.",
       "evidence": [
         "backend/finance/cycle.py",
         "backend/finance/cycle_views.py",
@@ -3514,6 +3631,96 @@
         "frontend/src/components/AssemblyWorkflow.tsx",
         "docs/guides/AG-OUTILS.md"
       ]
+    },
+    {
+      "id": "U59",
+      "name": "Mandats et accès datés",
+      "available": "Désignation documentée, dates, présidence dépendante, retrait motivé et droits contrôlés par le serveur.",
+      "limit": "Copropriétaires avec compte pour les fonctions de conseil ; droits permanents de gestion distincts.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
+    },
+    {
+      "id": "U60",
+      "name": "Consultation du conseil",
+      "available": "Factures, écritures, banques/relevés, budget, contrats, travaux et pièces sans droits de gestion.",
+      "limit": "Une seule copropriété ; documents consultables par l’équipe habilitée.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
+    },
+    {
+      "id": "U61",
+      "name": "Préparation par un trésorier",
+      "available": "Déposer une pièce, préparer/corriger une dépense et la soumettre ; reprise comptable explicite par le syndic.",
+      "limit": "Appels, budgets et rapprochement délégués non couverts par ce rôle.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
+    },
+    {
+      "id": "U62",
+      "name": "Avis du conseil",
+      "available": "Dossier et preuve conservés, quorum de personnes distinctes, refus motivé et contrôle avant sélection/règlement.",
+      "limit": "Contrôle interne ; ne vaut pas délégation juridique ni ordre bancaire.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
+    },
+    {
+      "id": "U63",
+      "name": "Contrôle indépendant",
+      "available": "Checklist, observations, pièces, conclusion, rapport final conservé et changements ultérieurs détectés.",
+      "limit": "Rapport téléchargé en Markdown sans les fichiers joints ; rapport de mission propre au conseil à compléter.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
+    },
+    {
+      "id": "U64",
+      "name": "Organisation et traçabilité du conseil",
+      "available": "Mode bénévole/coopératif et règles documentées ; historique des accès, avis et rapports.",
+      "limit": "Réunions, délégations collectives, cas dérogatoires et passation complète à compléter.",
+      "evidence": [
+        "backend/council/models.py",
+        "backend/council/access.py",
+        "backend/council/services.py",
+        "backend/council/views.py",
+        "backend/council/test_council.py",
+        "frontend/src/components/Council.tsx",
+        "docs/guides/CONSEIL-SYNDICAL.md"
+      ]
     }
   ],
   "change_history": [
@@ -3547,7 +3754,7 @@
       "previous_audit": "docs/reference/historique/2026-10-14-general/audit-fonctionnalites.json"
     },
     {
-      "date": "2026-10-14",
+      "date": "2026-10-15",
       "description": "Parcours comptables et AG : cycle, mutations, banque, votes, PV, décisions, preuves et suivi. Intégrations et conformité avancées restent explicites.",
       "tests": 147,
       "current_totals": {
@@ -3556,6 +3763,25 @@
         "partial": 91,
         "absent": 47,
         "usable_features": 58,
+        "roles_reviewed": 11,
+        "supplementary_needs": 2
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "description": "Guide AG débutant intégré : six étapes, liens vers les rubriques, FAQ, lexique, mémo téléchargeable et impression. Feuille de route bénévole/coopérative documentée. Les trois exigences d’aide concernées restent partielles ; les totaux sont inchangés.",
+      "validation": "Build TypeScript/Vite ; contrôle des six étapes, navigation aller-retour, FAQ et téléchargement dans le navigateur. Aucun changement backend ni nouveau lancement de sa suite de tests."
+    },
+    {
+      "date": "2026-10-15",
+      "description": "Conseil syndical : mandats datés, droits ciblés, consultation, préparation des dépenses, avis avant règlement/sélection et rapport indépendant. Documentation courante centrée sur Copro. et liens GitHub abp-display/Copro ; notices et sources historiques conservées.",
+      "tests": 172,
+      "current_totals": {
+        "total": 156,
+        "complete": 19,
+        "partial": 94,
+        "absent": 43,
+        "usable_features": 64,
         "roles_reviewed": 11,
         "supplementary_needs": 2
       }

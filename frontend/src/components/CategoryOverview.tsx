@@ -5,6 +5,26 @@ export const categoryHelp: Record<
   string,
   { description: string; advice: string; items: Record<string, string> }
 > = {
+  council: {
+    description:
+      "Organisez les responsabilités, examinez les pièces et conservez les avis du conseil ainsi que le contrôle indépendant des comptes.",
+    advice:
+      "Enregistrez les désignations avec leurs pièces et leurs dates, puis préparez et contrôlez les dépenses. Les avis du conseil et l’exécution par le syndic restent distincts.",
+    items: {
+      mandates:
+        "Retrouvez les membres, leurs responsabilités et leurs mandats. L’administrateur principal attribue les accès datés depuis une décision documentée.",
+      approvals:
+        "Soumettez une facture, un devis ou une préparation. Les membres du conseil donnent des avis motivés avant l’exécution par le syndic.",
+      accounts:
+        "Examinez les écritures, factures, banques, budgets, contrats et pièces en lecture seule.",
+      controls:
+        "Le contrôleur indépendant prépare une checklist et conserve son rapport avec les pièces et l’état des comptes examinés.",
+      history:
+        "Consultez les mandats, modifications des règles, demandes, avis et rapports avec leur date et leur auteur.",
+      settings:
+        "Choisissez le mode bénévole ou coopératif et documentez la règle de contrôle des dépenses, son seuil et le nombre d’avis requis.",
+    },
+  },
   operations: {
     description:
       "Suivez les travaux, sinistres et échéances de votre immeuble avec leurs pièces et décisions.",
@@ -47,6 +67,8 @@ export const categoryHelp: Record<
     advice:
       "Préparez les textes, copropriétaires et pièces, puis figez les convocations. Enregistrez les preuves d’envoi, les présences et votes, faites signer le PV et suivez ses notifications.",
     items: {
+      guide:
+        "Apprenez à conduire votre première AG en six étapes : quoi préparer, où cliquer et comment vérifier le dossier avant de continuer.",
       preparation:
         "Créez une assemblée et retrouvez les étapes à préparer. Imprimez un dossier de travail regroupant les informations de réunion et les résolutions.",
       presence:

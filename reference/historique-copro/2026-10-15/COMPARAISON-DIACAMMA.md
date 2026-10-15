@@ -1,5 +1,7 @@
 # Comparaison de l'instance locale et de Copro
 
+> Complément du 15 octobre 2026 : les descriptions ci-dessous retracent les livraisons antérieures. Le [cycle comptable](COMPTABILITE-CYCLE.md), l’[AG guidée](AG-OUTILS.md) et l’[audit courant](AUDIT-FONCTIONNALITES.md) remplacent les anciennes listes de fonctions restantes.
+
 Inspection du 13 octobre 2026 de `http://localhost:8080/web/index.html`, connecté
 en administrateur. Consultation des menus et des écrans de configuration sans
 modifier les données de cette instance. Les sources présentes dans `reference/`

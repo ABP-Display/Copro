@@ -1,3 +1,4 @@
+from core.access import is_manager
 """Manual supplier/contract follow-up. Dates do not constitute legal validation."""
 import csv
 import io
@@ -194,7 +195,7 @@ def partners(request, resource, pk=None):
 def notices(request):
     if request.method == 'GET':
         query = Notice.objects.all()
-        if not request.user.is_staff:
+        if not is_manager(request.user):
             query = query.filter(status='published')
         return JsonResponse({'items': [notice_data(item) for item in query]})
     with transaction.atomic():

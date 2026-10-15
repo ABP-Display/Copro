@@ -9,7 +9,7 @@ from django.middleware.csrf import get_token
 from django.views.decorators.http import require_http_methods, require_GET, require_POST
 from .forms import OwnerForm, LotForm
 from .models import Owner, Lot
-from .access import user_data, member_required, provision_access
+from .access import user_data, member_required, provision_access, password_pending, is_manager, active_mandates
 from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -24,10 +24,10 @@ def manager_required(view):
     def wrapped(request, *args, **kwargs):
         if not request.user.is_authenticated:
             return JsonResponse({"error": "Connexion nécessaire."}, status=401)
-        if not request.user.is_staff:
+        if not is_manager(request.user):
             return JsonResponse({"error": "Accès réservé aux gestionnaires."}, status=403)
         owner=getattr(request.user,"owner_profile",None)
-        if owner and owner.must_change_password:
+        if password_pending(request.user):
             return JsonResponse({"error":"Changez votre mot de passe avant d’accéder à la gestion.","code":"password_change_required"},status=403)
         return view(request, *args, **kwargs)
     return wrapped
@@ -84,10 +84,14 @@ def sign_in(request):
         return JsonResponse({"error": "Identifiant et mot de passe requis."}, status=400)
     linked = Owner.objects.select_related("user").filter(email__iexact=username.strip()).exclude(email="").first()
     login_name = linked.user.username if linked and linked.user_id else username.strip()
+    if not linked:
+        external = get_user_model().objects.filter(email__iexact=username.strip(), council_identity__isnull=False).first()
+        if external:
+            login_name = external.username
     user = authenticate(request, username=login_name, password=password)
     if user is None:
         return JsonResponse({"error": "Identifiant ou mot de passe incorrect."}, status=401)
-    if not user.is_staff and not getattr(user, "owner_profile", None):
+    if not is_manager(user) and not getattr(user, "owner_profile", None) and not active_mandates(user).exists():
         return JsonResponse({"error": "Compte sans accès copropriétaire."}, status=403)
     login(request, user)
     return JsonResponse({"user": user_data(user),
@@ -121,7 +125,7 @@ def save_form(request, form_class, serializer, instance=None):
         data = initial | data
     if any(isinstance(value, (dict, list)) for value in data.values()):
         return JsonResponse({"error": "Les champs doivent contenir des valeurs simples."}, status=400)
-    if isinstance(instance,Owner) and instance.user_id and instance.user.is_staff and not str(data.get("email","")).strip():
+    if isinstance(instance,Owner) and instance.user_id and (is_manager(instance.user) or active_mandates(instance.user).exists()) and not str(data.get("email","")).strip():
         return JsonResponse({"error":"Un compte gestionnaire doit conserver un courriel de connexion."},status=400)
     form = form_class(data=data, instance=instance)
     if not form.is_valid():
@@ -162,12 +166,12 @@ def owners(request):
 def lots(request):
     if request.method == "GET":
         items = [lot_data(item) for item in Lot.objects.select_related("owner")]
-        if not request.user.is_staff:
+        if not is_manager(request.user):
             for item in items:
                 item["owner"] = None
                 item["owner_name"] = ""
         return JsonResponse({"items": items})
-    if not request.user.is_staff:
+    if not is_manager(request.user):
         return JsonResponse({"error": "Accès en lecture uniquement."}, status=403)
     return save_form(request, LotForm, lot_data)
 
@@ -179,7 +183,7 @@ def detail(request, pk, model, form, serializer):
         return JsonResponse({"error": "Élément introuvable."}, status=404)
     if request.method == "PATCH":
         return save_form(request, form, serializer, instance)
-    if isinstance(instance,Owner) and instance.user_id and instance.user.is_staff:
+    if isinstance(instance,Owner) and instance.user_id and (is_manager(instance.user) or active_mandates(instance.user).exists()):
         return JsonResponse({"error":"Ce copropriétaire possède un accès gestionnaire. Modifiez d’abord son rôle dans Administration → Utilisateurs."},status=409)
     try:
         with transaction.atomic():
@@ -211,6 +215,8 @@ def owner_access(request, pk):
         data = payload(request)
         with transaction.atomic():
             owner = Owner.objects.select_for_update().get(pk=pk)
+            if owner.user_id and active_mandates(owner.user).exists() and not request.user.is_superuser:
+                return JsonResponse({"error": "La réinitialisation d’un accès au conseil est réservée à l’administrateur principal."}, status=403)
             credentials = provision_access(owner, reset=data.get("reset") is True)
     except Owner.DoesNotExist:
         return JsonResponse({"error": "Copropriétaire introuvable."}, status=404)
@@ -244,5 +250,9 @@ def change_password(request):
         if owner:
             owner.must_change_password = False
             owner.save(update_fields=["must_change_password"])
+        external = getattr(request.user, "council_identity", None)
+        if external:
+            external.must_change_password = False
+            external.save(update_fields=["must_change_password"])
     update_session_auth_hash(request, request.user)
     return JsonResponse({"user": user_data(request.user), "csrfToken": get_token(request)})

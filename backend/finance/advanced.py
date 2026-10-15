@@ -133,6 +133,11 @@ def users(request,pk):
     with transaction.atomic():
         list(User.objects.select_for_update().filter(is_superuser=True).order_by("id"))
         target=User.objects.select_for_update().get(pk=pk)
+        if data.get("is_staff") is True:
+            from council.models import Mandate
+            from django.utils import timezone
+            if Mandate.objects.filter(user=target, role="controller", revoked_at__isnull=True, ends_on__gte=timezone.localdate()).exists():
+                raise ValueError("Terminez le mandat de contrôle indépendant avant d’accorder un accès permanent de gestion.")
         if target.is_superuser and (data.get("is_active") is False or data.get("is_staff") is False):raise ValueError("Le compte administrateur principal ne peut pas être désactivé ou rétrogradé ici.")
         if target.pk==request.user.pk:raise ValueError("Votre propre accès ne peut pas être modifié ici.")
         for key,value in data.items():setattr(target,key,value)

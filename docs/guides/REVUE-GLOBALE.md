@@ -1,85 +1,38 @@
-# Revue de Copro — mise à jour du 14 octobre 2026
+# Revue globale de Copro.
 
-Cette revue porte sur le code natif React/Django, les accès et les parcours
-disponibles. Elle ne certifie pas une reprise intégrale de Diacamma, la conformité
-des comptes ou tous les scénarios possibles du code de référence.
+État du 15 octobre 2026. Le suivi courant repose sur le cahier bénévole/coopératif et
+l’[audit détaillé](AUDIT-FONCTIONNALITES.md). La [couverture](COUVERTURE-FONCTIONNELLE.md)
+distingue les parcours utilisables des exigences encore partielles.
 
-## Navigation et personnes débutantes
+## Accès et collaboration
 
-- Le titre ou l'icône d'une catégorie ouvre une présentation de son rôle.
-- Les cartes expliquent chaque section et ouvrent directement son écran.
-- La flèche du menu déroule les raccourcis sans imposer la présentation.
-- Le volet se réduit aux icônes sur ordinateur ; les libellés apparaissent au
-  survol et au focus clavier. La préférence est mémorisée dans ce navigateur.
-- La barre de défilement est masquée, mais le défilement reste actif.
-- Sur mobile, le volet conserve les libellés et se ferme après une navigation.
-- Chaque sous-page a une explication contextualisée. Les termes « analytique »,
-  « contrepassation » et les soldes individuels sont expliqués avant utilisation.
-- L'action de création d'exercice s'appelle « Nouvel exercice ». Un exercice
-  figé est nommé « verrouillé », pour le distinguer d'une clôture complète.
-- Les factures montrent payé/reste à payer et l'historique des règlements.
-- Un document est privé lors du dépôt. Le partage fait l'objet d'une confirmation
-  qui explique son accès par tous les copropriétaires connectés.
+Les comptes copropriétaires voient leur compte et les informations explicitement publiées.
+Le conseil et le contrôleur ont une consultation des pièces de gestion adaptée à leur
+mission. Les mandats datés et l’accès permanent de gestion sont distingués. Les contrôles
+sont appliqués aux API et aux fichiers, pas seulement aux boutons de l’interface.
 
-## Corrections fonctionnelles et de confidentialité
+La préparation des dépenses, les avis du conseil et leur comptabilisation sont séparés.
+Les avis motivés, retraits, désignations et rapports sont conservés avec leur auteur et
+leur date. Un contrôleur ne réécrit pas son rapport après finalisation ; les changements
+des comptes depuis son contrôle sont signalés.
 
-- Accès direct à la saisie manuelle préservé après la réorganisation du menu.
-- Règlements fournisseurs partiels, validation du reste à payer et protection
-  des paiements contre une contrepassation manuelle incohérente.
-- Migration des anciens règlements complets sans nouvelle écriture comptable.
-- Balance auxiliaire des copropriétaires avec solde antérieur à la période.
-  Ces données restent réservées aux gestionnaires.
-- Documents, dossiers, versions et archivage réversible. L'API de téléchargement
-  vérifie la session et le partage ; connaître l'identifiant d'un document privé
-  ne suffit pas à le télécharger. Les anciennes versions sont privées.
-- Modifier des coordonnées ou réinitialiser un mot de passe ne réactive plus un
-  compte suspendu par l'administrateur principal.
-- Un propriétaire lié à un accès gestionnaire ne peut pas être supprimé ou privé
-  de courriel depuis l'annuaire. Son rôle doit être traité dans l'administration.
-- Le changement obligatoire du mot de passe temporaire reste applicable après
-  une promotion au rôle gestionnaire.
+## Parcours et utilisation
 
-## Optimisations
+Les menus sont regroupés par thèmes. Une catégorie présente ses sous-pages et leur rôle ;
+sa flèche ouvre les raccourcis. Le menu peut être réduit et conserve une navigation mobile.
+Le guide AG explique les étapes, vérifications, termes et difficultés courantes.
 
-- Les pages comptables et financières chargent leurs ressources utiles plutôt
-  que l'ensemble des modules, des écritures et des utilisateurs à chaque ouverture.
-- Une réponse ancienne ne remplace plus les données d'une nouvelle sous-page.
-- Le chargement des écritures ne lance plus une requête de contrepassation par
-  ligne. Un test vérifie que le nombre de requêtes reste constant quand la liste
-  passe d'une à six écritures.
-- Les comptes liés aux propriétaires sont préchargés dans l'annuaire.
-- Les comptes inactifs ne sont plus proposés dans la saisie comptable simple.
+Les opérations financières passent par les parcours métier : écritures équilibrées,
+répartitions, contrôle des règlements, rapprochement, régularisation et clôture. L’AG
+conserve les données de séance et les preuves des opérations réalisées à l’extérieur.
 
-## Vérifications
+## Vérifications et suites
 
-112 tests Django sur PostgreSQL, compilation TypeScript/Vite, vérification des
-migrations et contrôles manuels des menus, catégories et formulaires sur ordinateur
-et mobile. Les tests utilisent une base séparée et des fichiers temporaires.
-La vérification dans le navigateur ne remplace pas un test utilisateur avec les
-futurs gestionnaires bénévoles et des opérations représentatives de leur immeuble.
+Les tests utilisent PostgreSQL et des pièces temporaires. La compilation TypeScript/Vite
+et les contrôles navigateur complètent les tests métier et de permissions. Les décomptes
+et résultats du dernier contrôle sont dans l’audit courant.
 
-## Reprise Diacamma encore nécessaire
-
-La présence des sources dans `reference/` n'est pas une intégration native.
-Le détail reste dans `REPRISE-DIACAMMA.md` et l'inventaire des actions.
-
-Priorités fonctionnelles restantes : régularisation des charges et mutations,
-reprise de comptes fournisseurs historiques, lettrage, rapprochement bancaire, remises de
-chèques, reports/clôture complète et annexes de copropriété ; ensuite imports,
-publipostage, modèles d'impression et permissions documentaires fines.
-Les votes/AG n'ont pas été trouvés dans les modules Diacamma installés. Un premier
-module natif de préparation et de simulation est livré ; le déroulement officiel
-(convocations, présences, pouvoirs, signatures et notifications de PV) reste à développer.
-
-L'application gère toujours une seule copropriété. Le sélecteur prépare son
-évolution visuelle ; il n'ajoute pas une isolation de données entre immeubles.
-Les fichiers documentaires et PostgreSQL sont dans deux volumes distincts à
-sauvegarder ensemble. Une interface de sauvegarde/restauration n'est pas livrée.
-Les fonctions financières avancées doivent être comparées à des cas Diacamma
-représentatifs avant de considérer leur parité comme vérifiée.
-
-L’[audit du cahier fourni](AUDIT-FONCTIONNALITES.md) ajoute un suivi exhaustif
-des 155 exigences des sections 4 à 7, avec preuves et priorités. L’annuaire
-fournisseurs, les contrats/préavis, les attestations et les annonces sont livrés
-pour un suivi manuel. Les auxiliaires fournisseurs natifs, banques et budgets commentés sont aussi livrés.
-Restent les commandes, circuits de validation du conseil et obligations contextualisées.
+Les prochaines priorités sont la sauvegarde/restauration vérifiée, la fiabilisation des
+modèles et cas réglementaires, le calendrier annuel, les travaux/sinistres et la reprise
+des données. La gestion réelle de plusieurs copropriétés nécessite encore une isolation
+complète des données. Voir les [prochains chantiers](PROCHAINS-CHANTIERS.md).

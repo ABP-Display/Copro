@@ -165,6 +165,8 @@ def bank_for_posting(pk=None):
 
 def pay_expense(expense, day, value, user, bank_pk=None, year_pk=None):
     """Caller locks expense in an atomic transaction; legacy payments are migrated."""
+    from council.services import ensure_approved
+    ensure_approved("expense", expense)
     paid = expense.payments.filter(entry__reversal__isnull=True).aggregate(total=Sum("amount"))["total"] or Decimal("0")
     if Entry.objects.filter(reversal_of_id=expense.entry_id).exists():raise ValueError('Cette facture a été annulée.')
     remaining = expense.amount - paid
@@ -191,6 +193,26 @@ def pay_expense(expense, day, value, user, bank_pk=None, year_pk=None):
         expense.payment_entry = entry
         expense.save(update_fields=["payment_entry"])
     return entry
+
+
+def record_expense(data, user):
+    from .forms import ExpenseForm
+    from .models import CostCenter
+    form = ExpenseForm(data)
+    if not form.is_valid():
+        raise ValueError(" · ".join(" ".join(v) for v in form.errors.values()))
+    item = form.instance
+    year = open_year(item.year_id, item.date)
+    center = CostCenter.objects.get(pk=data["cost_center"]) if data.get("cost_center") else None
+    code = str(data.get("charge_code") or ("671" if item.project_id else "601"))
+    if not code.startswith("6") or code.startswith("67") != bool(item.project_id):
+        raise ValueError("Choisissez un compte courant 6 ou de travaux 67 avec son opération.")
+    item.entry = post_entry(year, item.date, "AC", item.label, [
+        {"code": code, "debit": item.amount, "key": item.key, "project": item.project},
+        {"code": "401", "credit": item.amount, "supplier": item.supplier_record, "due_date": item.due_date or item.date},
+    ], user, item.reference, cost_center=center)
+    item.save()
+    return item
 
 
 def public_summary(year):

@@ -5,7 +5,13 @@ import { Empty, Icon } from "./ui";
 import { VoteCalculator, majorityLabels, type ToolData } from "./Tools";
 import { AssemblyWorkflow } from "./AssemblyWorkflow";
 
-export function Assemblies({ section }: { section: string }) {
+export function Assemblies({
+  section,
+  onGuide,
+}: {
+  section: string;
+  onGuide: () => void;
+}) {
   const [meetings, setMeetings] = useState<ToolData[]>([]);
   const [selected, setSelected] = useState("");
   const [error, setError] = useState("");
@@ -60,6 +66,12 @@ export function Assemblies({ section }: { section: string }) {
     });
   return (
     <section className="assembly-space">
+      <div className="assembly-guide-entry">
+        <button onClick={onGuide}>
+          <Icon name="book" size={15} />
+          Besoin d’aide ? Suivre le guide
+        </button>
+      </div>
       {error && (
         <div className="alert" role="alert">
           {error}

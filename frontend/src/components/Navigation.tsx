@@ -8,6 +8,18 @@ export const sections: Record<
   string,
   { label: string; icon: string; items: [string, string][] }
 > = {
+  council: {
+    label: "Conseil syndical",
+    icon: "shield",
+    items: [
+      ["mandates", "Composition & mandats"],
+      ["approvals", "Dépenses à valider"],
+      ["accounts", "Consulter les comptes"],
+      ["controls", "Contrôle indépendant"],
+      ["history", "Historique du conseil"],
+      ["settings", "Mode & règles"],
+    ],
+  },
   operations: {
     label: "Travaux & entretien",
     icon: "building",
@@ -34,6 +46,7 @@ export const sections: Record<
     label: "Assemblées générales",
     icon: "calendar",
     items: [
+      ["guide", "Guide d’utilisation"],
       ["preparation", "Préparer une AG"],
       ["presence", "Présences & droits de vote"],
       ["agenda", "Ordre du jour & simulations"],
@@ -132,7 +145,7 @@ export const navigationThemes = [
   { label: "Entretien & prestataires", pages: ["operations", "partners"] },
   {
     label: "Vie de la copropriété",
-    pages: ["assemblies", "communication", "documents"],
+    pages: ["council", "assemblies", "communication", "documents"],
   },
   { label: "Outils & paramètres", pages: ["tools", "administration"] },
 ];

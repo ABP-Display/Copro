@@ -2,6 +2,13 @@ import secrets
 from functools import wraps
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
+from council.access import is_manager, active_mandates, capabilities
+
+
+def password_pending(user):
+    owner = getattr(user, "owner_profile", None)
+    external = getattr(user, "council_identity", None)
+    return bool(owner and owner.must_change_password or external and external.must_change_password)
 
 
 def former_owner(owner):
@@ -18,12 +25,16 @@ def former_owner(owner):
 def user_data(user):
     owner = getattr(user, "owner_profile", None)
     return {
-        "username": user.email if owner else user.username,
-        "is_manager": user.is_staff,
+        "id": user.pk,
+        "username": user.email if owner or getattr(user, "council_identity", None) else user.username,
+        "is_manager": is_manager(user),
         "is_admin": user.is_superuser,
-        "must_change_password": bool(owner and owner.must_change_password),
+        "must_change_password": password_pending(user),
         "is_former_owner": former_owner(owner),
-        "display_name": str(owner) if owner else user.username,
+        "display_name": str(owner) if owner else user.get_full_name() or user.username,
+        "has_owner": owner is not None,
+        "capabilities": sorted(capabilities(user)),
+        "roles": list(active_mandates(user).values_list("role", flat=True)),
     }
 
 
@@ -33,11 +44,11 @@ def member_required(view):
         if not request.user.is_authenticated:
             return JsonResponse({"error": "Connexion nécessaire."}, status=401)
         owner = getattr(request.user, "owner_profile", None)
-        if not request.user.is_staff and (owner is None or not owner.email):
+        if not is_manager(request.user) and not active_mandates(request.user).exists() and (owner is None or not owner.email):
             return JsonResponse(
                 {"error": "Compte sans accès copropriétaire."}, status=403
             )
-        if owner and owner.must_change_password:
+        if password_pending(request.user):
             return JsonResponse(
                 {
                     "error": "Changez votre mot de passe pour accéder aux données.",
@@ -46,7 +57,8 @@ def member_required(view):
                 status=403,
             )
         if (
-            not request.user.is_staff
+            not is_manager(request.user)
+            and not active_mandates(request.user).exists()
             and former_owner(owner)
             and not getattr(view, "allow_former_owner", False)
         ):
@@ -76,7 +88,7 @@ def provision_access(owner, reset=False):
     password = secrets.token_urlsafe(18)
     if owner.user_id:
         user = owner.user
-        if user.is_staff or user.is_superuser:
+        if is_manager(user):
             raise ValueError(
                 "Un compte gestionnaire ne peut pas être réinitialisé ici."
             )

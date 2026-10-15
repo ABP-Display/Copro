@@ -62,6 +62,7 @@ export function AssemblyWorkflow({
   const [execution, setExecution] = useState<Row | null>(null);
   useEffect(() => {
     let active = true;
+    setData(null);
     Promise.all([
       api<Row>(`ag/meetings/${meeting.id}/workflow`),
       api<Row>("ag/workflow-context"),
@@ -374,7 +375,7 @@ export function AssemblyWorkflow({
             minutes={data.minutes}
             participants={data.participants}
             view="attendance"
-              fixed
+            fixed
             onView={setPrintView}
           />
         </>
@@ -1801,23 +1802,25 @@ function PrintDocuments({
           Imprimer ce document
         </button>
       </div>
-      {!fixed && <div className="ag-document-switch ag-no-print">
-        {[
-          ["invitation", "Convocation"],
-          ["attendance", "Feuille de présence"],
-          ["correspondence", "Vote par correspondance"],
-          ["power", "Pouvoir"],
-          ...(minutes.resolutions ? [["minutes", "Procès-verbal"]] : []),
-        ].map(([value, label]) => (
-          <button
-            className={`button ${view === value ? "primary" : "secondary"}`}
-            key={value}
-            onClick={() => onView(value)}
-          >
-            {label}
-          </button>
-        ))}
-      </div>}
+      {!fixed && (
+        <div className="ag-document-switch ag-no-print">
+          {[
+            ["invitation", "Convocation"],
+            ["attendance", "Feuille de présence"],
+            ["correspondence", "Vote par correspondance"],
+            ["power", "Pouvoir"],
+            ...(minutes.resolutions ? [["minutes", "Procès-verbal"]] : []),
+          ].map(([value, label]) => (
+            <button
+              className={`button ${view === value ? "primary" : "secondary"}`}
+              key={value}
+              onClick={() => onView(value)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
       <article className="ag-print-document">
         <p className="eyebrow">{packet.organizer}</p>
         <h2>

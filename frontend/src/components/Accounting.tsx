@@ -362,7 +362,7 @@ export function Accounting({
                     void run("finance/operations/initialize-chart/1")
                   }
                 >
-                  Compléter le plan français Diacamma
+                  Compléter le plan comptable français
                 </button>
               )}
             </div>

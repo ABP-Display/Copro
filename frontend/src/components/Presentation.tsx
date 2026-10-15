@@ -8,7 +8,7 @@ const home = pagesOnly ? import.meta.env.BASE_URL : "/presentation";
 const loginUrl = pagesOnly
   ? "https://copro.ydoxide.fr/connexion"
   : "/connexion";
-const repository = "https://github.com/Ydoxide/copro.";
+const repository = "https://github.com/abp-display/Copro";
 const modules = [
   {
     icon: "calendar",
@@ -94,7 +94,7 @@ const roadmap = [
   ],
 ];
 const setup = {
-  docker: `git clone https://github.com/Ydoxide/copro..git copro\ncd copro\ncp .env.example .env\n# Renseigner les trois secrets avant de démarrer\ndocker compose up -d --build\ndocker compose ps`,
+  docker: `git clone https://github.com/abp-display/Copro.git copro\ncd copro\ncp .env.example .env\n# Renseigner les trois secrets avant de démarrer\ndocker compose up -d --build\ndocker compose ps`,
   native: `# Backend : Python 3.12, environnement virtuel activé\ncd backend\npip install -r requirements.txt\n# Définir DJANGO_SECRET_KEY et ADMIN_PASSWORD\npython manage.py migrate\npython manage.py createsuperuser\npython manage.py runserver 127.0.0.1:8000\n\n# Dans un second terminal : Node.js 22\ncd frontend\nnpm ci\nnpm run dev`,
 };
 export function Presentation() {
@@ -315,7 +315,8 @@ export function Presentation() {
                 <strong>À chacun son espace.</strong> Les gestionnaires
                 préparent et modifient les données. Les copropriétaires
                 consultent les informations globales et les documents publiés.
-                Les gestionnaires enregistrent les votes de séance ; les membres retrouvent les résumés de décisions publiés.
+                Les gestionnaires enregistrent les votes de séance ; les membres
+                retrouvent les résumés de décisions publiés.
               </p>
             </div>
           </div>
@@ -422,7 +423,7 @@ export function Presentation() {
               ))}
             </div>
             <p className="roadmap-note">
-              La reprise des fonctionnalités de Diacamma est progressive. Le
+              Le développement des fonctionnalités de Copro. est progressif. Le
               projet actuel ne propose pas de certification de conformité, de
               migration automatique des données ni d’IA entraînée pour le
               syndic.
@@ -445,8 +446,8 @@ export function Presentation() {
                 "Cette page présente un logiciel à installer. Il n’existe pas d’inscription publique ni de service d’hébergement fourni par ce projet. Les accès sont créés par le gestionnaire de l’instance.",
               ],
               [
-                "Est-ce que toutes les fonctions de Diacamma sont reprises ?",
-                "Non. La référence Diacamma est conservée, mais la nouvelle interface et ses modules sont développés progressivement. Des parcours financiers avancés et les procédures complètes d’AG restent à compléter.",
+                "Peut-on déjà conduire les parcours comptables et une AG ?",
+                "Oui, les parcours comptables et l’AG menée par le gestionnaire sont disponibles. Les signatures et notifications se font à l’extérieur, avec leurs preuves conservées. Les cas particuliers, modèles réglementaires et services connectés restent à approfondir.",
               ],
               [
                 "L’IA gère-t-elle déjà la copropriété ?",

@@ -75,7 +75,8 @@ Le plan et les comptes de régularisation s'appuient sur
 l'[arrêté du 14 mars 2005](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000258165).
 Le mode simplifié des petites copropriétés, les formats bancaires OFX/CFONB,
 les ordres SEPA, les cas fiscaux spécifiques et le dossier de mutation notarial
-complet restent à développer. Les décisions saisies seront reliées au parcours AG.
+complet restent à développer. Les décisions saisies peuvent désormais être reliées
+au vote adopté et au PV signé dans le [parcours AG](AG-OUTILS.md).
 
 Les réessais portant le même identifiant d'opération ne créent pas de double
 règlement. Les corrections, décisions, rapprochements et clôtures sont journalisés.

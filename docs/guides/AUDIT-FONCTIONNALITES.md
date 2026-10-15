@@ -1,8 +1,8 @@
 # État de Copro. — syndics bénévoles et coopératifs
 
-Revue du **14 octobre 2026**, après livraison des parcours comptables et AG, sur le [cahier fourni](../reference/cahier-fonctionnalites.md).
+Revue du **15 octobre 2026**, après livraison des parcours comptables, AG et conseil syndical, sur le [cahier fourni](../reference/cahier-fonctionnalites.md).
 
-**Le cycle comptable et une AG conduite par le gestionnaire avec papier/scans et notifications extérieures sont utilisables.** Les services connectés, le mode simplifié, les modèles réglementaires à valider et la gouvernance coopérative restent à compléter. Aucun pourcentage de conformité ou de parité Diacamma.
+**Le cycle comptable et une AG conduite par le gestionnaire avec papier/scans et notifications extérieures sont utilisables.** Les services connectés, le mode simplifié, les modèles réglementaires à valider et les cas particuliers de gouvernance restent à compléter. Aucun pourcentage de conformité globale.
 
 ## Périmètre et lecture du comptage
 
@@ -10,9 +10,9 @@ Une instance gère une copropriété. Le sélecteur visuel ne cloisonne pas plus
 
 | État des exigences | Nombre |
 | --- | ---: |
-| Complètes dans les limites indiquées | 18 |
-| Partielles | 91 |
-| Absentes | 47 |
+| Complètes dans les limites indiquées | 19 |
+| Partielles | 94 |
+| Absentes | 43 |
 | Total | 156 |
 
 Avant ces parcours : **6 complètes, 84 partielles, 66 absentes**. L’[instantané précédent](../reference/historique/2026-10-14-avant-parcours/audit-fonctionnalites.json) est conservé. Le [premier audit général](../reference/historique/2026-10-14-general/README.md) portait sur un autre cahier, avec fonctions de cabinet.
@@ -23,14 +23,14 @@ Avant ces parcours : **6 complètes, 84 partielles, 66 absentes**. L’[instanta
 | --- | --- | --- |
 | Comptabilité | Reprise, factures/appels spécialisés, règlements et lettrage, banque CSV, fonds/travaux, régularisation, clôture et reports, mutations, corrections et exports | États annuels préparatoires ; mode simplifié, minima du fonds, fiscalité particulière et SEPA connectés absents |
 | AG | Bibliothèque/pièces, corps électoral figé, convocations/preuves, présences/pouvoirs, votes enregistrés, PV/scans, notifications/recours, décisions et résumé publié | Gestionnaire opérateur ; aucun prestataire de signature/LRE, visio ou vote direct des membres ; modèles et cas particuliers à vérifier |
-| Conseil et coopératif | Mandats de membres copropriétaires du conseil liés aux votes | Présidence/syndic coopératif, contrôle indépendant, rôles fins et validations du conseil absents |
+| Conseil et coopératif | Mandats datés, droits ciblés, présidence/syndic coopératif, préparation des dépenses, avis motivés, lecture des pièces et contrôle indépendant | Réunions, délégations collectives, personnes/cas dérogatoires et passation à compléter |
 | Immeuble / extranet | Lots/tantièmes/annuaire, compte personnel et publications ; ancien vendeur sans lot limité au compte individuel | Bâtiments, indivision, occupants, messagerie et isolation multi-copropriété à compléter |
-| Travaux et prestataires | Dossiers, devis, contrats, attestations et opérations financières créées depuis les décisions | Chantier/réception/garanties, commandes et validations du conseil à compléter |
+| Travaux et prestataires | Dossiers, devis, contrats, attestations et opérations financières créées depuis les décisions | Chantier/réception/garanties, commandes et mise en concurrence formalisée à compléter |
 | Exploitation | Contrôles serveur, CSRF, fichiers privés, conteneurs, sauvegarde avant migrations et tests séparés | 2FA, restauration automatisée testée, audit inaltérable, RGPD et sauvegarde complète à structurer |
 
 Guides : [cycle comptable](COMPTABILITE-CYCLE.md), [AG de préparation à archivage](AG-OUTILS.md), [périmètre produit](PERIMETRE-PRODUIT.md). Les opérations sensibles demandent une confirmation dans l’application et conservent une trace ; aucun envoi extérieur automatique ni moteur IA puissant.
 
-Prochain chantier : responsabilités et gouvernance bénévole/coopérative, puis modes/cas particuliers, sauvegarde/restauration et prestataires choisis selon les besoins.
+Prochain chantier : sauvegarde/restauration vérifiée et fiabilisation des modèles/cas réglementaires. Voir la [feuille de route](PROCHAINS-CHANTIERS.md) et le [guide du conseil](CONSEIL-SYNDICAL.md).
 
 ## Règles à interpréter correctement
 
@@ -41,25 +41,25 @@ Prochain chantier : responsabilités et gouvernance bénévole/coopérative, pui
 
 ## Vérification
 
-**147 tests PostgreSQL**, compilation TypeScript/Vite, migrations et contrôles visuels sur copie isolée fictive, y compris mobile. Les données réelles ont été sauvegardées avant migration ; aucun vote réel, envoi ou écriture d’essai n’a été créé pour la vérification. Les tests et documents ne constituent pas une certification juridique ou comptable.
+**172 tests PostgreSQL**, dont 25 sur le conseil et ses permissions, compilation TypeScript/Vite, migrations et contrôles visuels sur copie isolée fictive, y compris mobile. Les données réelles ont été sauvegardées avant migration ; aucun vote réel, envoi ou écriture d’essai n’a été créé pour la vérification. Les tests et documents ne constituent pas une certification juridique ou comptable.
 
-Les accès restent fondés sur administrateur/gestionnaire/copropriétaire. Un mandat inscrit ne donne pas un rôle informatique au conseil. Les JSON exportent les données, sans les fichiers de pièces.
+Les accès du conseil et du syndic dépendent des mandats actifs ; les accès permanents d’administration/gestion restent distincts. Les rôles sont contrôlés côté serveur. Les JSON exportent les données, sans les fichiers de pièces.
 
 ## Rôles
 
 | Rôle | État | Constat |
 | --- | --- | --- |
-| Administrateur de la plateforme | partiel | Paramétrage et activation/rôle gestionnaire ; aucune gestion de plusieurs copropriétés. |
-| Syndic bénévole | partiel | Droits gestionnaire globaux et mandat daté lié au PV ; permissions par mandat/rôle et passation encore absentes. |
-| Syndic coopératif / président | absent | Mode coopératif, mandat du conseil et fonctions cumulées non modélisés. |
-| Trésorier / référent comptable | absent | Aucun droit délégué par module ni restriction spécifique de clôture. |
-| Président du conseil en mode bénévole | absent | Aucun rôle de consultation étendue ou validation dédiée. |
-| Membre du conseil syndical | partiel | Mandat d’un membre copropriétaire lié au vote/PV et durée ; pas de droits propres au conseil ni workflow de contrôle. |
+| Administrateur de la plateforme | partiel | Administrateur principal : attribution/retrait des accès, règles et comptes externes tracés. Une copropriété seulement ; sécurité forte et passation à compléter. |
+| Syndic bénévole | partiel | Mandat de syndic bénévole donnant accès à la gestion pendant sa période, désignation documentée et retrait motivé. Indemnités et passation complète à compléter. |
+| Syndic coopératif / président | partiel | Président/syndic coopératif avec droits de gestion dépendants du mandat de membre du conseil ; contrôle séparé. Cas dérogatoires et gouvernance collective avancée à compléter. |
+| Trésorier / référent comptable | partiel | Lecture des comptes, dépôt de pièces et préparation/correction de factures sans écriture ni règlement. Préparation des appels/budgets et rapprochement délégués restent à étendre. |
+| Président du conseil en mode bénévole | partiel | Mandat de présidence lié au mandat de membre du conseil ; lecture et avis motivés sans droits de gestion. Réunions et délégations détaillées absentes. |
+| Membre du conseil syndical | partiel | Mandats datés, accès de lecture aux pièces et comptes, avis du conseil distincts de la préparation. Réunions, tâches et délégations détaillées à compléter. |
 | Copropriétaire | partiel | Compte personnel, données globales et publications, résumés d’AG signées ; ancien vendeur sans lot limité au compte individuel. Pas de paiement en ligne ni vote direct du membre. |
 | Occupant (optionnel) | absent | Aucun rôle ou portail de signalement. |
 | Fournisseur (optionnel) | absent | Annuaire disponible mais sans compte utilisateur fournisseur. |
 | Notaire (optionnel) | absent | Pas d’accès temporaire ni dossier de mutation. |
-| Contrôleur des comptes / expert externe | absent | Pas de lecture comptable dédiée et temporaire ; prévoir le contrôle en mode coopératif, sans imposer un expert externe. |
+| Contrôleur des comptes / expert externe | complet | Contrôleur propriétaire ou extérieur, compte temporaire protégé, accès de lecture, dépôt de pièces, rapport indépendant final avec preuves et état comptable contrôlé. Aucun droit de gestion ou d’avis du conseil ; pas de réécriture du rapport final. |
 
 ## Besoins transverses
 
@@ -68,7 +68,7 @@ Les accès restent fondés sur administrateur/gestionnaire/copropriétaire. Un m
 | Gestion d’une ou plusieurs copropriétés | absent | Une seule organisation (pk=1) et aucun lien de copropriété sur les propriétaires/lots/opérations. Le sélecteur visuel ne fournit pas d’isolation. Évolution non professionnelle toujours dans la cible ; commencer par fiabiliser une copropriété. |
 | Mode comptable simplifié pour les petits syndicats | absent | Paragraphe nouveau hors des puces comptées : aucun choix de régime, calcul d’éligibilité ou parcours simplifié. Les articles 41-8 et 41-10 doivent guider les règles ; les engagements restent à constater en fin d’exercice. |
 
-## Les 58 fonctions utilisables de périmètre plus étroit
+## Les 64 fonctions utilisables de périmètre plus étroit
 
 | Fonction | Disponible | Limite |
 | --- | --- | --- |
@@ -115,7 +115,7 @@ Les accès restent fondés sur administrateur/gestionnaire/copropriétaire. Un m
 | Banques | Comptes distincts, association au compte existant, solde comptable à date et compte par défaut. | Solde comptable ; rapprochement CSV assisté maintenant disponible. Pas de connexion bancaire ou calcul automatique des minima légaux du fonds. |
 | Transferts enregistrés | Écriture équilibrée entre banques, référence et protection contre les doublons lors d’une nouvelle tentative. | Transfert déjà effectué, aucun ordre envoyé ; affichage des 100 derniers. |
 | Comptes fournisseurs | Balance auxiliaire 40, solde antérieur, règlements et dette finale par fournisseur, filtres et CSV. | Sur l’exercice sélectionné avec reports ; lettrage et paiement des soldes repris disponibles dans le cycle comptable. |
-| Reprise des soldes | Balance initiale équilibrée, tiers et fonds par lot, correction conservée. | Pas d’import Excel/Diacamma automatique. |
+| Reprise des soldes | Balance initiale équilibrée, tiers et fonds par lot, correction conservée. | Pas d’import automatique de données externes. |
 | Affectation des règlements | Lettrage partiel par tiers, montants restants, annulation contrôlée, paiement de dette fournisseur reprise. | Affectation confirmée par gestionnaire ; pas de prélèvement connecté. |
 | Rapprochement bancaire | CSV normalisé, suggestions, pointage groupé, soldes, transit justifié et validation. | Pas de CFONB/OFX/agrégateur. |
 | Régularisation annuelle | Répartitions figées, delta par clé/lot, propriétaire à l’approbation et écriture traçable. | Décision/PV à vérifier ; aucune convention privée de prorata supposée. |
@@ -130,6 +130,12 @@ Les accès restent fondés sur administrateur/gestionnaire/copropriétaire. Un m
 | PV et registre | PV depuis votes, versions signées/présence, historique et archivage contrôlé. | Scans/signatures extérieures ; modèle non certifié. |
 | Notifications et recours | Destinataires opposants/défaillants, preuves/dates, alertes et suivi de recours déclaré. | Pas de LRE/courrier connecté ni dépôt judiciaire. |
 | Décisions exécutées | Régularisation, budget, appels en brouillon, projets, mandats et résumé publié depuis PV signé. | Paramètres recopiés/confirmés ; présidence coopérative et rôles fins absents. |
+| Mandats et accès datés | Désignation documentée, dates, présidence dépendante, retrait motivé et droits contrôlés par le serveur. | Copropriétaires avec compte pour les fonctions de conseil ; droits permanents de gestion distincts. |
+| Consultation du conseil | Factures, écritures, banques/relevés, budget, contrats, travaux et pièces sans droits de gestion. | Une seule copropriété ; documents consultables par l’équipe habilitée. |
+| Préparation par un trésorier | Déposer une pièce, préparer/corriger une dépense et la soumettre ; reprise comptable explicite par le syndic. | Appels, budgets et rapprochement délégués non couverts par ce rôle. |
+| Avis du conseil | Dossier et preuve conservés, quorum de personnes distinctes, refus motivé et contrôle avant sélection/règlement. | Contrôle interne ; ne vaut pas délégation juridique ni ordre bancaire. |
+| Contrôle indépendant | Checklist, observations, pièces, conclusion, rapport final conservé et changements ultérieurs détectés. | Rapport téléchargé en Markdown sans les fichiers joints ; rapport de mission propre au conseil à compléter. |
+| Organisation et traçabilité du conseil | Mode bénévole/coopératif et règles documentées ; historique des accès, avis et rapports. | Réunions, délégations collectives, cas dérogatoires et passation complète à compléter. |
 
 ## Évaluation des 156 exigences
 
@@ -162,7 +168,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.2.07 | Appels de fonds pour travaux votés (provisions spéciales hors budget) avec échéancier voté en AG. | complet | Projets de travaux, comptes 102/67/120, financement et calendrier référencés ; un vote adopté et signé crée l’opération et les appels en brouillon, puis la publication répartit par lot/clé. |
 | 4.2.08 | Fonds de travaux (loi ALUR) : cotisation obligatoire (minimum 5 % du budget prévisionnel, sauf exceptions), suivi par lot, attaché au lot et non remboursable au vendeur, placement sur compte dédié. | partiel | Fonds 105 par lot, appelé/versé lettré/affecté/disponible, banque travaux dédiée, fonds versé attaché au lot après vente. Calcul automatique des minima/exemptions/PPT à développer. |
 | 4.2.09 | Avances (trésorerie permanente, avances de travaux) et leur suivi par copropriétaire. | partiel | Appels d’avance 1031 par lot/propriétaire et compte 450 ; décisions et paiements suivis. Remboursement spécialisé des avances et cas de vente restent à compléter. |
-| 4.2.10 | Saisie des factures fournisseurs, OCR et reconnaissance automatique, workflow de validation (gestionnaire → conseil syndical selon les seuils). | partiel | Facture rattachée à un fournisseur réel ou saisi librement, pièce de GED liée et dette auxiliaire enregistrée. Ajouter OCR et circuit de validation selon seuils/conseil. |
+| 4.2.10 | Saisie des factures fournisseurs, OCR et reconnaissance automatique, workflow de validation (gestionnaire → conseil syndical selon les seuils). | partiel | Factures avec fournisseur et pièce, préparation sans écriture par un trésorier, demandes figées, avis du conseil et seuil/quorum contrôlés avant règlement. OCR absent. |
 | 4.2.11 | Règlements fournisseurs : chèques, virements, fichiers SEPA, prélèvement. | partiel | Paiements partiels dans l’exercice ouvert et banque choisie, lettrage fournisseur, dettes initiales payables et corrections conservées. Pas d’ordre bancaire, fichier SEPA ou prélèvement connecté. |
 | 4.2.12 | Encaissements copropriétaires : chèque, virement, prélèvement SEPA, carte bancaire en ligne, lettrage automatique. | partiel | Encaissements et affectations exactes au même tiers, protection contre réessai double, échéances et crédits visibles. Pas de carte, mandat SEPA ou connexion bancaire. |
 | 4.2.13 | Compte bancaire séparé au nom de chaque syndicat : le logiciel doit empêcher la confusion des fonds. | partiel | Fiches bancaires privées avec compte comptable distinct et historique conservé pour la copropriété actuelle. Cloisonnement multi-copropriété et vérification de titulaires/conformité bancaire manquants. |
@@ -223,11 +229,11 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 
 | ID | Exigence | État | Constat |
 | --- | --- | --- | --- |
-| 4.6.01 | Composition et mandats (durée, renouvellement), rôle (président, membres). | absent | Créer mandats, membres, président et dates de renouvellement. |
-| 4.6.02 | Espace dédié : budget en temps réel, factures, contrats, travaux, relevés bancaires (consultation selon droits). | absent | Créer rôle conseil syndical et accès dédiés ; le rôle gestionnaire actuel donne trop de droits pour cet usage. |
-| 4.6.03 | Validation en ligne des devis, engagements de dépenses, mises en concurrence. | partiel | Sélection d’un devis par gestionnaire présente. Ajouter validation du conseil, seuils et droits distincts. |
+| 4.6.01 | Composition et mandats (durée, renouvellement), rôle (président, membres). | partiel | Composition, responsabilités, dates, pièces, renouvellement par nouveau mandat et retrait motivé ; droits effectifs selon les mandats. Parcours limité aux copropriétaires avec accès pour les fonctions de conseil ; autres personnes éligibles et suivi avancé des renouvellements à compléter. |
+| 4.6.02 | Espace dédié : budget en temps réel, factures, contrats, travaux, relevés bancaires (consultation selon droits). | complet | Espace dédié en lecture : budget/réalisé, balance, écritures, factures/règlements, banques, relevés/rapprochements, contrats, travaux/sinistres et pièces versionnées. Accès contrôlé côté serveur sans droits de gestion ; l’instance demeure mono-copropriété. |
+| 4.6.03 | Validation en ligne des devis, engagements de dépenses, mises en concurrence. | partiel | Avis motivés du conseil sur devis/factures/préparations, seuil et avis distincts, blocage de sélection/règlement sans contrôle ; auteur et pièces conservés. Engagements/commandes et mise en concurrence formalisée restent à compléter. |
 | 4.6.04 | Gestion des réunions : convocations, ordres du jour, comptes rendus, tâches suivies. | absent | Créer réunions du conseil, invitations, comptes rendus et tâches. |
-| 4.6.05 | Accès aux pièces comptables pour le contrôle des comptes (rendez-vous, consultation, copie). | partiel | Consultation possible pour gestionnaires uniquement. Ajouter accès du conseil en lecture aux pièces et contrôle des comptes. |
+| 4.6.05 | Accès aux pièces comptables pour le contrôle des comptes (rendez-vous, consultation, copie). | partiel | Conseil et contrôleur consultent et téléchargent les pièces privées de gestion sans modifier les comptes. Rapport indépendant final conservé et changements ultérieurs signalés. Prise de rendez-vous spécialisée absente. |
 | 4.6.06 | Suivi des délégations de pouvoir éventuelles en dehors de l'AG. | absent | Créer délégations bornées par date, périmètre et décision. |
 
 ### 4.7
@@ -322,13 +328,13 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 
 | ID | Exigence | État | Constat |
 | --- | --- | --- | --- |
-| 4.15.01 | Mandat du syndic : désignation en AG, durée, éventuelle indemnité (à voter), renouvellement, révocation et passation à un successeur. | partiel | Mandats datés du syndic bénévole et membres copropriétaires du conseil reliés au vote/PV, conditions et alertes avant fin. Révocation/passation et présidence coopérative restent à structurer. |
-| 4.15.02 | Mode guidé pas à pas : calendrier annuel (clôture, budget, convocation, AG, PV, appels de fonds), checklist des tâches obligatoires, explication en langage simple de la règle juridique à chaque étape. | partiel | Étapes guidées de comptabilité/clôture et d’AG, explications et alertes locales. Checklist légale annuelle selon tous les profils et régimes encore incomplète. |
-| 4.15.03 | Contrôle croisé par le conseil syndical : validation des paiements, accès en lecture aux comptes, rapport de contrôle des comptes, afin de limiter les erreurs et les soupçons. | absent | Aucun rôle conseil syndical, circuit de validation des paiements ou rapport de contrôle distinct. Le rôle gestionnaire donne des droits globaux ; les synthèses publiées ne remplacent pas le contrôle des comptes. |
+| 4.15.01 | Mandat du syndic : désignation en AG, durée, éventuelle indemnité (à voter), renouvellement, révocation et passation à un successeur. | partiel | Mandats datés reliés aux votes/PV ou pièces de désignation, droits automatiques de syndic, retrait motivé et renouvellement par nouvelle période. Indemnité, personnes/cas particuliers et export complet de passation restent à compléter. |
+| 4.15.02 | Mode guidé pas à pas : calendrier annuel (clôture, budget, convocation, AG, PV, appels de fonds), checklist des tâches obligatoires, explication en langage simple de la règle juridique à chaque étape. | partiel | Parcours comptables et AG présents. Guide AG intégré en six étapes avec vérifications, FAQ, lexique, mémo et impression. Calendrier et checklist légale annuelle selon tous les profils et régimes encore incomplets. |
+| 4.15.03 | Contrôle croisé par le conseil syndical : validation des paiements, accès en lecture aux comptes, rapport de contrôle des comptes, afin de limiter les erreurs et les soupçons. | partiel | Conseil en lecture des comptes/pièces et avis distincts avant règlement selon une règle documentée ; rapport du contrôleur indépendant avec pièces et empreinte des comptes. Le rapport propre au conseil et les délégations collectives avancées restent à compléter. |
 | 4.15.04 | Responsabilité et assurance : suivi de l'assurance responsabilité civile du syndicat et de la couverture du syndic non professionnel (à vérifier), journal des actions et décisions du syndic. | partiel | Journal technique de certaines actions et dossiers d’échéances manuels présents. Assurance du syndicat/syndic et décisions de mandat non structurées ; journal incomplet et modifiable en base. Les attestations fournisseurs ne couvrent pas cette exigence. |
 | 4.15.05 | Continuité : délégation temporaire, accès de secours, export complet de passation en cas d'indisponibilité, de changement de syndic ou de passage futur à un syndic professionnel. | partiel | Exports CSV de rapports et téléchargements documentaires disponibles individuellement. Pas de délégation temporaire, accès de secours organisé ou export complet et vérifiable de passation. |
-| 4.15.06 | Syndic coopératif : séparation claire entre les fonctions de syndic et de président du conseil syndical, vote du quitus sans conflit d'intérêts apparent. | absent | Aucun mode coopératif, mandat de conseil syndical, vice-président, contrôleur des comptes ou rapport de contrôle. Distinguer les fonctions exercées par le président-syndic et le contrôle indépendant, sans supposer deux titulaires distincts. Cas des petites copropriétés à traiter séparément. |
-| 4.15.07 | Aide intégrée : fiches pratiques, modèles de courriers, FAQ juridique, renvois vers des ressources d'information (par exemple associations de copropriétaires, ADIL). | partiel | Explications des catégories, aide du calculateur et guides du dépôt présents. Pas de centre d’aide intégré avec fiches pratiques, FAQ, bibliothèque de courriers et ressources ADIL contextualisées. |
+| 4.15.06 | Syndic coopératif : séparation claire entre les fonctions de syndic et de président du conseil syndical, vote du quitus sans conflit d'intérêts apparent. | partiel | Mode coopératif, présidence/syndic réunis et dépendants d’un mandat de conseil, vice-présidence, contrôleur indépendant et rapport natifs. Cas dérogatoires des petites copropriétés, personnes non propriétaires éligibles et gouvernance collective détaillée à compléter. |
+| 4.15.07 | Aide intégrée : fiches pratiques, modèles de courriers, FAQ juridique, renvois vers des ressources d'information (par exemple associations de copropriétaires, ADIL). | partiel | Explications des catégories, aide du calculateur et guides du dépôt présents. Guide AG intégré avec six étapes, FAQ d’utilisation, lexique, mémo et impression. Les fiches juridiques, courriers et ressources contextualisées restent à compléter. |
 
 ### 5
 
@@ -358,9 +364,9 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 6.05 | Agenda et rappels, gestion des tâches. | partiel | Échéances manuelles et liste de points à suivre présentes. Ajouter vue agenda, tâches, affectation et récurrence. |
 | 6.06 | Recherche globale transversale. | partiel | Recherches locales par écran présentes. Ajouter recherche transversale limitée aux droits de l’utilisateur. |
 | 6.07 | Notifications multicanales (email, SMS, push). | absent | Aucun envoi email/SMS/push ; choix utilisateur actuel : courriel préparé dans sa messagerie. |
-| 6.08 | Import / export de données, outils de migration. | partiel | CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise des données Diacamma/Excel et export complet manquants. |
+| 6.08 | Import / export de données, outils de migration. | partiel | CSV de rapports, import du plan de référence et migration des anciens paiements présents. Reprise contrôlée des données externes et export complet manquants. |
 | 6.09 | Multilingue (au minimum français, éventuellement anglais pour copropriétaires étrangers). | partiel | Interface française présente. Aucun mécanisme de traduction ou changement de langue ; l’anglais est une option du cahier. |
-| 6.10 | Aide contextuelle et rappel des règles juridiques dans les écrans (ex. majorité requise à côté d'une résolution). | partiel | Pages de catégorie et explications des calculateurs présentes. Compléter chaque procédure au fur et à mesure de sa livraison. |
+| 6.10 | Aide contextuelle et rappel des règles juridiques dans les écrans (ex. majorité requise à côté d'une résolution). | partiel | Pages de catégorie et explications des calculateurs présentes. Guide AG accessible depuis le menu et chaque rubrique AG, avec liens vers les écrans de travail. Aide contextuelle à généraliser aux autres procédures. |
 
 ### 7
 

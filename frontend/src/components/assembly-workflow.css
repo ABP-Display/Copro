@@ -3,7 +3,35 @@
   gap: 22px;
   --ag-line: #e1e7df;
 }
-.assembly-toolbar .checkbox-field {display:flex;align-items:center;gap:9px;white-space:nowrap;flex-shrink:0;margin-bottom:10px}
+.assembly-guide-entry {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+}
+.assembly-guide-entry button {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  border: 0;
+  background: none;
+  padding: 5px 0;
+  color: #586e49;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.assembly-guide-entry button:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.assembly-toolbar .checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
 .ag-workflow .panel {
   padding: 26px;
   min-width: 0;
@@ -90,7 +118,11 @@
   flex-basis: 16px;
   min-width: 16px;
 }
-.assembly-toolbar .checkbox-field input {width:16px;height:16px;flex:0 0 16px}
+.assembly-toolbar .checkbox-field input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
 .ag-form > .button {
   justify-self: start;
   white-space: normal;

@@ -4,7 +4,7 @@ from django.db import transaction
 from django.http import JsonResponse, FileResponse, Http404
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
-from core.access import member_required
+from core.access import member_required, is_manager
 from core.views import manager_required, payload
 from finance.models import AuditEvent
 from finance.views import errors
@@ -15,7 +15,7 @@ MAX_SIZE = 10 * 1024 * 1024
 
 def visible(request):
     query = Document.objects.select_related("folder", "current")
-    if not request.user.is_staff:
+    if not is_manager(request.user):
         query = query.filter(published=True, archived=False, current__isnull=False)
     return query
 
@@ -68,7 +68,7 @@ def add_version(document, file, info, user):
 def folders(request, pk=None):
     if request.method == "GET":
         query=Folder.objects.all()
-        if not request.user.is_staff:query=query.filter(document__in=visible(request)).distinct()
+        if not is_manager(request.user):query=query.filter(document__in=visible(request)).distinct()
         return JsonResponse({"items":list(query.values("id","name"))})
     data=payload(request); name=str(data.get("name", "")).strip()
     if not name or len(name)>150:raise ValueError("Nom de dossier requis (150 caractères maximum).")
@@ -85,10 +85,10 @@ def folders(request, pk=None):
 def items(request):
     if request.method == "GET":
         query=visible(request)
-        if request.user.is_staff and request.GET.get("archived")!="1":query=query.filter(archived=False)
+        if is_manager(request.user) and request.GET.get("archived")!="1":query=query.filter(archived=False)
         if request.GET.get("folder"):query=query.filter(folder_id=int(request.GET["folder"]))
-        if request.user.is_staff:query=query.prefetch_related("versions__created_by")
-        return JsonResponse({"items":[serialize(doc,request.user.is_staff) for doc in query]})
+        if is_manager(request.user):query=query.prefetch_related("versions__created_by")
+        return JsonResponse({"items":[serialize(doc,is_manager(request.user)) for doc in query]})
     title=str(request.POST.get("title", "")).strip()
     if not title or len(title)>150:raise ValueError("Titre requis (150 caractères maximum).")
     file=request.FILES.get("file");info=validate_upload(file)
@@ -136,7 +136,7 @@ def upload(request, pk):
 @member_required
 def download(request, pk=None, version=None):
     if version is not None:
-        if not request.user.is_staff:raise Http404()
+        if not is_manager(request.user):raise Http404()
         item=get_object_or_404(Version,pk=version)
     else:
         doc=get_object_or_404(visible(request),pk=pk)

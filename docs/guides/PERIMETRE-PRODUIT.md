@@ -1,16 +1,14 @@
 # Périmètre du produit et présentation publique
 
-État au 14 octobre 2026. La cible est désormais **les syndics bénévoles et coopératifs**, selon le nouveau [cahier](../reference/cahier-fonctionnalites.md). Le cabinet professionnel est exclu. L’application actuelle reste mono-copropriété, sans mode coopératif ni rôles dédiés de conseil/contrôle ; la cible de plusieurs copropriétés est conservée pour une évolution ultérieure. Le [point d’avancement](AUDIT-FONCTIONNALITES.md) détaille les écarts.
+État au 14 octobre 2026. La cible est désormais **les syndics bénévoles et coopératifs**, selon le nouveau [cahier](../reference/cahier-fonctionnalites.md). Le cabinet professionnel est exclu. L’application actuelle reste mono-copropriété, avec mode bénévole/coopératif et responsabilités datées de conseil/contrôle ; la cible de plusieurs copropriétés est conservée pour une évolution ultérieure. Le [point d’avancement](AUDIT-FONCTIONNALITES.md) détaille les écarts.
 
 La page `/presentation` présente le projet actuel et
 ses objectifs. Elle ne lit aucune donnée de copropriété ; son illustration
 contient uniquement des données fictives. La racine affiche cette présentation
 aux visiteurs non connectés. `/connexion` conserve le formulaire d’accès.
 
-Les modules annoncés sur [LogicielSyndic](https://logicielsyndic.fr/) constituent
-un point de comparaison fonctionnel. Leur page commerciale ne permet pas de
-confirmer leur implémentation, leur filiation avec Diacamma ni leur conformité.
-Le contenu et le design de la présentation Copro. sont indépendants.
+La présentation décrit les parcours de Copro. selon le cahier fourni. Son contenu
+et son design sont propres au projet.
 
 | Domaine | Disponible dans Copro. | À compléter pour atteindre le périmètre souhaité |
 | --- | --- | --- |
@@ -22,7 +20,7 @@ Le contenu et le design de la présentation Copro. sont indépendants.
 | Fournisseurs et contrats | Annuaire, coordonnées, fournisseur dans les devis/factures, balance auxiliaire native, contrats/préavis/coûts déclarés, attestations et alertes | Reprise des tiers historiques, seuils de concurrence, commandes, garanties et validations du conseil |
 | Relances | Soldes et échéances à vérifier, vieillissement, lettrage, brouillons avec preuves, validation humaine, courriel préparé et historique | Accords de paiement et suivi des échanges/preuves ; l’envoi intégré reste à décider |
 | Analyses métriques | Règles déterministes et alertes sur l’accueil | Calendrier annuel guidé, obligations contextualisées et contrôles de cohérence ; IA puissante reportée |
-| Gouvernance bénévole/coopérative | Outils communs ; mandats du syndic bénévole et membres copropriétaires du conseil liés à leurs décisions | Mode coopératif, présidence du conseil, contrôleur, droits fins, validations et passation |
+| Gouvernance bénévole/coopérative | Mandats datés, accès ciblés, présidence liée au conseil, préparation des dépenses, avis motivés et contrôle indépendant | Délégations collectives avancées, réunions du conseil et passation complète |
 
 Les calculs actuels sont déterministes. Aucune facture n’est automatiquement
 lue par IA et aucun courrier de relance ou de convocation n’est envoyé.
@@ -37,6 +35,6 @@ les données et pièces utilisées, une proposition modifiable et une validation
 avant exécution, puis une trace de l’action. Ce parcours d’assistance reste à
 développer ; il n’est pas annoncé comme disponible dans la page publique.
 
-Les reprises Diacamma sont suivies dans `REPRISE-DIACAMMA.md`. Les limites des AG
+Les évolutions fonctionnelles sont suivies dans `SUIVI-DEVELOPPEMENT.md`. Les limites des AG
 et outils sont dans `AG-OUTILS.md`. La page publique doit être mise à jour quand
 une fonction est livrée et vérifiée, sans transformer une intention en promesse.

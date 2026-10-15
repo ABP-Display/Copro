@@ -5,7 +5,7 @@ docs/
   index.html       Vitrine publique, ouvrable sans serveur
   assets/          Styles et logo de la vitrine
   guides/          Architecture, fonctionnalités et guides techniques
-  reference/       Inventaire de la reprise Diacamma
+  reference/       Cahiers et instantanés d’audit
   apercus/         Anciens aperçus visuels du développement
   _config.yml      Exclusions pour GitHub Pages
 ```
@@ -21,8 +21,11 @@ la vitrine et ses ressources.
 - [Fournisseurs, contrats, attestations et annonces](guides/FOURNISSEURS-CONTRATS-ANNONCES.md)
 - [Banques, fournisseurs comptables et budgets](guides/BANQUES-FOURNISSEURS-BUDGETS.md)
 - [Parcours comptables et clôture](guides/COMPTABILITE-CYCLE.md)
-- [Reprise Diacamma](guides/REPRISE-DIACAMMA.md)
+- [Suivi du développement](guides/SUIVI-DEVELOPPEMENT.md)
 - [Assemblées générales et outils](guides/AG-OUTILS.md)
+- [Première AG : guide pas à pas](guides/AG-PREMIERS-PAS.md)
+- [Prochains chantiers selon le cahier](guides/PROCHAINS-CHANTIERS.md)
+- [Conseil syndical, mandats et contrôle](guides/CONSEIL-SYNDICAL.md)
 - [Dossiers et analyses métriques](guides/SUIVI-METRIQUES.md)
 - [Inventaire de référence](reference/diacamma-inventory.json)
 - [État structuré des 156 exigences bénévoles/coopératives](reference/audit-fonctionnalites.json)

@@ -8,7 +8,7 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import transaction, IntegrityError
 from django.db.models import Exists, OuterRef
 from django.views.decorators.http import require_http_methods
-from core.access import member_required
+from core.access import member_required, is_manager
 from core.views import payload
 from core.models import Owner, Lot
 from .models import FiscalYear, Account, Entry, Line, ChargeKey, Share, FundCall, Expense, Receipt, PublishedReport, CostCenter
@@ -20,7 +20,7 @@ from .idempotency import idempotent
 def errors(view):
     @wraps(view)
     def wrapped(request,*args,**kwargs):
-        if request.method != "GET" and not request.user.is_staff:
+        if request.method != "GET" and not is_manager(request.user):
             return JsonResponse({"error":"Accès en lecture uniquement."},status=403)
         try:
             return view(request,*args,**kwargs)
@@ -67,16 +67,16 @@ def collection(request,resource):
         if resource=="years":
             return JsonResponse({"items":list(FiscalYear.objects.values("id","name","starts_on","ends_on","closed"))})
         if resource=="keys":
-            return JsonResponse({"items":[{"id":k.pk,"name":k.name,"general":k.general,"annual_budget":str(k.annual_budget),"shares": [{"lot":s.lot_id,"value":str(s.value)} for s in k.shares.all()] if request.user.is_staff else []} for k in ChargeKey.objects.prefetch_related("shares")]})
+            return JsonResponse({"items":[{"id":k.pk,"name":k.name,"general":k.general,"annual_budget":str(k.annual_budget),"shares": [{"lot":s.lot_id,"value":str(s.value)} for s in k.shares.all()] if is_manager(request.user) else []} for k in ChargeKey.objects.prefetch_related("shares")]})
         if resource=="calls":
             calls=FundCall.objects.select_related("key")
-            if not request.user.is_staff: calls=calls.filter(entry__isnull=False)
+            if not is_manager(request.user): calls=calls.filter(entry__isnull=False)
             return JsonResponse({"items":[call_data(item) for item in calls]})
         if resource=="reports":
             return JsonResponse({"items":[{"id":r.pk,"title":r.title,"year":r.year_id,"published_at":r.published_at,"data":r.data} for r in PublishedReport.objects.all()]})
         if resource=="treasury":
             return JsonResponse({"items":[{"id":y.pk,**public_summary(y)} for y in FiscalYear.objects.all()]})
-        if not request.user.is_staff:
+        if not is_manager(request.user):
             return JsonResponse({"error":"Ces données comptables détaillées sont privées."},status=403)
         if resource=="accounts":
             return JsonResponse({"items":list(Account.objects.filter(active=True).values("id","code","name"))})
@@ -112,12 +112,8 @@ def collection(request,resource):
             form=form_value(CallForm,{'kind':'current',**data}); candidate=form.instance
             open_year(candidate.year_id,candidate.date); item=form.save()
         elif resource=="expenses":
-            form=form_value(ExpenseForm,data); item=form.instance
-            year=open_year(item.year_id,item.date)
-            code=str(data.get('charge_code') or ('671' if item.project_id else '601'))
-            if not code.startswith('6') or code.startswith('67') != bool(item.project_id):raise ValueError('Choisissez un compte courant 6 ou de travaux 67 avec son opération.')
-            item.entry=post_entry(year,item.date,"AC",item.label,[{"code":code,"debit":item.amount,'key':item.key,'project':item.project},{"code":"401","credit":item.amount,"supplier":item.supplier_record,'due_date':item.due_date or item.date}],request.user,item.reference,cost_center=center)
-            item.save()
+            from .services import record_expense
+            item=record_expense(data,request.user)
         elif resource=="receipts":
             owner=Owner.objects.get(pk=data["owner"]); value=amount(data["amount"]); day=date.fromisoformat(data["date"])
             year=open_year(data["year"],day)
@@ -167,6 +163,9 @@ def safe_csv(value):
 def action(request,resource,pk,operation):
     data=payload(request)
     with transaction.atomic():
+        if resource=="expenses" and operation=="pay":
+            from council.services import settings_locked
+            settings_locked()
         if resource=="calls" and operation in ["preview","publish"]:
             call=FundCall.objects.select_for_update().select_related("key").get(pk=pk)
             if operation=="preview":

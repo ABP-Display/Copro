@@ -20,7 +20,6 @@ GitHub Pages ». Le workflow copie uniquement `docs/index.html` et `docs/assets/
 dans l’artefact. Il ne publie ni guides, ni inventaire, ni aperçus. Aucun npm
 ou build React n’est nécessaire.
 
-Les captures fournies montrent le dépôt d’ABP-Display. Les fichiers doivent être
-envoyés à ce dépôt si c’est celui utilisé pour la publication. Le remote local
-reste celui de Ydoxide ; aucune publication ou modification de remote n’est faite.
-L’application Django/PostgreSQL reste sur `copro.ydoxide.fr`.
+Le dépôt courant est [abp-display/Copro](https://github.com/abp-display/Copro).
+Le remote `origin` vise ce dépôt. Envoyer les fichiers dans sa branche `master`, puis
+configurer sa source Pages. L’application Django/PostgreSQL reste sur `copro.ydoxide.fr`.

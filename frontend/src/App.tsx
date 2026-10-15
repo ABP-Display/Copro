@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, lazy, Suspense } from "react";
 import {
   api,
   ApiError,
@@ -30,7 +30,19 @@ import { Documents } from "./components/Documents";
 import { Assemblies } from "./components/Assemblies";
 import { Tools } from "./components/Tools";
 import { CategoryOverview, categoryHelp } from "./components/CategoryOverview";
+const AssemblyGuide = lazy(() =>
+  import("./components/AssemblyGuide").then((module) => ({
+    default: module.AssemblyGuide,
+  })),
+);
+const Council = lazy(() =>
+  import("./components/Council").then((m) => ({ default: m.Council })),
+);
+const CouncilPortal = lazy(() =>
+  import("./components/Council").then((m) => ({ default: m.CouncilPortal })),
+);
 type Page =
+  | "council"
   | "operations"
   | "partners"
   | "communication"
@@ -168,6 +180,7 @@ function Application() {
       documents: "Documents",
       assemblies: "Assemblées générales",
       tools: "Outils",
+      council: "Conseil syndical",
     }[page];
   const filteredOwners = owners.filter((o) =>
     `${o.first_name} ${o.last_name} ${o.email}`
@@ -194,7 +207,14 @@ function Application() {
       <Presentation />
     );
   if (!user.is_manager || user.must_change_password)
-    return <MemberPortal user={user} onUser={setUser} onLogout={signOut} />;
+    return !user.must_change_password &&
+      user.capabilities?.includes("council.read") ? (
+      <Suspense fallback={<p role="status">Ouverture du conseil…</p>}>
+        <CouncilPortal user={user} onUser={setUser} onLogout={signOut} />
+      </Suspense>
+    ) : (
+      <MemberPortal user={user} onUser={setUser} onLogout={signOut} />
+    );
   return (
     <div className={`app-shell ${compact ? "menu-compact" : ""}`}>
       <Navigation
@@ -296,8 +316,19 @@ function Application() {
               ["reconciliation", "funds"].includes(section)) ||
             (page === "reporting" && ["annexes", "aged"].includes(section)) ? (
             <AccountingCycle key={section} section={section} />
+          ) : page === "council" ? (
+            <Suspense fallback={<p role="status">Chargement du conseil…</p>}>
+              <Council section={section} />
+            </Suspense>
+          ) : page === "assemblies" && section === "guide" ? (
+            <Suspense fallback={<p role="status">Chargement du guide…</p>}>
+              <AssemblyGuide onNavigate={navigate} />
+            </Suspense>
           ) : page === "assemblies" ? (
-            <Assemblies section={section} />
+            <Assemblies
+              section={section}
+              onGuide={() => navigate("assemblies", "guide")}
+            />
           ) : page === "tools" ? (
             <Tools key={section} section={section} />
           ) : page === "documents" ? (

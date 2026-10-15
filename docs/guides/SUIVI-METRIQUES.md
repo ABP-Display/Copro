@@ -1,5 +1,7 @@
 # Dossiers, relances et analyses métriques
 
+> Complément du 15 octobre 2026 : les descriptions ci-dessous retracent les livraisons antérieures. Le [cycle comptable](COMPTABILITE-CYCLE.md), l’[AG guidée](AG-OUTILS.md) et l’[audit courant](AUDIT-FONCTIONNALITES.md) remplacent les anciennes listes de fonctions restantes.
+
 Livraison du 14 octobre 2026. Les calculs sont déterministes, sans moteur IA.
 
 ## Accueil gestionnaire
@@ -70,7 +72,7 @@ Restent à développer : conformité contextualisée, déroulement complet des A
 rapprochement et lettrage, régularisation, clôture et annexes, communication
 automatisée, collecte des votes par les membres et suivi détaillé des travaux.
 Ces modules complètent la reprise progressive ; ils ne constituent pas une
-parité complète avec Diacamma.
+couverture fonctionnelle complète du cahier.
 
 ## Interface des dossiers et relances
 

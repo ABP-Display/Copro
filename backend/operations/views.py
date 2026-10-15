@@ -180,6 +180,8 @@ def quotes(request, pk):
 @errors
 def select_quote(request, pk):
     with transaction.atomic():
+        from council.services import settings_locked
+        settings_locked()
         parent = Quote.objects.get(pk=pk).case_id
         item = Case.objects.select_for_update().get(pk=parent)
         if item.status != "open":
@@ -190,6 +192,9 @@ def select_quote(request, pk):
             raise ValueError("Choix invalide.")
         if selected and item.quotes.filter(selected_at__isnull=False).exists():
             raise ValueError("Un devis est déjà retenu dans ce dossier.")
+        if selected:
+            from council.services import ensure_approved
+            ensure_approved("quote", quote)
         quote.selected_at = timezone.now() if selected else None
         quote.selected_by = request.user if selected else None
         quote.save()

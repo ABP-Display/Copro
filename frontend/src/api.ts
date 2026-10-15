@@ -1,11 +1,15 @@
 export type Organization = { id: number; name: string };
 export type User = {
+  id?: number;
   username: string;
   is_manager: boolean;
   is_admin?: boolean;
   is_former_owner?: boolean;
   must_change_password?: boolean;
   display_name?: string;
+  has_owner?: boolean;
+  capabilities?: string[];
+  roles?: string[];
 };
 export type Owner = {
   id: number;

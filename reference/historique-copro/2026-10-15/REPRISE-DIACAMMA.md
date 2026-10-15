@@ -1,5 +1,7 @@
 # Suivi de la reprise intégrale de Diacamma
 
+> Complément du 15 octobre 2026 : les descriptions ci-dessous retracent les livraisons antérieures. Le [cycle comptable](COMPTABILITE-CYCLE.md), l’[AG guidée](AG-OUTILS.md) et l’[audit courant](AUDIT-FONCTIONNALITES.md) remplacent les anciennes listes de fonctions restantes.
+
 ## État au 14 octobre 2026
 
 **La reprise intégrale n'est pas terminée.** La présence du code dans `reference/`

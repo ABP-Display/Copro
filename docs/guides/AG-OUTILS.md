@@ -1,6 +1,10 @@
 # Conduire une AG dans Copro.
 
-Parcours livré le 14 octobre 2026. Il réutilise les copropriétaires, lots, clés,
+Pour débuter, ouvrez **Assemblées générales → Guide d’utilisation** dans l’application,
+ou consultez le [guide pas à pas](AG-PREMIERS-PAS.md). Le présent document détaille
+le fonctionnement et les limites du module.
+
+Parcours mis à jour le 15 octobre 2026. Il réutilise les copropriétaires, lots, clés,
 documents et exercices. Les simulations restent disponibles dans l’ordre du jour
 et les outils ; les votes de séance sont enregistrés séparément.
 
