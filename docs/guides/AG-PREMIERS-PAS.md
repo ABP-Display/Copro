@@ -2,6 +2,13 @@
 
 Choisissez l’AG concernée dans la liste en haut de chaque rubrique. Les envois et signatures sont réalisés hors de Copro., puis leurs preuves sont rattachées au dossier.
 
+Pour l’approbation des comptes, préparer d’abord le **Dossier comptable annuel** :
+résoudre ses erreurs, imprimer les cinq annexes et décomptes, déposer le PDF dans
+Documents, puis choisir l’exercice et confirmer la relecture dans la préparation
+de l’AG. Les versions jointes doivent correspondre au dossier relu. Si les comptes
+changent, recharger et relire avant de figer la convocation. Voir le [guide des
+documents et financements](DOCUMENTS-FONDS-AVANCES.md).
+
 ## 1. Créer l’AG et ses résolutions — Avant l’AG
 
 Commencez par décrire la réunion et ce que les copropriétaires devront décider.

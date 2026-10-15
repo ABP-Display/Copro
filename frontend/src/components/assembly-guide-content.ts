@@ -38,7 +38,7 @@ export const assemblyGuideSteps: GuideStep[] = [
       },
       {
         title: "Rassembler les documents",
-        text: "Ajoutez les comptes, budgets, devis ou projets de mandat dans « Documents ». Revenez dans « Préparer une AG » pour choisir leurs versions et remplir les adresses de notification, l’organisateur, le retour des formulaires et les modalités de consultation des justificatifs. Enregistrez les vérifications et pièces.",
+        text: "Préparez les cinq annexes et décomptes dans « Dossier comptable annuel », corrigez les erreurs puis déposez leur PDF dans « Documents », avec les budgets, devis et mandats utiles. Dans « Préparer une AG », choisissez l’exercice, confirmez la relecture et rattachez les versions demandées. Complétez les adresses, le retour des formulaires et les modalités de consultation. Si les comptes changent, rechargez et relisez avant de figer.",
       },
     ],
     ready: [

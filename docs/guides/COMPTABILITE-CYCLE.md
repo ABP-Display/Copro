@@ -2,6 +2,10 @@
 
 Livraison du 14 octobre 2026, pour la gestion d'un syndicat bénévole ou coopératif.
 
+Compléments du 15 octobre : [annexes structurées, pièces AG, minima du fonds et
+restitutions d’avances](DOCUMENTS-FONDS-AVANCES.md). Le nouveau menu **Fonds & avances**
+regroupe les décisions annuelles et les remboursements documentés des comptes 103.
+
 ## Premier démarrage
 
 Créer les exercices, identifier les copropriétaires et lots, vérifier les clés,

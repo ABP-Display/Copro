@@ -240,9 +240,14 @@ export function Finance({
               { value: "current", label: "Budget courant" },
               { value: "works", label: "Travaux votés" },
               { value: "fund", label: "Fonds travaux" },
-              { value: "advance", label: "Avance de trésorerie" },
+              { value: "advance", label: "Avance remboursable" },
             ],
           },
+          { name: "advance_type", label: "Si avance : catégorie", options: [
+            {value:"reserve",label:"Réserve de trésorerie · 1031"},
+            {value:"ppt",label:"Avance du PPT · 1032"},
+            {value:"temporary",label:"Besoin temporaire · 1033"},
+          ]},
           {
             name: "project",
             label: "Opération de travaux",
@@ -253,7 +258,7 @@ export function Finance({
           },
           {
             name: "decision",
-            label: "Décision de financement (travaux)",
+            label: "Décision de financement (travaux / avance)",
             optional: true,
           },
           analytic,
@@ -306,6 +311,11 @@ export function Finance({
                 label: `${a.code} · ${a.name}`,
               })),
           },
+          { name: "advance_type", label: "Si avance : catégorie", options: [
+            {value:"reserve",label:"Réserve de trésorerie · 1031"},
+            {value:"ppt",label:"Avance du PPT · 1032"},
+            {value:"temporary",label:"Besoin temporaire · 1033"},
+          ]},
           {
             name: "project",
             label: "Travaux concernés (sinon charges courantes)",
@@ -485,9 +495,14 @@ export function Finance({
                       { value: "current", label: "Budget courant" },
                       { value: "works", label: "Travaux votés" },
                       { value: "fund", label: "Fonds travaux" },
-                      { value: "advance", label: "Avance de trésorerie" },
+                      { value: "advance", label: "Avance remboursable" },
                     ],
                   },
+                  { name: "advance_type", label: "Si avance : catégorie", options: [
+                    {value:"reserve",label:"Réserve de trésorerie · 1031"},
+                    {value:"ppt",label:"Avance du PPT · 1032"},
+                    {value:"temporary",label:"Besoin temporaire · 1033"},
+                  ]},
                   {
                     name: "project",
                     label: "Opération de travaux",
@@ -999,6 +1014,7 @@ function FinanceForm({
               {error}
             </div>
           )}
+          {fields.some(f=>f.name==="advance_type")&&<p className="muted">Pour un fonds travaux ou une avance, renseignez d’abord les décisions et justificatifs dans Charges & finances → Fonds & avances. Sans paramétrage annuel, les minima et plafonds ne sont pas contrôlés. La catégorie 103 est ignorée pour les autres natures d’appel.</p>}
           {fields.map((f) => (
             <label key={f.name}>
               {f.label}

@@ -94,6 +94,7 @@ class Share(models.Model):
 
 
 class FundCall(models.Model):
+    advance_type = models.CharField(max_length=12, default='reserve', choices=[('reserve','Réserve de trésorerie'),('ppt','Avance du PPT'),('temporary','Manque temporaire de trésorerie')])
     schedule = models.ForeignKey('CallSchedule', on_delete=models.PROTECT, null=True, blank=True)
     kind = models.CharField(max_length=12, default='current', choices=[('current','Budget courant'),('works','Travaux votés'),('fund','Fonds travaux'),('advance','Avance de trésorerie')])
     project = models.ForeignKey('FinanceProject', on_delete=models.PROTECT, null=True, blank=True)
@@ -251,6 +252,7 @@ class FinanceProject(models.Model):
     key = models.ForeignKey(ChargeKey, on_delete=models.PROTECT)
     budget = models.DecimalField(max_digits=14, decimal_places=2)
     decision = models.CharField(max_length=250)
+    decided_on = models.DateField(null=True, blank=True)
     completed_on = models.DateField(null=True, blank=True)
     completion_entry = models.OneToOneField(Entry, on_delete=models.PROTECT, null=True, blank=True)
 
@@ -376,3 +378,54 @@ class OperationTicket(models.Model):
     response = models.JSONField(null=True)
     status = models.PositiveSmallIntegerField(default=201)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class FundingPolicy(models.Model):
+    year = models.OneToOneField(FiscalYear, on_delete=models.PROTECT, related_name='funding_policy')
+    housing = models.CharField(max_length=12, default='unknown', choices=[('unknown','À renseigner'),('housing','Habitation totale ou partielle'),('other','Autre destination')])
+    received_on = models.DateField(null=True, blank=True)
+    annual_budget = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    budget_reference = models.CharField(max_length=250, blank=True)
+    ppt_adopted = models.BooleanField(null=True)
+    ppt_amount = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    fund_contribution = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    fund_reference = models.CharField(max_length=250, blank=True)
+    fund_proof = models.ForeignKey('documents.Version', on_delete=models.PROTECT, null=True, blank=True, related_name='fund_policies')
+    suspended = models.BooleanField(default=False)
+    suspension_reference = models.CharField(max_length=250, blank=True)
+    suspension_proof = models.ForeignKey('documents.Version', on_delete=models.PROTECT, null=True, blank=True, related_name='fund_suspensions')
+    reserve_authorized = models.BooleanField(default=False)
+    advance_reference = models.CharField(max_length=250, blank=True)
+    advance_proof = models.ForeignKey('documents.Version', on_delete=models.PROTECT, null=True, blank=True, related_name='advance_policies')
+    updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(annual_budget__gte=0, ppt_amount__gte=0, fund_contribution__gte=0), name='funding_policy_nonnegative')]
+
+
+class AdvanceRefund(models.Model):
+    owner = models.ForeignKey(Owner, on_delete=models.PROTECT)
+    lot = models.ForeignKey(Lot, on_delete=models.PROTECT)
+    account_code = models.CharField(max_length=10)
+    amount = models.DecimalField(max_digits=14, decimal_places=2)
+    method = models.CharField(max_length=12)
+    reference = models.CharField(max_length=250)
+    proof = models.ForeignKey('documents.Version', on_delete=models.PROTECT)
+    bank = models.ForeignKey(BankAccount, on_delete=models.PROTECT, null=True)
+    entry = models.OneToOneField(Entry, on_delete=models.PROTECT)
+
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(amount__gt=0), name='advance_refund_positive')]
+
+
+class AdvanceUse(models.Model):
+    owner = models.ForeignKey(Owner, on_delete=models.PROTECT)
+    lot = models.ForeignKey(Lot, on_delete=models.PROTECT)
+    project = models.ForeignKey(FinanceProject, on_delete=models.PROTECT)
+    amount = models.DecimalField(max_digits=14, decimal_places=2)
+    reference = models.CharField(max_length=250)
+    proof = models.ForeignKey('documents.Version', on_delete=models.PROTECT)
+    entry = models.OneToOneField(Entry, on_delete=models.PROTECT)
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(amount__gt=0), name='advance_use_positive')]

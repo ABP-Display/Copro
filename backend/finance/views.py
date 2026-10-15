@@ -43,7 +43,7 @@ def form_value(form_class,data):
 
 
 def call_data(item):
-    return {"id":item.pk,"label":item.label,"year":item.year_id,"key":item.key_id,"key_name":item.key.name,'kind':item.kind,'project':item.project_id,'decision':item.decision,
+    return {"id":item.pk,"label":item.label,"year":item.year_id,"key":item.key_id,"key_name":item.key.name,'kind':item.kind,'advance_type':item.advance_type,'project':item.project_id,'decision':item.decision,
             "date":str(item.date),"due_date":str(item.due_date),"amount":str(item.amount),"posted":bool(item.entry_id),'cancelled':bool(item.entry_id and Entry.objects.filter(reversal_of_id=item.entry_id).exists())}
 
 
@@ -167,6 +167,7 @@ def action(request,resource,pk,operation):
             from council.services import settings_locked
             settings_locked()
         if resource=="calls" and operation in ["preview","publish"]:
+            list(FiscalYear.objects.select_for_update().order_by('id'))
             call=FundCall.objects.select_for_update().select_related("key").get(pk=pk)
             if operation=="preview":
                 rows=distribute(call.amount,key_weights(call.key,call.due_date))

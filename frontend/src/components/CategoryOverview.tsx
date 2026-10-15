@@ -133,6 +133,8 @@ export const categoryHelp: Record<
         "Importez un relevé, associez ses mouvements aux écritures et vérifiez les soldes de départ et de fin.",
       funds:
         "Suivez les cotisations et versements par lot, affectez les fonds aux travaux votés et soldez les opérations terminées.",
+      funding:
+        "Renseignez les décisions annuelles, vérifiez le minimum du fonds travaux et le plafond de réserve, puis restituez les avances effectivement versées avec leur justificatif.",
       reminders:
         "Préparez une relance depuis un compte débiteur, vérifiez ses mouvements sources et validez le texte avant utilisation.",
       reports:
@@ -212,6 +214,10 @@ export const categoryHelp: Record<
         "Activez ou désactivez un accès et choisissez le rôle lecture ou gestionnaire. Cette section est réservée à l’administrateur principal.",
       audit:
         "Consultez les opérations comptables et de configuration enregistrées, avec leur date et leur auteur.",
+      security:
+        "Activez votre application d’authentification, conservez vos codes de secours et gérez votre mot de passe.",
+      backups:
+        "Suivez les sauvegardes chiffrées de la base et des documents, les restaurations vérifiées et la règle de double authentification des gestionnaires.",
     },
   },
 };
@@ -241,7 +247,7 @@ export function CategoryOverview({
       </div>
       <div className="category-grid">
         {group.items
-          .filter(([key]) => key !== "users" || isAdmin)
+          .filter(([key]) => !["users", "backups"].includes(key) || isAdmin)
           .map(([key, label], index) => (
             <button
               key={key}

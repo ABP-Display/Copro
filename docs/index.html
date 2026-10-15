@@ -309,6 +309,24 @@
           <div class="presentation-modules">
             <article>
               <div class="module-top">
+                <span class="module-icon"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 4v5c0 5-8 9-8 9s-8-4-8-9V7l8-4Z"></path><path d="m8 12 3 3 5-6"></path></svg></span>
+                <span class="module-status available">Disponible</span>
+              </div>
+              <h3>Des accès protégés, des données récupérables</h3>
+              <p>Activez la double authentification et gardez vos codes de secours. Sauvegardez ensemble la base et les pièces dans une archive chiffrée, puis vérifiez leur restauration sur une copie isolée.</p>
+              <div class="module-detail">TOTP · codes de secours · restauration vérifiée</div>
+            </article>
+            <article>
+              <div class="module-top">
+                <span class="module-icon"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 4v2"></path></svg></span>
+                <span class="module-status available">Parcours disponible</span>
+              </div>
+              <h3>Un conseil syndical avec des rôles précis</h3>
+              <p>Attribuez les mandats, laissez le trésorier préparer les dépenses et recueillez les avis motivés du conseil. Le syndic comptabilise ; le contrôleur conserve un rapport indépendant.</p>
+              <div class="module-detail">Mandats datés · validations · contrôle des comptes</div>
+            </article>
+            <article>
+              <div class="module-top">
                 <span class="module-icon"
                   ><svg
                     width="25"
@@ -416,12 +434,12 @@
               </div>
               <h3>Des comptes que l’on peut suivre</h3>
               <p>
-                Reprenez les soldes, suivez les appels et dépenses, affectez les
-                règlements et rapprochez la banque. Préparez la régularisation
-                et clôturez avec les reports.
+                Reprenez les soldes, rapprochez la banque et préparez les cinq annexes
+                annuelles avec leurs contrôles. Vérifiez les décisions du fonds travaux
+                et restituez les avances versées, y compris après une vente.
               </p>
               <div class="module-detail">
-                Lettrage · rapprochement · clôture et rapports
+                Annexes comparées · fonds / PPT · avances et restitutions
               </div>
             </article>
             <article>
@@ -444,7 +462,7 @@
               </div>
               <h3>Une AG guidée, jusqu’au procès-verbal</h3>
               <p>
-                Préparez les convocations et pouvoirs, enregistrez les votes,
+                Préparez les convocations et vérifiez leurs annexes, enregistrez les votes,
                 produisez le PV et conservez les preuves des signatures et
                 notifications réalisées à l’extérieur.
               </p>
@@ -622,7 +640,9 @@
                 <code>.env</code>.
               </li>
               <li>Un navigateur pour utiliser votre espace.</li>
-              <li>Une sauvegarde de la base et des documents à prévoir.</li>
+              <li>Un outil de sauvegarde chiffrée base et documents, avec restauration de contrôle.</li>
+              <li>Python 3.12 ou supérieur pour cet outil ; programmation et copie hors site à configurer sur le serveur.</li>
+              <li>Une application d’authentification et des codes de secours pour protéger les accès.</li>
             </ul>
             <a
               class="presentation-text-link"
@@ -703,9 +723,9 @@ npm run dev</code></pre>
                 <div>
                   <h3>Comptabilité à approfondir</h3>
                   <p>
-                    Modèles réglementaires des annexes, mode simplifié,
-                    formats bancaires supplémentaires et ordres SEPA.
-                    Le cycle comptable est disponible.
+                    Validation métier des modèles, aides et prêts collectifs,
+                    mode simplifié et formats bancaires supplémentaires.
+                    Les annexes contrôlées et les restitutions d’avances sont disponibles.
                   </p>
                   <small>À développer</small>
                 </div>

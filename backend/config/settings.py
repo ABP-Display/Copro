@@ -9,7 +9,7 @@ CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.environ.get(
     "DJANGO_CSRF_TRUSTED_ORIGINS", ""
 ).split(",") if origin.strip()]
 INSTALLED_APPS = [
-    "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions", "core", "finance", "documents", "governance", "operations", "council",
+    "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions", "core", "finance", "documents", "governance", "operations", "council", "safety",
 ]
 MIDDLEWARE = [
     "core.middleware.PrivateResponses",
@@ -18,15 +18,16 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "safety.middleware.SecurityGate",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 ROOT_URLCONF = "config.urls"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = Path(os.environ.get("COPRO_MEDIA_ROOT", BASE_DIR / "media"))
 WSGI_APPLICATION = "config.wsgi.application"
 if os.environ.get("POSTGRES_HOST"):
     DATABASES = {"default": {
         "ENGINE": "django.db.backends.postgresql", "HOST": os.environ["POSTGRES_HOST"],
-        "NAME": "copro", "USER": "copro", "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "NAME": os.environ.get("POSTGRES_DB", "copro"), "USER": "copro", "PASSWORD": os.environ["POSTGRES_PASSWORD"],
     }}
 else:
     DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}}

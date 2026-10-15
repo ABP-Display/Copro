@@ -3,6 +3,7 @@ import { api, type User, type Lot, type Overview } from "../api";
 import { kinds, number } from "../format";
 import { BrandMark } from "./BrandMark";
 import { ChangePassword } from "./Access";
+import { SecurityButton } from "./Security";
 import { Finance } from "./Finance";
 import { PersonalAccount } from "./Operations";
 import { Documents } from "./Documents";
@@ -39,6 +40,7 @@ export function MemberPortal({
         </a>
         <div>
           <span className="subtle-badge">Lecture seule</span>
+          {!user.must_change_password && <SecurityButton onUser={onUser} />}
           <button
             className="button secondary"
             onClick={() => setPassword(true)}

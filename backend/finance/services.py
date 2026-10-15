@@ -49,7 +49,7 @@ def post_entry(year, date, journal, label, lines, user, reference="", cost_cente
     from .models import AnnualSettlement
     if kind == 'normal' and AnnualSettlement.objects.filter(year=year,active=True).exists() and any(str(r['code']).startswith(('6','7')) for r in lines):
         raise ValueError('Annulez la régularisation avant de modifier les charges ou produits de cet exercice.')
-    if settings.analytic_required and cost_center is None and kind not in ('opening','carry','closing','regularization','project-complete','ownership'):
+    if settings.analytic_required and cost_center is None and kind not in ('opening','carry','closing','regularization','project-complete','ownership','advance-refund','advance-use'):
         raise ValueError("Une comptabilité analytique est obligatoire.")
     if cost_center and not cost_center.active:
         raise ValueError("Cette comptabilité analytique est inactive.")
@@ -126,6 +126,8 @@ def publish_call(call, user):
     if call.entry_id:
         raise ValueError("Cet appel de fonds est déjà validé.")
     year = open_year(call.year_id, call.date)
+    from .funding import validate_call, ADVANCE_CODES
+    validate_call(call)
     from .models import ChargeKey
     call.key = ChargeKey.objects.select_for_update().get(pk=call.key_id)
     rows = distribute(call.amount, key_weights(call.key,call.due_date))
@@ -135,9 +137,9 @@ def publish_call(call, user):
     lines = [{"code":"450", "owner":owner, "debit":value,'key':call.key,'project':call.project,'due_date':call.due_date} for owner,value in owner_amounts.items() if value > 0]
     if call.kind == 'works' and (not call.project or not call.decision):
         raise ValueError('Une opération de travaux et sa décision de financement sont nécessaires.')
-    code = {'current':'701','works':'102','fund':'105','advance':'1031'}[call.kind]
+    code = ADVANCE_CODES[call.advance_type] if call.kind == 'advance' else {'current':'701','works':'102','fund':'105'}[call.kind]
     if call.kind in ('fund','advance'):
-        lines.extend({'code':code,'credit':value,'lot':lot,'key':call.key} for lot,weight,value in rows if value>0)
+        lines.extend({'code':code,'credit':value,'lot':lot,'key':call.key,'owner':lot.owner if call.kind=='advance' else None} for lot,weight,value in rows if value>0)
     else:
         lines.append({'code':code,'credit':call.amount,'key':call.key,'project':call.project})
     call.entry = post_entry(year,call.date,"AP",call.label,lines,user,cost_center=call.cost_center)

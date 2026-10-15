@@ -8,10 +8,10 @@
   "method": "Les 156 puces des sections 4 à 7 sont évaluées intégralement dans la cible bénévole/coopérative. Les fragments exclusivement professionnels sont exclus et tracés. Complet : parcours livré dans les limites explicites ; partiel : socle présent et au moins un volet manquant ; absent : aucun parcours natif. Les 11 rôles du §3 et deux besoins transverses sont documentés séparément sans les additionner (recoupements). Les affirmations juridiques à corriger sont conservées dans source_text et annotées. Aucun pourcentage de conformité globale.",
   "summary": {
     "total": 156,
-    "complete": 19,
-    "partial": 94,
+    "complete": 22,
+    "partial": 91,
     "absent": 43,
-    "usable_features": 64,
+    "usable_features": 66,
     "roles_reviewed": 11,
     "supplementary_needs": 2
   },
@@ -34,14 +34,16 @@
     "Courriels préparés dans la messagerie ; pas d’envoi SMTP intégré pour les accès"
   ],
   "verification": {
-    "backend_tests": 172,
+    "backend_tests": 221,
     "backend_tests_result": "passed",
     "frontend": "TypeScript + Vite production build passed",
     "database": "PostgreSQL / base de test séparée",
     "legal": "Vérifications ponctuelles des sources officielles ; pas de certification juridique/comptable.",
     "manual_ui": "Mandat fictif, soumission/recherche de devis, avis nominatif, préparation par trésorier, reprise par syndic, rapport indépendant et alerte après changement ; consultation des relevés et affichage mobile. Instance isolée fictive.",
-    "note": "172 tests PostgreSQL (dont 25 conseil), build TypeScript/Vite, migrations et contrôles navigateur sur une instance fictive séparée ; aucune attribution de droits ni écriture d’essai dans les données réelles.",
-    "scope_review": "156 exigences conservées ; les parcours papier/manuels ne prouvent pas les prestataires connectés ou une certification de conformité."
+    "note": "221 tests PostgreSQL ; 24 nouveaux cas financiers, contrôles renforcés AG, build TypeScript/Vite et vérification visuelle sur copie fictive. Sauvegarde préalable base/documents chiffrée et relue.",
+    "scope_review": "156 exigences conservées ; les parcours papier/manuels ne prouvent pas les prestataires connectés ou une certification de conformité.",
+    "backup_tests": 4,
+    "backup_integration": "passed: compte/écritures, deux versions, secret MFA, pièce perdue, interruption et reprise sur projets Docker jetables"
   },
   "requirements": [
     {
@@ -363,43 +365,34 @@
       "section": "4.2",
       "text": "Fonds de travaux (loi ALUR) : cotisation obligatoire (minimum 5 % du budget prévisionnel, sauf exceptions), suivi par lot, attaché au lot et non remboursable au vendeur, placement sur compte dédié.",
       "status": "partiel",
-      "assessment": "Fonds 105 par lot, appelé/versé lettré/affecté/disponible, banque travaux dédiée, fonds versé attaché au lot après vente. Calcul automatique des minima/exemptions/PPT à développer.",
+      "assessment": "Profil de réception/habitation, budget et PPT, minimum annuel 5 % / 2,5 %, suspension avec les deux seuils et décision/pièce, plafond des appels votés. Suivi 105 par lot/banque et fonds versé attaché au lot après vente. Contrôles actifs après paramétrage annuel ; calendrier historique/anniversaire pendant exercice à vérifier.",
       "evidence": [
-        "backend/finance/cycle.py",
-        "backend/finance/cycle_views.py",
-        "backend/finance/reconciliation.py",
-        "backend/finance/test_cycle.py",
-        "frontend/src/components/AccountingCycle.tsx",
-        "docs/guides/COMPTABILITE-CYCLE.md"
+        "backend/finance/funding.py",
+        "backend/finance/funding_views.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/Funding.tsx"
       ],
       "priority": "P0",
-      "next_step": "Créer fonds affectés aux lots, cotisations contextualisées, compte dédié et historique des affectations.",
-      "delivered_in_this_change": false,
+      "next_step": "Profil de réception/habitation, budget et PPT, minimum annuel 5 % / 2,5 %, suspension avec les deux seuils et décision/pièce, plafond des appels votés. Suivi 105 par lot/banque et fonds versé attaché au lot après vente. Contrôles actifs après paramétrage annuel ; calendrier historique/anniversaire pendant exercice à vérifier.",
+      "delivered_in_this_change": true,
       "source_text": "Fonds de travaux (loi ALUR) : cotisation obligatoire (minimum 5 % du budget prévisionnel, sauf exceptions), suivi par lot, attaché au lot et non remboursable au vendeur, placement sur compte dédié."
     },
     {
       "id": "4.2.09",
       "section": "4.2",
       "text": "Avances (trésorerie permanente, avances de travaux) et leur suivi par copropriétaire.",
-      "status": "partiel",
-      "assessment": "Appels d’avance 1031 par lot/propriétaire et compte 450 ; décisions et paiements suivis. Remboursement spécialisé des avances et cas de vente restent à compléter.",
+      "status": "complet",
+      "assessment": "Trois catégories 1031/1032/1033 ; réserve plafonnée soldes antérieurs compris, suivi constitué/versé/restitué/affecté par lot et titulaire historique. Restitutions partielles avec preuve et crédit 450 ou paiement enregistré, correction conservée ; vente et versements sources protégés. Avance PPT affectable à des travaux votés, prise en compte au solde sans double facturation. Correction isolée bloquée après solde des travaux.",
       "evidence": [
-        "backend/finance/cycle.py",
-        "backend/finance/cycle_views.py",
-        "backend/finance/reconciliation.py",
-        "backend/finance/test_cycle.py",
-        "frontend/src/components/AccountingCycle.tsx",
-        "docs/guides/COMPTABILITE-CYCLE.md",
-        "backend/governance/models.py",
-        "backend/governance/workflow.py",
-        "backend/governance/workflow_views.py",
-        "backend/governance/test_workflow.py",
-        "frontend/src/components/AssemblyWorkflow.tsx",
-        "docs/guides/AG-OUTILS.md"
+        "backend/finance/funding.py",
+        "backend/finance/funding_views.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/Funding.tsx",
+        "backend/finance/cycle.py"
       ],
       "priority": "P0",
-      "next_step": "Distinguer avances, provisions et crédits ordinaires dans les sous-comptes et restitutions.",
-      "delivered_in_this_change": false,
+      "next_step": "Maintenir les contrôles et documenter les situations exceptionnelles.",
+      "delivered_in_this_change": true,
       "source_text": "Avances (trésorerie permanente, avances de travaux) et leur suivi par copropriétaire."
     },
     {
@@ -590,18 +583,15 @@
       "section": "4.2",
       "text": "États financiers et annexes obligatoires : situation financière et trésorerie, compte de gestion général, compte de gestion pour opérations courantes, compte de gestion pour travaux et opérations exceptionnelles, état des dettes et créances, annexes 1 à 5 (comparaison budget/réalisé, état des travaux, etc.).",
       "status": "partiel",
-      "assessment": "Cinq états de préparation, budgets comparés par clé, charges/projets/tiers et preuves bancaires, impression et archive JSON figée. Les modèles réglementaires exacts ne sont pas certifiés/validés et le JSON n’emporte pas les fichiers.",
+      "assessment": "Cinq annexes structurées et imprimables, comparatifs disponibles, tiers identifiés non compensés, provisions avant régularisation, dates/détails travaux, contrôles grand livre et concordance, version/empreinte et instantanés. Aides/prêts/indemnités signalés pour états complémentaires ; conformité exhaustive des modèles à faire valider par métier.",
       "evidence": [
-        "backend/finance/cycle.py",
-        "backend/finance/cycle_views.py",
-        "backend/finance/reconciliation.py",
-        "backend/finance/test_cycle.py",
-        "frontend/src/components/AccountingCycle.tsx",
-        "docs/guides/COMPTABILITE-CYCLE.md"
+        "backend/finance/regulatory.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/RegulatoryAnnexes.tsx"
       ],
       "priority": "P0",
-      "next_step": "Construire annexes 1 à 5 à partir des fonds, opérations et régularisations ; le bilan actuel n’en est pas une.",
-      "delivered_in_this_change": false,
+      "next_step": "Cinq annexes structurées et imprimables, comparatifs disponibles, tiers identifiés non compensés, provisions avant régularisation, dates/détails travaux, contrôles grand livre et concordance, version/empreinte et instantanés. Aides/prêts/indemnités signalés pour états complémentaires ; conformité exhaustive des modèles à faire valider par métier.",
+      "delivered_in_this_change": true,
       "source_text": "États financiers et annexes obligatoires : situation financière et trésorerie, compte de gestion général, compte de gestion pour opérations courantes, compte de gestion pour travaux et opérations exceptionnelles, état des dettes et créances, annexes 1 à 5 (comparaison budget/réalisé, état des travaux, etc.)."
     },
     {
@@ -902,21 +892,19 @@
       "section": "4.5",
       "text": "Documents joints obligatoires : comptes, budget, devis, contrat-type de syndic, projet de contrat, etc., avec liste de contrôle selon les résolutions.",
       "status": "partiel",
-      "assessment": "Versions des documents et checklist obligatoires pour les modèles proposés, conservées dans la convocation. Vérification humaine des pièces supplémentaires et des cas particuliers.",
+      "assessment": "Pièces versionnées selon modèle ; approbation des comptes avec cinq annexes, décomptes et consultation, exercice terminé, relecture et empreinte du dossier comptable figée. Modification après relecture et erreurs bloquent la convocation. Vérification humaine du contenu réel des PDF et des cas particuliers.",
       "evidence": [
-        "backend/governance/models.py",
-        "backend/governance/calculations.py",
-        "backend/governance/roster.py",
-        "backend/governance/tests.py",
+        "backend/governance/templates.py",
         "backend/governance/workflow.py",
-        "backend/governance/workflow_views.py",
         "backend/governance/test_workflow.py",
         "frontend/src/components/AssemblyWorkflow.tsx",
-        "docs/guides/AG-OUTILS.md"
+        "backend/finance/regulatory.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/RegulatoryAnnexes.tsx"
       ],
       "priority": "P0",
-      "next_step": "Dossier de préparation imprimable présent. GED liée à l’AG et pièces requises selon résolution manquantes.",
-      "delivered_in_this_change": false,
+      "next_step": "Pièces versionnées selon modèle ; approbation des comptes avec cinq annexes, décomptes et consultation, exercice terminé, relecture et empreinte du dossier comptable figée. Modification après relecture et erreurs bloquent la convocation. Vérification humaine du contenu réel des PDF et des cas particuliers.",
+      "delivered_in_this_change": true,
       "source_text": "Documents joints obligatoires : comptes, budget, devis, contrat-type de syndic, projet de contrat, etc., avec liste de contrôle selon les résolutions."
     },
     {
@@ -1100,18 +1088,16 @@
       "section": "4.5",
       "text": "Génération du procès-verbal (modèle réglementaire), signature (physique ou électronique), registre des PV.",
       "status": "partiel",
-      "assessment": "PV depuis les textes/votes, noms/voix et réserves, rappel de recours, scan signé/présence, délais, projet corrigé conservé et registre. Modèle non certifié et signature électronique qualifiée non intégrée.",
+      "assessment": "PV avec votes, noms/voix, opposants/abstentionnistes et assimilés défaillants distincts, rappel article 42 alinéa 2, scans signés et registre. Feuille de présence avec réception des correspondances. Validation métier des modèles et signature qualifiée extérieure.",
       "evidence": [
-        "backend/governance/models.py",
+        "backend/governance/templates.py",
         "backend/governance/workflow.py",
-        "backend/governance/workflow_views.py",
         "backend/governance/test_workflow.py",
-        "frontend/src/components/AssemblyWorkflow.tsx",
-        "docs/guides/AG-OUTILS.md"
+        "frontend/src/components/AssemblyWorkflow.tsx"
       ],
       "priority": "P0",
-      "next_step": "Créer PV à partir de votes officiels, signature et registre ; le dossier imprimable actuel est un document de travail.",
-      "delivered_in_this_change": false,
+      "next_step": "PV avec votes, noms/voix, opposants/abstentionnistes et assimilés défaillants distincts, rappel article 42 alinéa 2, scans signés et registre. Feuille de présence avec réception des correspondances. Validation métier des modèles et signature qualifiée extérieure.",
+      "delivered_in_this_change": true,
       "source_text": "Génération du procès-verbal (modèle réglementaire), signature (physique ou électronique), registre des PV."
     },
     {
@@ -1758,16 +1744,16 @@
       "section": "4.13",
       "text": "Accès en ligne sécurisé aux documents de gestion pour les copropriétaires et le conseil syndical bénévole/coopératif.",
       "status": "partiel",
-      "assessment": "Connexion, accès documentaire contrôlé et lecture seule présents. 2FA et vérification complète de l’extranet cible manquants.",
+      "assessment": "Connexion, droits documentaires contrôlés et TOTP avec codes de secours disponibles. Vérification complète du périmètre documentaire et des parcours de l’extranet cible encore à mener.",
       "evidence": [
-        "backend/core/models.py",
-        "backend/core/views.py",
-        "backend/core/access.py",
-        "backend/core/test_access.py"
+        "backend/safety/views.py",
+        "backend/safety/tests.py",
+        "backend/documents/views.py",
+        "frontend/src/components/Security.tsx"
       ],
       "priority": "P1",
-      "next_step": "Connexion, accès documentaire contrôlé et lecture seule présents. 2FA et vérification complète de l’extranet cible manquants.",
-      "delivered_in_this_change": false,
+      "next_step": "Connexion, droits documentaires contrôlés et TOTP avec codes de secours disponibles. Vérification complète du périmètre documentaire et des parcours de l’extranet cible encore à mener.",
+      "delivered_in_this_change": true,
       "source_text": "Accès en ligne sécurisé aux documents de gestion (obligatoire pour les syndics professionnels, fortement recommandé pour un syndic bénévole car il rend la gestion transparente pour le conseil syndical).",
       "excluded_fragment": "Qualification de l’obligation applicable au syndic professionnel"
     },
@@ -2175,17 +2161,15 @@
       "section": "5",
       "text": "États financiers et annexes comptables (voir §4.2), comptes rendus d'exercice.",
       "status": "partiel",
-      "assessment": "Rapports généraux présents, annexes et états de clôture absents.",
+      "assessment": "Dossier annuel structuré avec cinq annexes, comparatifs, décomptes, contrôles et empreinte ; conservation à la clôture. Modèles et situations exceptionnelles à faire valider, fichiers joints conservés séparément en GED.",
       "evidence": [
-        "backend/finance/models.py",
-        "backend/finance/services.py",
-        "backend/finance/reporting.py",
-        "backend/finance/test_advanced.py",
-        "backend/finance/test_payments.py"
+        "backend/finance/regulatory.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/RegulatoryAnnexes.tsx"
       ],
       "priority": "P1",
-      "next_step": "Rapports généraux présents, annexes et états de clôture absents.",
-      "delivered_in_this_change": false,
+      "next_step": "Dossier annuel structuré avec cinq annexes, comparatifs, décomptes, contrôles et empreinte ; conservation à la clôture. Modèles et situations exceptionnelles à faire valider, fichiers joints conservés séparément en GED.",
+      "delivered_in_this_change": true,
       "source_text": "États financiers et annexes comptables (voir §4.2), comptes rendus d'exercice."
     },
     {
@@ -2205,16 +2189,16 @@
       "section": "5",
       "text": "Convocation, PV, feuille de présence (modèles conformes).",
       "status": "partiel",
-      "assessment": "Dossier AG imprimable et liste de présence de travail présents. Documents officiels et procédure probante absents.",
+      "assessment": "Convocation figée, pièces par résolution, correspondance avec qualité/pages/paraphes et aide réglementaire, présence avec réception du formulaire, PV distinguant assimilés défaillants et rappel de recours. Vérifier l’intégralité des mentions du modèle officiel ; aucune certification ou signature qualifiée intégrée.",
       "evidence": [
-        "backend/governance/models.py",
-        "backend/governance/calculations.py",
-        "backend/governance/roster.py",
-        "backend/governance/tests.py"
+        "backend/governance/templates.py",
+        "backend/governance/workflow.py",
+        "backend/governance/test_workflow.py",
+        "frontend/src/components/AssemblyWorkflow.tsx"
       ],
       "priority": "P1",
-      "next_step": "Dossier AG imprimable et liste de présence de travail présents. Documents officiels et procédure probante absents.",
-      "delivered_in_this_change": false,
+      "next_step": "Convocation figée, pièces par résolution, correspondance avec qualité/pages/paraphes et aide réglementaire, présence avec réception du formulaire, PV distinguant assimilés défaillants et rappel de recours. Vérifier l’intégralité des mentions du modèle officiel ; aucune certification ou signature qualifiée intégrée.",
+      "delivered_in_this_change": true,
       "source_text": "Convocation, PV, feuille de présence (modèles conformes)."
     },
     {
@@ -2583,17 +2567,18 @@
       "id": "7.06",
       "section": "7",
       "text": "Authentification forte (2FA), gestion des mots de passe.",
-      "status": "partiel",
-      "assessment": "Mots de passe hashés et changement initial obligatoires présents. 2FA et limitation des tentatives manquantes. Le SSO de cabinet est exclu de cette cible.",
+      "status": "complet",
+      "assessment": "TOTP avec confirmation, codes de secours à usage unique, secrets chiffrés, limitation des tentatives partagée et récupération serveur tracée. Règle obligatoire possible pour les accès de gestion ; activation individuelle par chaque titulaire.",
       "evidence": [
-        "backend/core/models.py",
-        "backend/core/access.py",
-        "backend/finance/advanced.py",
-        "backend/core/test_access.py"
+        "backend/safety/authentication.py",
+        "backend/safety/views.py",
+        "backend/safety/middleware.py",
+        "backend/safety/tests.py",
+        "frontend/src/components/Security.tsx"
       ],
       "priority": "P0",
-      "next_step": "Mots de passe hashés et changement initial obligatoires présents. 2FA et limitation des tentatives manquantes. Le SSO de cabinet est exclu de cette cible.",
-      "delivered_in_this_change": false,
+      "next_step": "Configurer et surveiller l’exploitation ; maintenir les tests et les limites documentées.",
+      "delivered_in_this_change": true,
       "source_text": "Authentification forte (2FA), gestion des mots de passe, SSO pour les cabinets.",
       "excluded_fragment": "SSO pour les cabinets"
     },
@@ -2602,15 +2587,16 @@
       "section": "7",
       "text": "Chiffrement des données en transit et au repos, gestion des clés.",
       "status": "partiel",
-      "assessment": "Option HTTPS_ONLY désormais transmise par Compose aux cookies Secure (0 par défaut pour le développement HTTP). Déploiement HTTPS public, chiffrement au repos et gestion des clés restent à vérifier/implémenter.",
+      "assessment": "Secrets TOTP chiffrés en base et archives chiffrées AES-256-GCM avec phrase dérivée par scrypt. HTTPS_ONLY disponible. Protection complète des disques, rotation des clés, stockage hors site et configuration HTTPS restent du ressort de l’exploitation.",
       "evidence": [
-        "compose.yaml",
+        "backend/safety/authentication.py",
+        "scripts/archive_format.py",
         "backend/config/settings.py",
-        "README.md"
+        "docs/guides/SAUVEGARDE-SECURITE.md"
       ],
       "priority": "P0",
-      "next_step": "Option HTTPS_ONLY désormais transmise par Compose aux cookies Secure (0 par défaut pour le développement HTTP). Déploiement HTTPS public, chiffrement au repos et gestion des clés restent à vérifier/implémenter.",
-      "delivered_in_this_change": false,
+      "next_step": "Secrets TOTP chiffrés en base et archives chiffrées AES-256-GCM avec phrase dérivée par scrypt. HTTPS_ONLY disponible. Protection complète des disques, rotation des clés, stockage hors site et configuration HTTPS restent du ressort de l’exploitation.",
+      "delivered_in_this_change": true,
       "source_text": "Chiffrement des données en transit et au repos, gestion des clés."
     },
     {
@@ -2648,16 +2634,19 @@
       "id": "7.10",
       "section": "7",
       "text": "Sauvegardes régulières, tests de restauration, plan de reprise d'activité.",
-      "status": "partiel",
-      "assessment": "Volumes persistants présents et consignes manuelles dans README. Pas de sauvegarde automatisée ni restauration effectivement testée/PRA.",
+      "status": "complet",
+      "assessment": "Archive chiffrée PostgreSQL et toutes les versions documentaires, inventaires avant/après, restauration isolée comparée et rétention. Reprise réelle, perte de pièce et interruption/reprise testées. Lanceur Windows et procédure Linux/PRA livrés ; fréquence, secret, copie hors site et surveillance sont à configurer par l’exploitant.",
       "evidence": [
-        "compose.yaml",
-        "backend/config/settings.py",
-        "README.md"
+        "scripts/backup.py",
+        "scripts/archive_format.py",
+        "scripts/backup-scheduled.ps1",
+        "scripts/test_restore_integration.py",
+        "backend/safety/inventory.py",
+        "docs/guides/SAUVEGARDE-SECURITE.md"
       ],
       "priority": "P0",
-      "next_step": "Volumes persistants présents et consignes manuelles dans README. Pas de sauvegarde automatisée ni restauration effectivement testée/PRA.",
-      "delivered_in_this_change": false,
+      "next_step": "Configurer et surveiller l’exploitation ; maintenir les tests et les limites documentées.",
+      "delivered_in_this_change": true,
       "source_text": "Sauvegardes régulières, tests de restauration, plan de reprise d'activité."
     },
     {
@@ -2665,7 +2654,7 @@
       "section": "7",
       "text": "Tests de pénétration, gestion des vulnérabilités, politique de mise à jour.",
       "status": "partiel",
-      "assessment": "112 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée.",
+      "assessment": "221 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée.",
       "evidence": [
         "backend/core/tests.py",
         "backend/finance/tests.py",
@@ -2674,7 +2663,7 @@
         "backend/operations/test_partners.py"
       ],
       "priority": "P0",
-      "next_step": "112 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée.",
+      "next_step": "221 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée.",
       "delivered_in_this_change": false,
       "source_text": "Tests de pénétration, gestion des vulnérabilités, politique de mise à jour."
     },
@@ -2981,11 +2970,13 @@
     {
       "id": "U03",
       "name": "Accès membre",
-      "available": "Login courriel, mot de passe temporaire hashé, changement obligatoire, réinitialisation et mailto.",
-      "limit": "Pas de 2FA ; aucun envoi automatique.",
+      "available": "Login courriel, mot de passe temporaire hashé et changement obligatoire, TOTP, codes de secours, limitation des tentatives et récupération serveur.",
+      "limit": "Activation individuelle ; règle obligatoire possible pour les gestionnaires. Aucun envoi automatique.",
       "evidence": [
         "backend/core/models.py",
-        "backend/core/test_access.py"
+        "backend/core/test_access.py",
+        "backend/safety/views.py",
+        "backend/safety/tests.py"
       ]
     },
     {
@@ -3211,8 +3202,8 @@
     {
       "id": "U24",
       "name": "Préparation d’AG",
-      "available": "Créer réunion, lieu/date, résolutions ordonnées et dossier de travail imprimable.",
-      "limit": "Aucun PV ou convocation officielle.",
+      "available": "Préparation et dossier de convocation figé, pièces/version et vérification des annexes de l’exercice présenté.",
+      "limit": "Signatures/envois extérieurs et validation métier des modèles.",
       "evidence": [
         "backend/governance/calculations.py",
         "backend/governance/tests.py"
@@ -3495,8 +3486,8 @@
     {
       "id": "U49",
       "name": "Fonds et travaux",
-      "available": "Suivi 105 par lot, versements lettrés, banque dédiée, affectation et résultat d’opération.",
-      "limit": "Minima/exceptions/PPT et ordres bancaires non automatisés.",
+      "available": "Suivi 105 par lot, versements, banque dédiée, affectation et solde ; décisions annuelles, minima/PPT et suspension contrôlés après paramétrage.",
+      "limit": "Calendrier historique et situations exceptionnelles à vérifier ; aucun ordre bancaire.",
       "evidence": [
         "backend/finance/cycle.py",
         "backend/finance/cycle_views.py",
@@ -3721,6 +3712,32 @@
         "frontend/src/components/Council.tsx",
         "docs/guides/CONSEIL-SYNDICAL.md"
       ]
+    },
+    {
+      "id": "U65",
+      "name": "Sauvegarde et reprise",
+      "available": "Archive chiffrée PostgreSQL et toutes les versions documentaires, inventaires avant/après, restauration isolée comparée et rétention. Reprise réelle, perte de pièce et interruption/reprise testées. Lanceur Windows et procédure Linux/PRA livrés ; fréquence, secret, copie hors site et surveillance sont à configurer par l’exploitant.",
+      "limit": "Programmation, phrase secrète et copie hors site à configurer sur le serveur ; même schéma applicatif et PostgreSQL 16.",
+      "evidence": [
+        "scripts/backup.py",
+        "scripts/archive_format.py",
+        "scripts/backup-scheduled.ps1",
+        "scripts/test_restore_integration.py",
+        "backend/safety/inventory.py",
+        "docs/guides/SAUVEGARDE-SECURITE.md"
+      ]
+    },
+    {
+      "id": "U66",
+      "name": "Avances et restitutions",
+      "available": "Trois catégories 1031/1032/1033 ; réserve plafonnée soldes antérieurs compris, suivi constitué/versé/restitué/affecté par lot et titulaire historique. Restitutions partielles avec preuve et crédit 450 ou paiement enregistré, correction conservée ; vente et versements sources protégés. Avance PPT affectable à des travaux votés, prise en compte au solde sans double facturation. Correction isolée bloquée après solde des travaux.",
+      "limit": "Décisions/justificatifs à vérifier ; aucun ordre bancaire ; solde des travaux à traiter avant correction d’une affectation finalisée.",
+      "evidence": [
+        "backend/finance/funding.py",
+        "backend/finance/funding_views.py",
+        "backend/finance/test_regulatory.py",
+        "frontend/src/components/Funding.tsx"
+      ]
     }
   ],
   "change_history": [
@@ -3785,6 +3802,14 @@
         "roles_reviewed": 11,
         "supplementary_needs": 2
       }
+    },
+    {
+      "date": "2026-10-15",
+      "change": "Sauvegardes chiffrées base/documents, reprise vérifiée et TOTP/codes de secours ; 7.06 et 7.10 complètes dans les limites d’exploitation documentées."
+    },
+    {
+      "date": "2026-10-15",
+      "change": "Annexes structurées, relecture des pièces AG, minima du fonds et suspension, catégories d’avances, vente, restitutions et affectation PPT ; 4.2.09 complète dans les limites documentées."
     }
   ]
 }

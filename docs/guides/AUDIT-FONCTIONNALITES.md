@@ -1,6 +1,6 @@
 # État de Copro. — syndics bénévoles et coopératifs
 
-Revue du **15 octobre 2026**, après livraison des parcours comptables, AG et conseil syndical, sur le [cahier fourni](../reference/cahier-fonctionnalites.md).
+Revue du **15 octobre 2026**, après livraison des parcours comptables, AG, conseil syndical et sauvegarde/sécurité, sur le [cahier fourni](../reference/cahier-fonctionnalites.md).
 
 **Le cycle comptable et une AG conduite par le gestionnaire avec papier/scans et notifications extérieures sont utilisables.** Les services connectés, le mode simplifié, les modèles réglementaires à valider et les cas particuliers de gouvernance restent à compléter. Aucun pourcentage de conformité globale.
 
@@ -10,8 +10,8 @@ Une instance gère une copropriété. Le sélecteur visuel ne cloisonne pas plus
 
 | État des exigences | Nombre |
 | --- | ---: |
-| Complètes dans les limites indiquées | 19 |
-| Partielles | 94 |
+| Complètes dans les limites indiquées | 22 |
+| Partielles | 91 |
 | Absentes | 43 |
 | Total | 156 |
 
@@ -26,22 +26,22 @@ Avant ces parcours : **6 complètes, 84 partielles, 66 absentes**. L’[instanta
 | Conseil et coopératif | Mandats datés, droits ciblés, présidence/syndic coopératif, préparation des dépenses, avis motivés, lecture des pièces et contrôle indépendant | Réunions, délégations collectives, personnes/cas dérogatoires et passation à compléter |
 | Immeuble / extranet | Lots/tantièmes/annuaire, compte personnel et publications ; ancien vendeur sans lot limité au compte individuel | Bâtiments, indivision, occupants, messagerie et isolation multi-copropriété à compléter |
 | Travaux et prestataires | Dossiers, devis, contrats, attestations et opérations financières créées depuis les décisions | Chantier/réception/garanties, commandes et mise en concurrence formalisée à compléter |
-| Exploitation | Contrôles serveur, CSRF, fichiers privés, conteneurs, sauvegarde avant migrations et tests séparés | 2FA, restauration automatisée testée, audit inaltérable, RGPD et sauvegarde complète à structurer |
+| Exploitation | TOTP/codes de secours, limites des tentatives, récupération serveur, archives chiffrées base/pièces, restauration comparée, rétention et reprise après interruption | Programmation/copie hors site à configurer ; supervision, audit inaltérable et RGPD à compléter |
 
 Guides : [cycle comptable](COMPTABILITE-CYCLE.md), [AG de préparation à archivage](AG-OUTILS.md), [périmètre produit](PERIMETRE-PRODUIT.md). Les opérations sensibles demandent une confirmation dans l’application et conservent une trace ; aucun envoi extérieur automatique ni moteur IA puissant.
 
-Prochain chantier : sauvegarde/restauration vérifiée et fiabilisation des modèles/cas réglementaires. Voir la [feuille de route](PROCHAINS-CHANTIERS.md) et le [guide du conseil](CONSEIL-SYNDICAL.md).
+Sauvegarde/restauration vérifiée et double authentification livrées : voir le [guide de sécurité](SAUVEGARDE-SECURITE.md). Documents et financements renforcés : voir le [guide des annexes, fonds et avances](DOCUMENTS-FONDS-AVANCES.md). Validation métier des modèles à poursuivre ; prochain chantier produit : calendrier de gestion et entretien. Voir la [feuille de route](PROCHAINS-CHANTIERS.md) et le [guide du conseil](CONSEIL-SYNDICAL.md).
 
 ## Règles à interpréter correctement
 
 - En forme coopérative, le syndic exerce aussi la présidence du conseil dans le cas général ; organiser les fonctions et le contrôle indépendant. [Service Public](https://www.service-public.gouv.fr/particuliers/vosdroits/F38886).
 - Le régime simplifié vise au plus cinq lots principaux **OU** un budget moyen inférieur à 15 000 € sur trois exercices ; les engagements restent à constater. [Article 41-8](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000039301997/), [article 41-10](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000039302006).
 - La régularisation appartient au propriétaire à la date d’approbation ; un accord privé de prorata n’est pas imposé au syndicat. [Service Public](https://www.service-public.gouv.fr/particuliers/vosdroits/F32920).
-- Le suivi du fonds ne calcule pas encore tous ses minima, notamment selon le PPT. Le compte séparé reste nécessaire. Les pièces et majorités spécifiques demandent une vérification humaine.
+- Les minima du fonds/PPT et les seuils cumulatifs de suspension sont calculés après paramétrage annuel ; le calendrier historique reste à vérifier. Le compte séparé reste nécessaire. Les pièces et majorités spécifiques demandent une vérification humaine.
 
 ## Vérification
 
-**172 tests PostgreSQL**, dont 25 sur le conseil et ses permissions, compilation TypeScript/Vite, migrations et contrôles visuels sur copie isolée fictive, y compris mobile. Les données réelles ont été sauvegardées avant migration ; aucun vote réel, envoi ou écriture d’essai n’a été créé pour la vérification. Les tests et documents ne constituent pas une certification juridique ou comptable.
+**221 tests PostgreSQL**, dont 25 de sécurité et 25 sur le conseil et ses permissions, 4 tests du format d’archive, scénario Docker de perte de pièce et interruption/reprise, compilation TypeScript/Vite, migrations et contrôles visuels sur copie isolée fictive, y compris mobile. Les données réelles ont été sauvegardées avant migration ; aucun vote réel, envoi ou écriture d’essai n’a été créé pour la vérification. Les tests et documents ne constituent pas une certification juridique ou comptable.
 
 Les accès du conseil et du syndic dépendent des mandats actifs ; les accès permanents d’administration/gestion restent distincts. Les rôles sont contrôlés côté serveur. Les JSON exportent les données, sans les fichiers de pièces.
 
@@ -49,7 +49,7 @@ Les accès du conseil et du syndic dépendent des mandats actifs ; les accès pe
 
 | Rôle | État | Constat |
 | --- | --- | --- |
-| Administrateur de la plateforme | partiel | Administrateur principal : attribution/retrait des accès, règles et comptes externes tracés. Une copropriété seulement ; sécurité forte et passation à compléter. |
+| Administrateur de la plateforme | partiel | Administrateur principal : attribution/retrait des accès, règles et comptes externes tracés. Une copropriété seulement ; TOTP et récupération serveur disponibles ; passation à compléter. |
 | Syndic bénévole | partiel | Mandat de syndic bénévole donnant accès à la gestion pendant sa période, désignation documentée et retrait motivé. Indemnités et passation complète à compléter. |
 | Syndic coopératif / président | partiel | Président/syndic coopératif avec droits de gestion dépendants du mandat de membre du conseil ; contrôle séparé. Cas dérogatoires et gouvernance collective avancée à compléter. |
 | Trésorier / référent comptable | partiel | Lecture des comptes, dépôt de pièces et préparation/correction de factures sans écriture ni règlement. Préparation des appels/budgets et rapprochement délégués restent à étendre. |
@@ -68,13 +68,14 @@ Les accès du conseil et du syndic dépendent des mandats actifs ; les accès pe
 | Gestion d’une ou plusieurs copropriétés | absent | Une seule organisation (pk=1) et aucun lien de copropriété sur les propriétaires/lots/opérations. Le sélecteur visuel ne fournit pas d’isolation. Évolution non professionnelle toujours dans la cible ; commencer par fiabiliser une copropriété. |
 | Mode comptable simplifié pour les petits syndicats | absent | Paragraphe nouveau hors des puces comptées : aucun choix de régime, calcul d’éligibilité ou parcours simplifié. Les articles 41-8 et 41-10 doivent guider les règles ; les engagements restent à constater en fin d’exercice. |
 
-## Les 64 fonctions utilisables de périmètre plus étroit
+## Les 66 fonctions utilisables de périmètre plus étroit
 
 | Fonction | Disponible | Limite |
 | --- | --- | --- |
 | Annuaire | Créer/modifier/rechercher un propriétaire physique ; courriel unique. | Pas d’indivision, démembrement ou historique de mutation. |
 | Lots | Créer/modifier/rechercher et attribuer un propriétaire ; surface et tantièmes. | Bâtiments et escaliers non structurés. |
-| Accès membre | Login courriel, mot de passe temporaire hashé, changement obligatoire, réinitialisation et mailto. | Pas de 2FA ; aucun envoi automatique. |
+| Accès membre | Login courriel, mot de passe temporaire, TOTP, codes de secours, limitation des tentatives et récupération serveur. | Activation individuelle ; aucun envoi automatique. |
+| Sauvegarde et reprise | Archive chiffrée base et pièces, restauration isolée comparée, rétention et reprise après interruption. | Programmation, secret et copie hors site à configurer ; même schéma et PostgreSQL 16. |
 | Permissions actuelles | Contrôles serveur gestionnaire/lecture, protection de données privées et activation réservée au superadministrateur. | Trois niveaux seulement ; une copropriété. |
 | Clés de charges | Clés générales ou poids spécifiques par lot. | Pas de validation juridique du règlement. |
 | Appel générique | Brouillon, aperçu, validation et répartition figée lot/propriétaire/poids/montant, exacte au centime. | Pas de calendrier légal ni type fonds/travaux structuré. |
@@ -112,7 +113,7 @@ Les accès du conseil et du syndic dépendent des mandats actifs ; les accès pe
 | Annonces | Brouillon, publication explicite, retrait et archive/restauration ; lecture membre. | Panneau de texte partagé, sans messagerie ni envoi externe. |
 | Navigation et mobile | Cinq thèmes, catégories déroulantes/compactes, pages explicatives et volet mobile. | Pas de PWA ni audit RGAA complet. |
 | Vitrine et installation | Présentation statique docs/index.html et démarrage application avec Docker Compose. | La vitrine fonctionne sans serveur ; l’application de gestion nécessite backend/base. |
-| Banques | Comptes distincts, association au compte existant, solde comptable à date et compte par défaut. | Solde comptable ; rapprochement CSV assisté maintenant disponible. Pas de connexion bancaire ou calcul automatique des minima légaux du fonds. |
+| Banques | Comptes distincts, association au compte existant, solde comptable à date et compte par défaut. | Solde comptable ; rapprochement CSV assisté maintenant disponible. Pas de connexion bancaire ; minima/PPT calculés dans Fonds & avances après paramétrage. |
 | Transferts enregistrés | Écriture équilibrée entre banques, référence et protection contre les doublons lors d’une nouvelle tentative. | Transfert déjà effectué, aucun ordre envoyé ; affichage des 100 derniers. |
 | Comptes fournisseurs | Balance auxiliaire 40, solde antérieur, règlements et dette finale par fournisseur, filtres et CSV. | Sur l’exercice sélectionné avec reports ; lettrage et paiement des soldes repris disponibles dans le cycle comptable. |
 | Reprise des soldes | Balance initiale équilibrée, tiers et fonds par lot, correction conservée. | Pas d’import automatique de données externes. |
@@ -120,10 +121,11 @@ Les accès du conseil et du syndic dépendent des mandats actifs ; les accès pe
 | Rapprochement bancaire | CSV normalisé, suggestions, pointage groupé, soldes, transit justifié et validation. | Pas de CFONB/OFX/agrégateur. |
 | Régularisation annuelle | Répartitions figées, delta par clé/lot, propriétaire à l’approbation et écriture traçable. | Décision/PV à vérifier ; aucune convention privée de prorata supposée. |
 | Clôture et reports | Contrôles, extinction 6/7, travaux 120, à-nouveaux détaillés et instantané. | Clôture définitive immuable ; états réglementaires non certifiés. |
-| Fonds et travaux | Suivi 105 par lot, versements lettrés, banque dédiée, affectation et résultat d’opération. | Minima/exceptions/PPT et ordres bancaires non automatisés. |
+| Fonds et travaux | Suivi 105, décisions/pièces, minima/PPT et suspension, affectation et solde. | Paramétrage annuel nécessaire ; situations exceptionnelles et ordres bancaires extérieurs. |
+| Avances et restitutions | Catégories 103, plafond de réserve, versements par titulaire, ventes, restitution ou affectation PPT, corrections tracées. | Décisions et preuves requises ; aucun ordre bancaire ; correction du résultat nécessaire après solde des travaux. |
 | Mutations comptables | Aperçu, référence/date, appels exigibles, corrections tardives et annulation avec traces. | Cas d’indivision et pièces notariales non couverts. |
 | Suivi des échéances | Créances, crédits, exigibilité et tranches d’ancienneté. | Un solde comptable ne prouve pas à lui seul un impayé. |
-| Données annuelles | Cinq préparations, budget N−1/N/N+1/N+2, fichier comptable 18 colonnes et archive JSON. | Modèles non certifiés ; JSON sans fichiers de pièces. |
+| Données annuelles | Cinq annexes structurées, comparatifs disponibles, contrôles de concordance, fichier comptable 18 colonnes et archive JSON. | Modèles non certifiés ; JSON sans fichiers de pièces. |
 | Dossier de convocation | Types, pièces/version, adresses, demandes écrites, échéance ordinaire et dossier figé. | Cas légaux particuliers et modèles à vérifier. |
 | Présences et pouvoirs | Annuaire, droits, réduction, mandataires/pièces, correspondance et changements de présence. | Éligibilité personnelle vérifiée humainement ; exceptions complexes absentes. |
 | Votes de séance | Choix individuels persistés, calcul serveur, second tour et corrections conservés. | Gestionnaire opérateur ; pas de vote direct ou visio native. |
@@ -166,8 +168,8 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.2.05 | Budget prévisionnel : saisie par poste, simulation, comparaison avec N-1 et le réalisé, vote en AG. | partiel | Budgets par poste/clé, commentaires, N−1/réalisé et projections saisies N+1/N+2 ; reprise des postes depuis une décision signée. Scénarios budgétaires dédiés et contrôles de toutes les modalités restent à compléter. |
 | 4.2.06 | Appels de fonds provisionnels (en principe par quarts, avec dates d'exigibilité conformes à la loi), calcul automatique par lot selon les clés de répartition. | partiel | Appels par lot/clé, tantièmes figés et échéancier trimestriel au centime ; décision conservée et appels issus du PV signé. Les dates/modalités exactes sont vérifiées par le gestionnaire, pas toutes déduites du régime juridique. |
 | 4.2.07 | Appels de fonds pour travaux votés (provisions spéciales hors budget) avec échéancier voté en AG. | complet | Projets de travaux, comptes 102/67/120, financement et calendrier référencés ; un vote adopté et signé crée l’opération et les appels en brouillon, puis la publication répartit par lot/clé. |
-| 4.2.08 | Fonds de travaux (loi ALUR) : cotisation obligatoire (minimum 5 % du budget prévisionnel, sauf exceptions), suivi par lot, attaché au lot et non remboursable au vendeur, placement sur compte dédié. | partiel | Fonds 105 par lot, appelé/versé lettré/affecté/disponible, banque travaux dédiée, fonds versé attaché au lot après vente. Calcul automatique des minima/exemptions/PPT à développer. |
-| 4.2.09 | Avances (trésorerie permanente, avances de travaux) et leur suivi par copropriétaire. | partiel | Appels d’avance 1031 par lot/propriétaire et compte 450 ; décisions et paiements suivis. Remboursement spécialisé des avances et cas de vente restent à compléter. |
+| 4.2.08 | Fonds de travaux (loi ALUR) : cotisation obligatoire (minimum 5 % du budget prévisionnel, sauf exceptions), suivi par lot, attaché au lot et non remboursable au vendeur, placement sur compte dédié. | partiel | Profil de réception/habitation, budget et PPT, minimum annuel 5 % / 2,5 %, suspension avec les deux seuils et décision/pièce, plafond des appels votés. Suivi 105 par lot/banque et fonds versé attaché au lot après vente. Contrôles actifs après paramétrage annuel ; calendrier historique/anniversaire pendant exercice à vérifier. |
+| 4.2.09 | Avances (trésorerie permanente, avances de travaux) et leur suivi par copropriétaire. | complet | Trois catégories 1031/1032/1033 ; réserve plafonnée soldes antérieurs compris, suivi constitué/versé/restitué/affecté par lot et titulaire historique. Restitutions partielles avec preuve et crédit 450 ou paiement enregistré, correction conservée ; vente et versements sources protégés. Avance PPT affectable à des travaux votés, prise en compte au solde sans double facturation. Correction isolée bloquée après solde des travaux. |
 | 4.2.10 | Saisie des factures fournisseurs, OCR et reconnaissance automatique, workflow de validation (gestionnaire → conseil syndical selon les seuils). | partiel | Factures avec fournisseur et pièce, préparation sans écriture par un trésorier, demandes figées, avis du conseil et seuil/quorum contrôlés avant règlement. OCR absent. |
 | 4.2.11 | Règlements fournisseurs : chèques, virements, fichiers SEPA, prélèvement. | partiel | Paiements partiels dans l’exercice ouvert et banque choisie, lettrage fournisseur, dettes initiales payables et corrections conservées. Pas d’ordre bancaire, fichier SEPA ou prélèvement connecté. |
 | 4.2.12 | Encaissements copropriétaires : chèque, virement, prélèvement SEPA, carte bancaire en ligne, lettrage automatique. | partiel | Encaissements et affectations exactes au même tiers, protection contre réessai double, échéances et crédits visibles. Pas de carte, mandat SEPA ou connexion bancaire. |
@@ -176,7 +178,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.2.15 | Gestion des comptes bancaires multiples : compte courant, compte épargne du fonds travaux. | complet | Comptes courant/épargne/fonds distincts, compte par défaut, association à un 512 existant sans réécriture, soldes comptables à date, banque sur règlements/encaissements et transferts équilibrés avec protection contre les doublons. Ces soldes restent issus des seules écritures disponibles ; fonds travaux et rapprochement sont des exigences séparées. |
 | 4.2.16 | Régularisation des charges (réel vs provisions) et répartition par lot. | complet | Charges et provisions figées par clé/lot, delta attribué au propriétaire à l’approbation, aperçu avec empreinte, référence de décision, écriture et correction conservées. Le PV signé peut déclencher la régularisation. |
 | 4.2.17 | Régularisation des charges à l'ouverture pour les copropriétaires entrants/sortants. | partiel | Reprise des tiers et mutation datée avec appels exigibles transférés et correction de régularisation dans l’exercice ouvert, y compris notification tardive après clôture. Cas d’indivision et dossier notarial complet restent absents. |
-| 4.2.18 | États financiers et annexes obligatoires : situation financière et trésorerie, compte de gestion général, compte de gestion pour opérations courantes, compte de gestion pour travaux et opérations exceptionnelles, état des dettes et créances, annexes 1 à 5 (comparaison budget/réalisé, état des travaux, etc.). | partiel | Cinq états de préparation, budgets comparés par clé, charges/projets/tiers et preuves bancaires, impression et archive JSON figée. Les modèles réglementaires exacts ne sont pas certifiés/validés et le JSON n’emporte pas les fichiers. |
+| 4.2.18 | États financiers et annexes obligatoires : situation financière et trésorerie, compte de gestion général, compte de gestion pour opérations courantes, compte de gestion pour travaux et opérations exceptionnelles, état des dettes et créances, annexes 1 à 5 (comparaison budget/réalisé, état des travaux, etc.). | partiel | Cinq annexes structurées et imprimables, comparatifs disponibles, tiers identifiés non compensés, provisions avant régularisation, dates/détails travaux, contrôles grand livre et concordance, version/empreinte et instantanés. Aides/prêts/indemnités signalés pour états complémentaires ; conformité exhaustive des modèles à faire valider par métier. |
 | 4.2.19 | Exports comptables : journaux, grand livre, balance, FEC (utile pour les contrôles), export vers un expert-comptable si besoin. | partiel | Rapports CSV, dossier JSON et fichier comptable 18 colonnes avec groupes entièrement lettrés. Le format technique ne constitue pas une certification DGFiP ou un connecteur expert-comptable. |
 | 4.2.20 | Verrouillage des périodes, contrôle d'intégrité, traçabilité des écritures (aucune suppression, extournes uniquement). | complet | Écritures équilibrées sans suppression financière, contrepassations, contrôles de tiers/répartitions/banque, clôture immuable, empreintes et événements d’audit. Pas de promesse d’inaltérabilité contre l’administrateur de base. |
 
@@ -209,7 +211,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.5.01 | Planification de l'AG annuelle (dans les six mois suivant la clôture de l'exercice), rappel des échéances. | partiel | Planification, exercice présenté et échéance annuelle, alertes locales des étapes. Régimes d’AG exceptionnels et calendrier dépendant de tous les profils d’immeuble restent à compléter. |
 | 4.5.02 | Ordre du jour : construction de résolutions à partir d'une bibliothèque de résolutions types (approbation des comptes, quitus, budget, désignation syndic, conseil syndical, travaux, etc.), avec la majorité requise associée à chaque résolution. | complet | Bibliothèque de résolutions types, textes/majorités éditables, pièces types et contrôle des champs à compléter avant convocation. La majorité propre à l’objet est vérifiée par le gestionnaire. |
 | 4.5.03 | Gestion des questions des copropriétaires et de leur inscription à l'ordre du jour (demandes écrites avec délai). | partiel | Demande écrite, auteur, réception et version rattachés à un point avant convocation ; dossier figé ensuite. Pas de collecte directe ni boîte de demandes différées des membres. |
-| 4.5.04 | Documents joints obligatoires : comptes, budget, devis, contrat-type de syndic, projet de contrat, etc., avec liste de contrôle selon les résolutions. | partiel | Versions des documents et checklist obligatoires pour les modèles proposés, conservées dans la convocation. Vérification humaine des pièces supplémentaires et des cas particuliers. |
+| 4.5.04 | Documents joints obligatoires : comptes, budget, devis, contrat-type de syndic, projet de contrat, etc., avec liste de contrôle selon les résolutions. | partiel | Pièces versionnées selon modèle ; approbation des comptes avec cinq annexes, décomptes et consultation, exercice terminé, relecture et empreinte du dossier comptable figée. Modification après relecture et erreurs bloquent la convocation. Vérification humaine du contenu réel des PDF et des cas particuliers. |
 | 4.5.05 | Calcul automatique des tantièmes de présence et de vote. | complet | Corps électoral lié aux lots ou lignes libres expliquées, totaux de présence distincts, réduction article 22 et régime à deux, droits par clé confirmée et instantanés. |
 | 4.5.06 | Respect du délai minimal de 21 jours (délai spécifique pour certaines AG) : le logiciel calcule et empêche l'envoi trop tardif. | partiel | Blocage d’une notification ordinaire trop tardive : 21 jours ou délai RCP supérieur, prise d’effet, week-ends/jours fériés et option Alsace-Moselle. Urgence et outre-mer non traités. |
 | 4.5.07 | Envoi par courrier, LRAR, lettre recommandée électronique (avec consentement), email simple selon les cas, avec suivi des accusés de réception. | partiel | Convocation/formulaire/pouvoir imprimables, courriel préparé et preuves d’envoi/réception conservées avec modalité et dates. Envoi recommandé/LRE réalisé hors application ; aucun prestataire connecté. |
@@ -219,7 +221,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.5.11 | Désignation du président de séance, des scrutateurs, du secrétaire (avec contrôles de cohérence). | complet | Bureau élu déclaré avec président présent/éligible, syndic déclaré interdit, secrétaire et scrutateurs, confirmé avant séance. Les élections et relations personnelles sont contrôlées humainement. |
 | 4.5.12 | Support de l'AG en visioconférence et du vote en ligne en direct (si autorisé et paramétré). | absent | Créer un parcours autorisé de présence à distance et vote authentifié ; aucun service de visioconférence intégré. |
 | 4.5.13 | Saisie en temps réel, récapitulatif live pour le conseil syndical, gestion des arrivées / départs en cours de séance. | partiel | Saisie de séance, instantané par tour et arrivées/départs conservés. Pas de vue live dédiée au conseil, diffusion WebSocket ou rôle CS distinct. |
-| 4.5.14 | Génération du procès-verbal (modèle réglementaire), signature (physique ou électronique), registre des PV. | partiel | PV depuis les textes/votes, noms/voix et réserves, rappel de recours, scan signé/présence, délais, projet corrigé conservé et registre. Modèle non certifié et signature électronique qualifiée non intégrée. |
+| 4.5.14 | Génération du procès-verbal (modèle réglementaire), signature (physique ou électronique), registre des PV. | partiel | PV avec votes, noms/voix, opposants/abstentionnistes et assimilés défaillants distincts, rappel article 42 alinéa 2, scans signés et registre. Feuille de présence avec réception des correspondances. Validation métier des modèles et signature qualifiée extérieure. |
 | 4.5.15 | Notification du PV aux copropriétaires opposants ou défaillants dans le délai légal (généralement un mois), suivi des accusés de réception. | partiel | Opposants/défaillants calculés, délai d’un mois, preuves et dates avec retards visibles, archivage bloqué sans notifications. Les envois et accusés sont réalisés/vérifiés à l’extérieur. |
 | 4.5.16 | Gestion du délai de contestation (deux mois à compter de la notification) : alerte, suivi des recours. | complet | Terme de deux mois par notification effective, calendrier procédural, alertes et suivi des recours déclarés avec référence, pièce, statut et historique. Aucun dépôt judiciaire automatisé. |
 | 4.5.17 | Reprise automatique des décisions : budget voté, travaux votés (création des appels de fonds), nomination du syndic, mandats du conseil syndical. | partiel | Après PV signé : régularisation, postes budgétaires, appels en brouillon/projets et mandats du syndic bénévole/membres copropriétaires du conseil. Recopie confirmée des paramètres ; présidence coopérative et droits automatiques absents. |
@@ -300,7 +302,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 
 | ID | Exigence | État | Constat |
 | --- | --- | --- | --- |
-| 4.13.01 | Accès en ligne sécurisé aux documents de gestion pour les copropriétaires et le conseil syndical bénévole/coopératif. | partiel | Connexion, accès documentaire contrôlé et lecture seule présents. 2FA et vérification complète de l’extranet cible manquants. |
+| 4.13.01 | Accès en ligne sécurisé aux documents de gestion pour les copropriétaires et le conseil syndical bénévole/coopératif. | partiel | Connexion, droits documentaires contrôlés et TOTP avec codes de secours disponibles. Vérification complète du périmètre documentaire et des parcours de l’extranet cible encore à mener. |
 | 4.13.02 | Espace copropriétaire : solde du compte, historique des appels et paiements, documents de l'AG, règlement, PV, contrats, carnet d'entretien, coordonnées du gestionnaire. | partiel | Compte personnel, derniers mouvements, appels globaux et documents publiés présents. Ajouter historique personnel paginé, pièces liées aux appels et fiche gestionnaire complète. |
 | 4.13.03 | Paiement en ligne (carte, virement instantané, prélèvement). | absent | Créer intégration de paiement avec suivi signé des statuts et rapprochement ; aucun paiement en ligne actuellement. |
 | 4.13.04 | Signalement d'incidents, suivi des demandes. | absent | Créer tickets membres et suivi de leurs propres demandes avec isolation des données. |
@@ -340,9 +342,9 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 
 | ID | Exigence | État | Constat |
 | --- | --- | --- | --- |
-| 5.01 | États financiers et annexes comptables (voir §4.2), comptes rendus d'exercice. | partiel | Rapports généraux présents, annexes et états de clôture absents. |
+| 5.01 | États financiers et annexes comptables (voir §4.2), comptes rendus d'exercice. | partiel | Dossier annuel structuré avec cinq annexes, comparatifs, décomptes, contrôles et empreinte ; conservation à la clôture. Modèles et situations exceptionnelles à faire valider, fichiers joints conservés séparément en GED. |
 | 5.02 | Rapport d'activité du syndic présenté en AG. | absent | Créer rapport d’activité structuré par exercice avec pièces et décisions. |
-| 5.03 | Convocation, PV, feuille de présence (modèles conformes). | partiel | Dossier AG imprimable et liste de présence de travail présents. Documents officiels et procédure probante absents. |
+| 5.03 | Convocation, PV, feuille de présence (modèles conformes). | partiel | Convocation figée, pièces par résolution, correspondance avec qualité/pages/paraphes et aide réglementaire, présence avec réception du formulaire, PV distinguant assimilés défaillants et rappel de recours. Vérifier l’intégralité des mentions du modèle officiel ; aucune certification ou signature qualifiée intégrée. |
 | 5.04 | Fiche synthétique, état daté, pré-état daté. | absent | Dépend du référentiel complet et des mutations/régularisations. |
 | 5.05 | Budget vs réalisé par poste, avec écarts expliqués. | complet | Budget/réalisé et écarts par poste, commentaires persistants saisis par le gestionnaire, comparaison avec l’exercice précédent enregistré (entier), filtres analytiques et export CSV. Les budgets restent annuels ; le réalisé courant suit la période sélectionnée. |
 | 5.06 | Balance des copropriétaires, état des impayés et vieillissement. | partiel | Balances auxiliaires propriétaires et fournisseurs présents. Aucun vieillissement ou preuve de retard sans lettrage et échéances. |
@@ -377,12 +379,12 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 7.03 | Durées de conservation paramétrées, purge ou anonymisation automatiques. | absent | Créer politiques de conservation et processus de purge/anonymisation avec exceptions comptables. |
 | 7.04 | Sous-traitants (hébergeur, SMS, courrier) : contrats conformes, hébergement en Union européenne. | absent | Déploiement Docker local disponible ; localisation, sous-traitants et contrats dépendent de l’installation, non vérifiés. |
 | 7.05 | Analyse d'impact (AIPD) recommandée compte tenu du volume de données (identités, adresses, situation financière). | absent | Évaluer la nécessité d’une AIPD selon l’usage réel ; aucune analyse réalisée. |
-| 7.06 | Authentification forte (2FA), gestion des mots de passe. | partiel | Mots de passe hashés et changement initial obligatoires présents. 2FA et limitation des tentatives manquantes. Le SSO de cabinet est exclu de cette cible. |
-| 7.07 | Chiffrement des données en transit et au repos, gestion des clés. | partiel | Option HTTPS_ONLY désormais transmise par Compose aux cookies Secure (0 par défaut pour le développement HTTP). Déploiement HTTPS public, chiffrement au repos et gestion des clés restent à vérifier/implémenter. |
+| 7.06 | Authentification forte (2FA), gestion des mots de passe. | complet | TOTP avec confirmation, codes de secours à usage unique, secrets chiffrés, limitation des tentatives partagée et récupération serveur tracée. Règle obligatoire possible pour les accès de gestion ; activation individuelle par chaque titulaire. |
+| 7.07 | Chiffrement des données en transit et au repos, gestion des clés. | partiel | Secrets TOTP chiffrés en base et archives chiffrées AES-256-GCM avec phrase dérivée par scrypt. HTTPS_ONLY disponible. Protection complète des disques, rotation des clés, stockage hors site et configuration HTTPS restent du ressort de l’exploitation. |
 | 7.08 | Cloisonnement strict entre copropriétés (architecture multi-tenant sécurisée). | absent | Une seule copropriété globale. Aucun tenant, attribution ou test d’isolation entre copropriétés. |
 | 7.09 | Journalisation et audit (qui a fait quoi, quand), logs inaltérables sur les opérations comptables. | partiel | Historique acteur/date d’actions comptables et dossiers présent. Audit exhaustif avant/après et stockage inaltérable absents. |
-| 7.10 | Sauvegardes régulières, tests de restauration, plan de reprise d'activité. | partiel | Volumes persistants présents et consignes manuelles dans README. Pas de sauvegarde automatisée ni restauration effectivement testée/PRA. |
-| 7.11 | Tests de pénétration, gestion des vulnérabilités, politique de mise à jour. | partiel | 112 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée. |
+| 7.10 | Sauvegardes régulières, tests de restauration, plan de reprise d'activité. | complet | Archive chiffrée PostgreSQL et toutes les versions documentaires, inventaires avant/après, restauration isolée comparée et rétention. Reprise réelle, perte de pièce et interruption/reprise testées. Lanceur Windows et procédure Linux/PRA livrés ; fréquence, secret, copie hors site et surveillance sont à configurer par l’exploitant. |
+| 7.11 | Tests de pénétration, gestion des vulnérabilités, politique de mise à jour. | partiel | 221 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée. |
 | 7.12 | Disponibilité cible (par ex. 99,9 %), supervision, alertes. | partiel | Healthchecks Docker/API présents. Aucun SLO mesuré, supervision externe ni alerte d’incident. |
 | 7.13 | Intégrité comptable : transactions atomiques, contrôles d'équilibre, verrouillage des périodes. | complet | Création atomique et équilibrée des écritures, numérotation verrouillée et refus des dates/exercices verrouillés testés. Ce contrôle technique ne constitue pas une clôture réglementaire. |
 | 7.14 | Traçabilité juridique : horodatage des envois, preuves de notification, conservation des accusés. | absent | Dates de validation interne présentes mais aucun envoi probant, accusé de réception ni preuve de notification. |

@@ -1233,6 +1233,14 @@ function Preparation({
       ]),
     ),
   );
+  const [accountYear,setAccountYear] = useState(String(config.fiscal_year||""));
+  const [annual,setAnnual] = useState<Row|null>(null);
+  const [annualError,setAnnualError] = useState("");
+  useEffect(()=>{
+    let alive=true;setAnnual(null);setAnnualError("");
+    if(accountYear) api<Row>(`finance/cycle/annexes?year=${accountYear}`).then(r=>{if(alive)setAnnual(r.data.regulatory||null);}).catch(e=>{if(alive)setAnnualError(e.message);});
+    return()=>{alive=false;};
+  },[accountYear]);
   return (
     <section className="panel">
       <h2>Informations et pièces du dossier</h2>
@@ -1290,6 +1298,8 @@ function Preparation({
             consultation: body.consultation,
             notice_days: Number(body.notice_days),
             fiscal_year: body.fiscal_year || null,
+            accounts_reviewed: body.accounts_reviewed === true,
+            accounts_source_hash: annual?.source_hash || "",
             legal_checked: body.legal_checked,
             local_holidays: body.local_holidays === true,
             syndic_elector: body.syndic_elector,
@@ -1310,7 +1320,7 @@ function Preparation({
         </label>
         <label>
           Exercice présenté pour l’approbation annuelle
-          <select name="fiscal_year" defaultValue={config.fiscal_year || ""}>
+          <select name="fiscal_year" value={accountYear} onChange={e=>setAccountYear(e.target.value)}>
             <option value="">AG sans approbation annuelle / à préciser</option>
             {context.years.map((y: Row) => (
               <option key={y.id} value={y.id}>
@@ -1319,6 +1329,11 @@ function Preparation({
             ))}
           </select>
         </label>
+        {accountYear&&<div className="ag-callout"><strong>Dossier comptable de l’exercice sélectionné</strong>
+          {annualError&&<p role="alert">{annualError}</p>}
+          {annual?<><p>{annual.errors.length?`${annual.errors.length} point(s) à corriger avant la convocation.`:"Contrôles automatiques concordants."} Imprimez les cinq annexes depuis Rapports comptables → Dossier comptable annuel, déposez le PDF dans Documents et rattachez ses versions ci-dessous. Un même PDF complet peut être sélectionné pour plusieurs pièces.</p>
+            {annual.errors.map((s:string)=><p key={s}>{s}</p>)}<Check key={annual.source_hash} name="accounts_reviewed" checked={config.accounts_reviewed===true&&config.accounts_source_hash===annual.source_hash} label="J’ai relu les cinq annexes, les comparatifs et les décomptes individuels ; les versions jointes correspondent à cet exercice et à ce dossier."/>
+          </>:<p>Chargement du dossier, ou ancien format à contrôler séparément.</p>}</div>}
         <label>
           Adresse de retour des formulaires
           <input
@@ -1908,6 +1923,7 @@ function PrintDocuments({
                         {p?.representative
                           ? ` — ${p.representative}, ${p.representative_address}`
                           : ""}
+                        {p?.attendance==='correspondence'&&<><br/>Formulaire reçu le {dateLabel(p.received_on)}</>}
                       </td>
                       <td className="ag-signature-cell" />
                     </tr>
@@ -1932,6 +1948,7 @@ function PrintDocuments({
               Copropriétaire du ou des lots :
               ____________________________________
             </p>
+            <p>Agissant en qualité de : ☐ copropriétaire · ☐ associé · ☐ mandataire commun<br/>Après avoir pris connaissance de l’ordre du jour et des documents joints à la convocation, j’exprime ci-dessous mon vote pour chaque question de l’assemblée indiquée ci-dessus.</p>
             <p>
               Ce formulaire doit être réceptionné par le syndic au plus tard le{" "}
               <strong>{dateLabel(packet.correspondence_deadline)}</strong>, à
@@ -1961,6 +1978,7 @@ function PrintDocuments({
                 ))}
               </tbody>
             </table>
+            <p>Nombre de pages du tableau de vote jointes : ______. Parapher chaque page du tableau et signer la dernière page.</p>
             <p>
               Si une résolution pour laquelle vous avez voté favorablement est
               amendée en séance, vous êtes assimilé(e) à un copropriétaire
@@ -1971,6 +1989,14 @@ function PrintDocuments({
               Fait à ______________________, le ______________________.
               Signature :
             </p>
+            <section className="ag-legal-reminders"><h3>Rappel des dispositions légales et réglementaires</h3>
+              <p>Article 17-1 A de la loi du 10 juillet 1965 : le vote par correspondance utilise le modèle réglementaire. Le vote favorable sur une résolution amendée en séance rend son auteur assimilé défaillant pour cette résolution.</p>
+              <p>Décret du 17 mars 1967, article 9 : le formulaire accompagne la convocation. Article 9 bis : réception au plus tard trois jours francs avant la réunion ; par courriel, la date d’envoi vaut présomption de réception.</p>
+              <p>Article 14 : la feuille de présence identifie les nom et domicile des présents, représentés, participants à distance et votants par correspondance, avec la date de réception de leur formulaire.</p>
+              <p>Article 14-1 : la présence du copropriétaire, de l’associé ou de son mandataire écarte le formulaire, quelles que soient ses dates et celles du mandat, même sans mandataire désigné.</p>
+              <p>Article 17 : le PV précise, pour chaque question, le résultat et les noms et voix des opposants, abstentionnistes et assimilés défaillants.</p>
+              <p>Modèle et textes : <a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000042075372/">arrêté du 2 juillet 2020</a>. Vérifier les mentions et joindre les rappels réglementaires du modèle officiel lors de l’envoi.</p>
+            </section>
           </>
         )}
         {view === "power" && (
@@ -2033,10 +2059,10 @@ function PrintDocuments({
                     {v.incident && <p>Incidents / réserves : {v.incident}</p>}
                   </div>
                 ))}
-                {["for", "against", "abstain", "absent"].map((group) => (
+                {["for", "against", "abstain", "absent", "deemed_default"].map((group) => (
                   <p key={group}>
-                    {group === "absent" ? "Défaillants" : choiceNames[group]} :{" "}
-                    {r.groups[group]
+                    {group === "deemed_default" ? "Assimilés défaillants — vote favorable par correspondance sur un texte amendé" : group === "absent" ? "Défaillants" : choiceNames[group]} :{" "}
+                    {(r.groups[group]||[])
                       .map((p: Row) => `${p.name} (${p.shares} voix)`)
                       .join(", ") || "Aucun"}
                   </p>
@@ -2123,6 +2149,7 @@ function Execution({
           <option value="advance">Avance de trésorerie</option>
         </select>
       </label>
+      {kind==='advance'&&<label>Nature de l’avance<select name="advance_type"><option value="reserve">Réserve de trésorerie · 1031</option><option value="ppt">Avance du PPT · 1032</option><option value="temporary">Besoin temporaire · 1033</option></select></label>}
       {!["syndic", "council"].includes(kind) && (
         <label>
           Exercice

@@ -179,7 +179,7 @@ def cycle(request, resource, pk=None):
                     ),
                     "projects": list(
                         FinanceProject.objects.values(
-                            "id", "name", "key_id", "budget", "decision", "completed_on"
+                            "id", "name", "key_id", "budget", "decision", "decided_on", "completed_on"
                         )
                     ),
                 }
@@ -461,6 +461,8 @@ def cycle(request, resource, pk=None):
                 )
             item.active = False
             item.save(update_fields=["active"])
+            from .funding import check_advances
+            check_advances()
             if any(Decimal(row["available"]) < 0 for row in funds()):
                 raise ValueError(
                     "Cette affectation finance déjà des travaux : corrigez d’abord l’affectation du fonds."
@@ -477,9 +479,20 @@ def cycle(request, resource, pk=None):
                 key=ChargeKey.objects.get(pk=data["key"]),
                 budget=amount(data["budget"], False),
                 decision=decision,
+                decided_on=date.fromisoformat(data['decided_on']) if data.get('decided_on') else None,
             )
             audit(request.user, "project.create", project.pk)
             return JsonResponse({"id": project.pk}, status=201)
+        if resource == 'project-date':
+            project = FinanceProject.objects.select_for_update().get(pk=pk)
+            day = date.fromisoformat(data['decided_on'])
+            if day > timezone.localdate(): raise ValueError('La décision ne peut être future.')
+            if project.completed_on and FiscalYear.objects.filter(closed=True,starts_on__lte=project.completed_on,ends_on__gte=project.completed_on).exists():
+                raise ValueError('Le dossier de cette opération est clôturé.')
+            project.decided_on = day
+            project.save(update_fields=['decided_on'])
+            audit(request.user,'project.date',project.pk)
+            return JsonResponse({'ok':True})
         if resource == "mutation":
             if (
                 data.get("source_hash")
@@ -560,6 +573,8 @@ def cycle(request, resource, pk=None):
                 raise ValueError(
                     "Corrigez d’abord les affectations du fonds provenant de cette reprise."
                 )
+            from .funding import check_advances
+            check_advances()
             audit(request.user, "opening.cancel", original.pk)
         elif resource == "allocation":
             line = (
@@ -707,6 +722,8 @@ def cycle(request, resource, pk=None):
                 raise ValueError(
                     "Cette cotisation finance déjà des travaux : corrigez d’abord leur affectation."
                 )
+            from .funding import check_advances
+            check_advances()
             Expense.objects.filter(payment_entry=original).update(payment_entry=None)
             audit(request.user, "operation.cancel", original.pk)
         elif resource == "pay-balance":
@@ -820,6 +837,7 @@ def cycle(request, resource, pk=None):
                         "due_date": str(day),
                         "amount": str(value),
                         "kind": data.get("kind", "current"),
+                        "advance_type": data.get("advance_type", "reserve"),
                         "project": data.get("project"),
                         "decision": data.get("decision", ""),
                         "cost_center": data.get("cost_center"),

@@ -319,6 +319,7 @@ def execute_decision(workflow, user, data):
                 key=key,
                 budget=amount(data["amount"]),
                 decision=reference,
+                decided_on=service.day_of(workflow.meeting),
             )
         count = int(data.get("count", 4))
         if not 1 <= count <= 12:
@@ -347,6 +348,7 @@ def execute_decision(workflow, user, data):
                         service.Decimal(cents // count + (index < cents % count)) / 100
                     ),
                     "kind": kind,
+                    "advance_type": data.get('advance_type','reserve'),
                     "project": project.pk if project else "",
                     "decision": reference,
                 }

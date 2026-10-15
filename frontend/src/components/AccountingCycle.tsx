@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { api, newOperationId } from "../api";
 import { Icon, Empty } from "./ui";
 import "./accounting-cycle.css";
+import { RegulatoryAnnexes } from "./RegulatoryAnnexes";
 
 type Row = Record<string, any>;
 type Field = {
@@ -1008,6 +1009,7 @@ export function AccountingCycle({ section }: { section: string }) {
                       type: "number",
                     },
                     decisionField,
+                    {name:"decided_on",label:"Date de la décision d’AG",type:"date"},
                   ])
                 }
               >
@@ -1023,6 +1025,7 @@ export function AccountingCycle({ section }: { section: string }) {
                     {p.completed_on ? ` · terminée le ${p.completed_on}` : ""}
                   </p>
                 </div>
+                {!p.decided_on && <button className="button secondary" onClick={()=>show("Compléter la date de vote",`project-date/${p.id}`,[{name:"decided_on",label:"Date de la décision",type:"date"}],{})}>Renseigner le vote</button>}
                 {!p.completed_on && (
                   <div className="cycle-actions">
                     <button
@@ -1249,7 +1252,7 @@ export function AccountingCycle({ section }: { section: string }) {
             </p>
             <p className="muted">{data.data.note}</p>
           </div>
-          {data.data.annexes.map((a: Row) => (
+          {data.data.regulatory ? <RegulatoryAnnexes pack={data.data.regulatory} /> : data.data.annexes.map((a: Row) => (
             <section className="panel" key={a.number}>
               <h2>
                 État {a.number} · {a.title}

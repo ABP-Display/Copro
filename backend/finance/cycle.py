@@ -292,7 +292,7 @@ def record_mutation(data, user):
         )
         liable = previous.mutation.new_owner if previous else allocation.owner
         value = allocation.amount
-        if allocation.call.kind == "fund":
+        if allocation.call.kind in ("fund", "advance"):
             value = max(
                 ZERO,
                 value
@@ -313,6 +313,13 @@ def record_mutation(data, user):
             raise ValueError(
                 "Créez un exercice ouvert pour les corrections de mutation."
             )
+        advance_transfer = []
+        if allocation.call.kind == 'advance':
+            from .funding import ADVANCE_CODES
+            advance_transfer = [
+                {'code': ADVANCE_CODES[allocation.call.advance_type], 'owner': liable, 'lot': lot, 'debit': value},
+                {'code': ADVANCE_CODES[allocation.call.advance_type], 'owner': new, 'lot': lot, 'credit': value},
+            ]
         entry = post_entry(
             year,
             posting_date,
@@ -333,7 +340,7 @@ def record_mutation(data, user):
                     "lot": lot,
                     "due_date": allocation.call.due_date,
                 },
-            ],
+            ] + advance_transfer,
             user,
             reference[:100],
             kind="ownership",
@@ -343,12 +350,12 @@ def record_mutation(data, user):
         )
         mutation.adjustments.add(entry)
         source = (previous.entry if previous else allocation.call.entry).lines.get(
-            owner=liable, debit__gt=0
+            owner=liable, debit__gt=0, account__code__startswith='450'
         )
         transferable = min(value, line_remaining(source))
         if transferable:
             match_lines(
-                source, entry.lines.get(owner=liable, credit__gt=0), transferable, user
+                source, entry.lines.get(owner=liable, credit__gt=0, account__code__startswith='450'), transferable, user
             )
     for settlement in AnnualSettlement.objects.filter(
         active=True, approved_on__gte=day
@@ -567,6 +574,8 @@ def cancel_mutation(mutation, user):
                 entry=entry,
                 owner=actual,
             )
+    from .funding import check_advances
+    check_advances()
     audit(user, "lot.mutation.cancel", mutation.pk)
     return mutation
 
@@ -802,6 +811,8 @@ def opening_balance(year, data, user):
             raise ValueError("Identifiez chaque copropriétaire de la reprise.")
         if code.startswith("105") and not lot:
             raise ValueError("Affectez le fonds travaux à un lot.")
+        if code in ('1031','1032','1033') and (not lot or not owner):
+            raise ValueError('Une avance reprise doit identifier son lot et son titulaire ; ne reprenez que les sommes effectivement versées.')
         lines.append(
             dict(
                 code=code,
@@ -832,7 +843,7 @@ def opening_balance(year, data, user):
 def fund_paid_allocations(call, day):
     allocations = list(call.allocations.select_related("lot"))
     paid = defaultdict(lambda: ZERO)
-    for line in call.entry.lines.filter(owner__isnull=False, debit__gt=0):
+    for line in call.entry.lines.filter(owner__isnull=False, debit__gt=0, account__code__startswith='450'):
         for match in (
             line.debit_matches.filter(active=True, credit_line__entry__date__lte=day)
             .exclude(credit_line__entry__kind="ownership")
@@ -849,16 +860,16 @@ def fund_paid_allocations(call, day):
             if not eligible:
                 continue
             portions = distribute(
-                match.amount, [(r.lot, r.amount) for r in eligible], require_owner=False
+                match.amount, [(r.lot, max(ZERO, r.amount-paid[r.pk])) for r in eligible], require_owner=False
             )
             amounts = {lot.pk: value for lot, w, value in portions}
             for r in eligible:
                 paid[r.pk] += amounts.get(r.lot_id, ZERO)
     for allocation in allocations:
         for transfer in allocation.transfers.filter(
-            mutation__active=True
+            mutation__active=True, entry__date__lte=day
         ).select_related("entry"):
-            for line in transfer.entry.lines.filter(debit__gt=0, owner__isnull=False):
+            for line in transfer.entry.lines.filter(debit__gt=0, owner__isnull=False, account__code__startswith='450'):
                 result = (
                     line.debit_matches.filter(
                         active=True, credit_line__entry__date__lte=day
@@ -876,8 +887,7 @@ def funds(day=None):
         account__code="105",
         entry__date__lte=day,
         entry__reversal_of__isnull=True,
-        entry__reversal__isnull=True,
-    ).exclude(entry__kind="carry")
+    ).filter(Q(entry__reversal__isnull=True) | Q(entry__reversal__date__gt=day)).exclude(entry__kind="carry")
     called = defaultdict(lambda: ZERO)
     used = defaultdict(lambda: ZERO)
     paid = defaultdict(lambda: ZERO)
@@ -887,8 +897,8 @@ def funds(day=None):
         if row.entry.kind == "opening":
             paid[row.lot_id] += row.credit - row.debit
     for call in FundCall.objects.filter(
-        kind="fund", date__lte=day, entry__isnull=False, entry__reversal__isnull=True
-    ).prefetch_related("allocations", "entry__lines"):
+        kind="fund", date__lte=day, entry__isnull=False
+    ).filter(Q(entry__reversal__isnull=True) | Q(entry__reversal__date__gt=day)).prefetch_related("allocations", "entry__lines"):
         contributions = fund_paid_allocations(call, day)
         for allocation in call.allocations.all():
             paid[allocation.lot_id] += contributions[allocation.pk]
@@ -1001,7 +1011,7 @@ def finish_project(project, year, data, user):
         for allocation in call.allocations.all():
             provisions[(allocation.lot_id, allocation.owner_id)] += allocation.amount
     for l in source:
-        if l.account.code == "105" and l.debit:
+        if (l.account.code == "105" or l.account.code=='1032' and l.entry.kind=='advance-use') and l.debit:
             owner = l.owner_id
             if not owner:
                 raise ValueError(
@@ -1335,12 +1345,14 @@ def annexes(year):
             validated=True, ends_on__lte=year.ends_on, ends_on__gte=year.starts_on
         ).select_related("bank")
     ]
+    from .regulatory import build as regulatory_pack
     return {
         "year": year.name,
         "starts_on": str(year.starts_on),
         "ends_on": str(year.ends_on),
         "journal": journal,
         "reconciliations": bank_proofs,
+        "regulatory": regulatory_pack(year, reg),
         "annexes": [
             {
                 "number": 1,

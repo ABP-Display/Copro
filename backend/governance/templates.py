@@ -2,6 +2,35 @@
 
 TEMPLATES = [
     {
+        'id':'scrutineer', 'title':'Désignation d’un scrutateur', 'majority':'24',
+        'text':'L’assemblée désigne [nom] comme scrutateur. Soumettre chaque candidat à un vote distinct.', 'pieces':[],
+    },
+    {
+        'id':'reserve-advance', 'title':'Constitution de la réserve de trésorerie', 'majority':'26',
+        'text':'L’assemblée décide [constitution ou modification] de la réserve prévue par [clause du règlement], d’un montant de [montant] €, inférieur ou égal au sixième du budget prévisionnel. Les soldes déjà constitués, la répartition, les échéances et le remboursement des avances sont précisés dans [pièce]. Vérifier la majorité et le règlement selon l’objet exact de la décision.',
+        'pieces':['Clause du règlement et budget voté','Calcul du plafond et échéancier'],
+    },
+    {
+        'id':'temporary-advance', 'title':'Avance pour un manque temporaire de trésorerie', 'majority':'26',
+        'text':'Pour faire face au besoin temporaire [motif], l’assemblée décide une avance remboursable de [montant] €, selon [répartition et échéancier]. Le remboursement interviendra selon [conditions et date].',
+        'pieces':['État de trésorerie et justification du besoin','Répartition, échéancier et modalités de restitution'],
+    },
+    {
+        'id':'ppt-advance', 'title':'Avances prévues par le PPT adopté', 'majority':'24',
+        'text':'Au titre du PPT adopté le [date], l’assemblée approuve les avances de [montant] € selon [échéancier et clé]. Ces avances remboursables sont distinctes des cotisations non remboursables du fonds travaux. Vérifier la majorité propre à la décision et au plan.',
+        'pieces':['PPT adopté et décision','Échéancier des avances et conditions de remboursement'],
+    },
+    {
+        'id':'fund-suspension', 'title':'Suspension des cotisations au fonds travaux', 'majority':'25',
+        'text':'Après examen du fonds constitué de [montant] €, du budget de [montant] € et du PPT [situation et montant], l’assemblée se prononce sur la suspension des cotisations pour [période]. Le fonds doit dépasser le budget et, en présence d’un PPT adopté, également 50 % du montant de ses travaux. Aucun remboursement du fonds aux copropriétaires n’est décidé.',
+        'pieces':['État du fonds, budget et PPT','Vérification des seuils de suspension'],
+    },
+    {
+        'id':'fund-use', 'title':'Affectation du fonds travaux à une opération', 'majority':'25',
+        'text':'L’assemblée affecte [montant] € du fonds travaux à [opération], selon [clé, lots concernés et intérêts attachés]. Appliquer la même majorité que celle de la dépense concernée et vérifier la disponibilité des versements par lot.',
+        'pieces':['Décision et financement des travaux','Fonds disponibles par lot et répartition'],
+    },
+    {
         "id": "president",
         "title": "Désignation du président de séance",
         "majority": "24",
@@ -10,9 +39,9 @@ TEMPLATES = [
     },
     {
         "id": "secretary",
-        "title": "Désignation du secrétaire et des scrutateurs",
+        "title": "Désignation du secrétaire de séance",
         "majority": "24",
-        "text": "L’assemblée désigne [nom] comme secrétaire et [noms] comme scrutateurs.",
+        "text": "L’assemblée désigne [nom] comme secrétaire de séance.",
         "pieces": [],
     },
     {
@@ -21,7 +50,12 @@ TEMPLATES = [
         "majority": "24",
         "text": "Après examen des comptes et annexes de l’exercice [dates], l’assemblée approuve les comptes présentés, sous les réserves suivantes : [réserves].",
         "pieces": [
-            "Comptes et annexes",
+            "Annexe 1 — état financier",
+            "Annexe 2 — compte de gestion général",
+            "Annexe 3 — opérations courantes",
+            "Annexe 4 — opérations terminées",
+            "Annexe 5 — opérations non terminées",
+            "Projet d’état individuel de répartition",
             "État des dépenses et modalités de consultation des justificatifs",
         ],
     },

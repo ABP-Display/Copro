@@ -11,6 +11,20 @@ const loginUrl = pagesOnly
 const repository = "https://github.com/abp-display/Copro";
 const modules = [
   {
+    icon: "shield",
+    title: "Des accès protégés, des données récupérables",
+    tag: "Disponible",
+    text: "Activez la double authentification et gardez vos codes de secours. Sauvegardez ensemble la base et les pièces dans une archive chiffrée, puis vérifiez leur restauration sur une copie isolée.",
+    detail: "TOTP · codes de secours · restauration vérifiée",
+  },
+  {
+    icon: "people",
+    title: "Un conseil syndical avec des rôles précis",
+    tag: "Parcours disponible",
+    text: "Attribuez les mandats, laissez le trésorier préparer les dépenses et recueillez les avis motivés du conseil. Le syndic comptabilise ; le contrôleur conserve un rapport indépendant.",
+    detail: "Mandats datés · validations · contrôle des comptes",
+  },
+  {
     icon: "calendar",
     title: "Des dossiers suivis dans la durée",
     tag: "Première version",
@@ -35,14 +49,14 @@ const modules = [
     icon: "wallet",
     title: "Des comptes que l’on peut suivre",
     tag: "Disponible",
-    text: "Reprenez les soldes, suivez les appels et dépenses, affectez les règlements et rapprochez la banque. Préparez la régularisation et clôturez avec les reports.",
-    detail: "Lettrage · rapprochement · clôture et rapports",
+    text: "Reprenez les soldes, rapprochez la banque et préparez les cinq annexes annuelles avec leurs contrôles. Vérifiez les décisions du fonds travaux et restituez les avances versées, y compris après une vente.",
+    detail: "Annexes comparées · fonds / PPT · avances et restitutions",
   },
   {
     icon: "vote",
     title: "Une AG guidée, jusqu’au procès-verbal",
     tag: "Parcours guidé",
-    text: "Préparez les convocations et pouvoirs, enregistrez les votes, produisez le PV et conservez les preuves des signatures et notifications réalisées à l’extérieur.",
+    text: "Préparez les convocations, vérifiez les cinq annexes jointes à l’approbation des comptes, enregistrez les votes et produisez le PV. Conservez les preuves des signatures et notifications réalisées à l’extérieur.",
     detail: "Votes conservés · PV · suivi des notifications",
   },
   {
@@ -70,7 +84,7 @@ const modules = [
 const roadmap = [
   [
     "Comptabilité à approfondir",
-    "Modèles réglementaires des annexes, mode simplifié, formats bancaires supplémentaires et ordres SEPA. Le cycle comptable est disponible.",
+    "Validation métier des modèles, aides et prêts collectifs, mode simplifié et formats bancaires supplémentaires. Les annexes contrôlées et les restitutions d’avances sont disponibles.",
   ],
   [
     "AG et services connectés",
@@ -345,7 +359,9 @@ export function Presentation() {
                 <code>.env</code>.
               </li>
               <li>Un navigateur pour utiliser votre espace.</li>
-              <li>Une sauvegarde de la base et des documents à prévoir.</li>
+              <li>Un outil de sauvegarde chiffrée base et documents, avec restauration de contrôle.</li>
+              <li>Python 3.12 ou supérieur pour cet outil ; programmation et copie hors site à configurer sur le serveur.</li>
+              <li>Une application d’authentification et des codes de secours pour protéger les accès.</li>
             </ul>
             <a
               className="presentation-text-link"

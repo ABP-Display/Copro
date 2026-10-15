@@ -1,6 +1,6 @@
 import json
 from functools import wraps
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, logout
 from django.db import connection, transaction, IntegrityError
 from django.db.models import Count, Sum
 from django.db.models.deletion import ProtectedError
@@ -75,6 +75,9 @@ def session(request):
 
 @require_POST
 def sign_in(request):
+    from safety.authentication import charge_attempt, establish_session
+    from safety.models import Credential
+    from django.utils import timezone
     try:
         data = payload(request)
     except ValueError as error:
@@ -82,18 +85,34 @@ def sign_in(request):
     username, password = data.get("username"), data.get("password")
     if not isinstance(username, str) or not isinstance(password, str):
         return JsonResponse({"error": "Identifiant et mot de passe requis."}, status=400)
+    # Do not trust X-Forwarded-For from arbitrary clients. The account bucket is
+    # shared across every IP, session and application worker.
+    if not charge_attempt("login-ip", request.META.get("REMOTE_ADDR", ""), limit=100, seconds=600):
+        return JsonResponse({"error": "Trop de tentatives de connexion. Réessayez dans dix minutes."}, status=429)
     linked = Owner.objects.select_related("user").filter(email__iexact=username.strip()).exclude(email="").first()
     login_name = linked.user.username if linked and linked.user_id else username.strip()
     if not linked:
         external = get_user_model().objects.filter(email__iexact=username.strip(), council_identity__isnull=False).first()
         if external:
             login_name = external.username
+    if not charge_attempt("login-account", login_name.casefold()[:254], limit=10, seconds=600):
+        return JsonResponse({"error": "Trop de tentatives de connexion. Réessayez dans dix minutes."}, status=429)
     user = authenticate(request, username=login_name, password=password)
     if user is None:
         return JsonResponse({"error": "Identifiant ou mot de passe incorrect."}, status=401)
     if not is_manager(user) and not getattr(user, "owner_profile", None) and not active_mandates(user).exists():
         return JsonResponse({"error": "Compte sans accès copropriétaire."}, status=403)
-    login(request, user)
+    credential = Credential.objects.filter(user=user, enabled=True).first()
+    if credential:
+        logout(request)
+        request.session.cycle_key()
+        request.session["mfa_challenge"] = {"user": user.pk, "hash": user.get_session_auth_hash(),
+                                            "revision": credential.revision, "expires": timezone.now().timestamp() + 300}
+        return JsonResponse({"mfa_required": True, "csrfToken": get_token(request)})
+    try:
+        establish_session(request, user)
+    except ValueError as error:
+        return JsonResponse({"error": str(error)}, status=409)
     return JsonResponse({"user": user_data(user),
                          "csrfToken": get_token(request)})
 
@@ -254,5 +273,10 @@ def change_password(request):
         if external:
             external.must_change_password = False
             external.save(update_fields=["must_change_password"])
+        from safety.models import Credential
+        Credential.objects.filter(user=request.user).update(must_change_password=False)
+        security = getattr(request.user, "security_credential", None)
+        if security:
+            security.must_change_password = False
     update_session_auth_hash(request, request.user)
     return JsonResponse({"user": user_data(request.user), "csrfToken": get_token(request)})

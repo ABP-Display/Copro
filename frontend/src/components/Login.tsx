@@ -13,17 +13,17 @@ export function Login({
   const [password, setPassword] = useState("");
   const [error, setError] = useState(initialError);
   const [busy, setBusy] = useState(false);
+  const [challenge, setChallenge] = useState(false);
+  const [code, setCode] = useState("");
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
     setError("");
     try {
       await api("session");
-      const data = await api<{ user: User }>("login", "POST", {
-        username,
-        password,
-      });
-      onLogin(data.user);
+      const data = await api<{ user?: User; mfa_required?: boolean }>(challenge ? "login/verify" : "login", "POST", challenge ? { code } : { username, password });
+      if (data.mfa_required) { setChallenge(true); setPassword(""); setCode(""); }
+      else if (data.user) onLogin(data.user);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -63,15 +63,13 @@ export function Login({
           <a href="/presentation" className="login-project-link">
             Découvrir le projet Copro.
           </a>
-          <p className="muted">
-            Connectez-vous pour retrouver votre collectif.
-          </p>
+          <p className="muted">{challenge ? "Saisissez le code de votre application d’authentification, ou un code de secours. Cette étape expire après cinq minutes." : "Connectez-vous pour retrouver votre collectif."}</p>
           {error && (
             <div className="alert" role="alert">
               {error}
             </div>
           )}
-          <label>
+          {!challenge && <><label>
             Courriel ou identifiant gestionnaire
             <input
               autoComplete="username"
@@ -89,11 +87,13 @@ export function Login({
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </label>
+          </label></>}
+          {challenge && <label>Code d’authentification ou code de secours<input autoFocus autoComplete="one-time-code" required maxLength={40} value={code} onChange={e => setCode(e.target.value)} /></label>}
           <button disabled={busy} className="button primary login-submit">
-            {busy ? "Connexion…" : "Se connecter"}
+            {busy ? "Vérification…" : challenge ? "Vérifier le code" : "Se connecter"}
             <Icon name="arrow" size={18} />
           </button>
+          {challenge && <button type="button" className="text-link" onClick={() => { setChallenge(false); setCode(""); setError(""); }}>Revenir au mot de passe</button>}
           <p className="login-help">
             Gestionnaires et copropriétaires : connectez-vous à votre espace.
           </p>

@@ -86,6 +86,7 @@ export const sections: Record<
       ["banks", "Comptes bancaires"],
       ["reconciliation", "Rapprochement bancaire"],
       ["funds", "Fonds & travaux votés"],
+      ["funding", "Fonds & avances"],
       ["reminders", "Relances à valider"],
       ["reports", "Synthèses publiées"],
     ],
@@ -131,6 +132,8 @@ export const sections: Record<
       ["organization", "Coordonnées & paramètres"],
       ["journals", "Journaux"],
       ["users", "Utilisateurs"],
+      ["security", "Mon compte & sécurité"],
+      ["backups", "Sauvegardes & reprise"],
       ["audit", "Historique"],
     ],
   },
@@ -441,7 +444,7 @@ export function Navigation({
                         <div className="nav-subpages" id={`nav-${key}`}>
                           {group.items
                             .filter(
-                              ([item]) => item !== "users" || user.is_admin,
+                              ([item]) => !["users", "backups"].includes(item) || user.is_admin,
                             )
                             .map(([item, label]) => (
                               <button
@@ -529,7 +532,7 @@ export function Navigation({
               Présentation de la catégorie <Icon name="arrow" size={14} />
             </button>
             {sections[flyout.key].items
-              .filter(([key]) => key !== "users" || user.is_admin)
+              .filter(([key]) => !["users", "backups"].includes(key) || user.is_admin)
               .map(([key, label]) => (
                 <button
                   key={key}

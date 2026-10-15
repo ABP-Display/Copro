@@ -9,6 +9,7 @@ from documents.models import Document, Version
 from finance.models import ChargeKey, FundCall, FiscalYear
 from .models import Meeting, Resolution, AssemblyWorkflow, AssemblyVote
 from .deadlines import latest_notification, notice_expires
+from .templates import TEMPLATES
 
 
 class DeadlineTests(SimpleTestCase):
@@ -318,6 +319,12 @@ class AssemblyWorkflowTests(TestCase):
             data["votes"][0]["correspondents_deemed_absent"],
             [f"owner:{self.owners[2].pk}"],
         )
+        from .workflow import minutes_data
+        wf=AssemblyWorkflow.objects.get(meeting=self.meeting)
+        minutes=minutes_data(wf)
+        self.assertEqual(len(minutes['resolutions'][0]['groups']['deemed_default']),1)
+        self.assertFalse(minutes['resolutions'][0]['groups']['absent'])
+        self.assertIn('sans ses annexes',minutes['appeal_notice'])
         rows[1]["proof"] = {"id": self.proof.pk}
         rows[2] = {"elector": f"owner:{self.owners[2].pk}", "attendance": "present"}
         self.act("participants", {"participants": rows})
@@ -528,14 +535,17 @@ class AssemblyWorkflowTests(TestCase):
         config["resolutions"] = {
             str(self.resolution.pk): {
                 "template": "accounts",
-                "pieces": [
-                    {"label": "Comptes et annexes", "version": self.proof.pk},
-                    {
-                        "label": "État des dépenses et modalités de consultation des justificatifs",
-                        "version": self.proof.pk,
-                    },
-                ],
+                "pieces": [{"label":label,"version":self.proof.pk} for label in next(t for t in TEMPLATES if t['id']=='accounts')['pieces']],
             }
         }
         self.act("configure", {"config": config})
-        self.act("freeze")
+        self.act("freeze",{},400)
+        from finance.cycle import annexes
+        year=FiscalYear.objects.create(name='2025',starts_on=date(2025,1,1),ends_on=date(2025,12,31))
+        annual=annexes(year)['regulatory']
+        config.update(fiscal_year=year.pk,accounts_reviewed=True,accounts_source_hash=annual['source_hash'])
+        self.act('configure',{'config':{**config,'accounts_source_hash':'stale'}})
+        self.act('freeze',{},400)
+        self.act('configure',{'config':config})
+        data=self.act('freeze')
+        self.assertEqual(data['packet']['account_year']['dossier']['source_hash'],annual['source_hash'])

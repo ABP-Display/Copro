@@ -259,6 +259,25 @@ def build_packet(workflow, retain=False):
             "ends_on": str(year.ends_on),
             "approval_deadline": str(add_month(year.ends_on, 6)),
         }
+    accounts = any(r['template']=='accounts' or r['title']=='Approbation des comptes' for r in resolutions)
+    if accounts:
+        if not account_year:
+            raise ValueError('Approbation des comptes : choisissez l’exercice présenté et relisez son dossier annuel.')
+        year = FiscalYear.objects.select_for_update().get(pk=account_year['id'])
+        if year.ends_on >= day_of(meeting):
+            raise ValueError('L’exercice soumis à approbation doit être terminé avant l’assemblée.')
+        from finance.cycle import annexes
+        from finance.models import YearClosure
+        closed = YearClosure.objects.filter(year=year).first()
+        annual = (closed.snapshot if closed else annexes(year)).get('regulatory')
+        if not annual:
+            raise ValueError('Dossier clôturé dans un ancien format : préparer et contrôler ses annexes réglementaires séparément.')
+        if annual['errors']:
+            raise ValueError('Dossier comptable : '+' · '.join(annual['errors']))
+        boolean(config,'accounts_reviewed')
+        if config.get('accounts_source_hash') != annual['source_hash']:
+            raise ValueError('Le dossier annuel a changé : rechargez et relisez les annexes avant de figer la convocation.')
+        account_year['dossier'] = annual
     return {
         "title": meeting.title,
         "scheduled_at": meeting.scheduled_at.isoformat(),
@@ -675,9 +694,10 @@ def minutes_data(workflow):
                 f"Résolution {resolution['position']} : enregistrez le vote avant de préparer le PV."
             )
         final = votes[-1]
-        group = {"for": [], "against": [], "abstain": [], "absent": []}
+        group = {"for": [], "against": [], "abstain": [], "absent": [], 'deemed_default': []}
         for row in final.data["input"]["roster"]:
-            group["absent" if row["attendance"] == "absent" else row["vote"]].append(
+            deemed = identity(row) in final.data.get('correspondents_deemed_absent',[])
+            group['deemed_default' if deemed else "absent" if row["attendance"] == "absent" else row["vote"]].append(
                 row
             )
             elector = identity(row)
@@ -707,7 +727,7 @@ def minutes_data(workflow):
         "signature_deadline": str(day_of(workflow.meeting) + timedelta(days=8)),
         "notification_deadline": str(add_month(day_of(workflow.meeting), 1)),
         "packet_digest": workflow.digest,
-        "appeal_notice": "Les copropriétaires opposants ou défaillants peuvent contester les décisions dans le délai prévu par l’article 42 de la loi du 10 juillet 1965, soit deux mois à compter de leur notification, en saisissant le tribunal judiciaire compétent. Une contestation requiert un avocat.",
+        "appeal_notice": "Article 42, alinéa 2, de la loi n° 65-557 du 10 juillet 1965 : « Les actions en contestation des décisions des assemblées générales doivent, à peine de déchéance, être introduites par les copropriétaires opposants ou défaillants dans un délai de deux mois à compter de la notification du procès-verbal d’assemblée, sans ses annexes. Cette notification est réalisée par le syndic dans le délai d’un mois à compter de la tenue de l’assemblée générale. »",
     }
 
 

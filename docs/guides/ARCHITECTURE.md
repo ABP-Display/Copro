@@ -19,6 +19,7 @@ Les fichiers ne sont pas exposés directement par Nginx.
 | `finance` | Écritures atomiques, appels, factures, règlements, banques, rapports et clôture |
 | `governance` | Dossiers AG, convocations, votes, PV, preuves et décisions |
 | `council` | Mandats datés, capacités par rôle, avis du conseil et contrôle indépendant |
+| `safety` | TOTP, codes de secours, limitation des tentatives, règle MFA et suivi des sauvegardes |
 | `documents` | Dossiers, pièces, versions, archivage et partage |
 | `operations` | Fournisseurs, contrats, travaux/sinistres, relances et métriques |
 
@@ -56,7 +57,19 @@ Les contrôles internes ne remplacent pas les décisions collectives nécessaire
 Le démarrage backend applique les migrations et crée le compte initial s’il n’existe pas.
 Les schémas sont versionnés dans les migrations des applications.
 
-Sauvegarder PostgreSQL et le volume des pièces ensemble. Les tests utilisent une base
+`scripts/backup.py` capture PostgreSQL et le volume des pièces pendant une pause du
+backend, chiffre l’archive et restaure une copie de contrôle isolée. Les inventaires
+comparent les données, versions et fichiers. La reprise conserve un état précédent
+et reste fermée en cas d’interruption ; les sessions sont révoquées après succès.
+La programmation utilise le planificateur du serveur. Voir le
+[guide de sauvegarde et de sécurité](SAUVEGARDE-SECURITE.md).
+
+Les secrets TOTP sont chiffrés avec une clé dérivée de `DJANGO_SECRET_KEY`. Les codes
+de secours sont conservés sous forme d’empreintes et consommés sous verrou. Une
+connexion protégée ne devient une session authentifiée qu’après validation du
+second facteur. Un changement de sécurité invalide les autres sessions.
+
+Les tests utilisent une base
 séparée et des répertoires temporaires. Le frontend est compilé avec TypeScript et Vite,
 puis les parcours sont contrôlés dans le navigateur, sur ordinateur et mobile.
 

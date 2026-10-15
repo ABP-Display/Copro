@@ -17,11 +17,14 @@ Django / Python et PostgreSQL.
 | Copropriété | Annuaire des copropriétaires, lots, tantièmes, clés de répartition et changements de propriétaire avec historique. |
 | Comptabilité | Exercices, reprise des soldes, plan comptable, budgets, factures fournisseurs, appels de fonds et échéanciers, règlements partiels, lettrage et suivi des impayés. |
 | Trésorerie et clôture | Comptes bancaires, import de relevés CSV, rapprochement, fonds travaux par lot, affectations aux travaux, régularisation, contrôles de clôture et report vers l’exercice suivant. |
+| Fonds et avances | Décisions annuelles et justificatifs, minima du fonds/PPT, suspension contrôlée, avances 1031/1032/1033 et réserve plafonnée, restitutions partielles au titulaire historique et corrections conservées. |
 | Rapports | Journaux, balance, comparatifs budgétaires, dossier comptable annuel, impressions et exports de données. |
 | Assemblées générales | Préparation, résolutions, convocations, présences, pouvoirs, correspondance, calculs et enregistrement des votes, PV, pièces signées, suivi des notifications, décisions et registre. |
 | Conseil syndical | Mandats datés, responsabilités et permissions ciblées, préparation des dépenses par le trésorier, avis motivés, contrôle avant règlement ou sélection d’un devis et rapports indépendants. |
 | Dossiers et suivi | Fournisseurs, contrats, attestations, dossiers travaux et sinistres, devis, relances préparées et annonces. |
 | Documents et extranet | Pièces versionnées, partage explicite, compte personnel du copropriétaire et consultation des informations publiées. |
+| Sauvegarde et reprise | Archive chiffrée regroupant PostgreSQL et toutes les pièces, restauration de contrôle isolée, comparaison des empreintes, rétention et reprise après interruption. |
+| Sécurité des comptes | Double authentification par application, codes de secours à usage unique, limitation des tentatives, règle obligatoire pour la gestion et récupération serveur tracée. |
 | Aide au quotidien | Menu regroupé par catégories, navigation repliable, guide AG en six étapes avec FAQ et lexique, analyses métriques locales et alertes sur l’accueil. |
 
 ### Un parcours comptable de la reprise à la clôture
@@ -34,6 +37,20 @@ puis clôture avec conservation d’un instantané et report détaillé des sold
 
 Le [guide comptable](docs/guides/COMPTABILITE-CYCLE.md) explique le démarrage,
 la gestion courante, les fonds travaux, les mutations et la fin d’exercice.
+
+### Annexes annuelles et décisions de financement
+
+Le dossier annuel présente cinq annexes avec comparatifs, soldes séparés par tiers,
+travaux terminés/en cours et contrôles de concordance. Les provisions restent lisibles
+avant régularisation. Les modèles AG demandent les annexes et décomptes, avec relecture
+et empreinte du dossier ; une modification impose une nouvelle vérification avant convocation.
+
+Dans **Charges & finances → Fonds & avances**, renseigner le profil, le budget,
+le PPT et les décisions pour activer les contrôles des nouveaux appels. Les avances
+effectivement versées peuvent être restituées au titulaire historique, y compris
+après vente. Le fonds 105 reste attaché au lot. Le [guide des documents et financements](docs/guides/DOCUMENTS-FONDS-AVANCES.md)
+détaille les étapes et les limites : validation métier des modèles, aides/prêts et
+situations exceptionnelles à compléter selon le dossier.
 
 ### Une AG accompagnée en six étapes
 
@@ -119,6 +136,7 @@ ensemble. `docker compose down -v` supprime les volumes et leurs données.
 3. Créer l’exercice, les banques et fournisseurs, puis préparer la reprise des soldes.
 4. Attribuer les mandats et configurer les règles de validation des dépenses si elles sont souhaitées.
 5. Ajouter les justificatifs, saisir les opérations courantes et préparer la prochaine AG.
+6. Activer la double authentification dans **Mon compte**, conserver les codes de secours et configurer les sauvegardes régulières du serveur.
 
 Les rubriques du menu latéral regroupent les outils par thème. Cliquer sur le titre
 d’une catégorie ouvre sa présentation ; sa flèche affiche directement les sous-pages.
@@ -144,6 +162,53 @@ L’administrateur principal attribue les mandats dans **Conseil syndical → Co
 retrait. Les accès permanents de gestion restent gérés séparément dans
 **Administration → Utilisateurs**. Le [guide du conseil](docs/guides/CONSEIL-SYNDICAL.md)
 précise les incompatibilités et les conditions de chaque rôle.
+
+## Sauvegardes, restauration et double authentification
+
+La sauvegarde regroupe **PostgreSQL et toutes les versions des pièces**, avec un
+inventaire des tables et des fichiers. L’archive est chiffrée avec une phrase
+secrète demandée au lancement. Python 3.12 ou supérieur est requis sur le serveur :
+
+```sh
+python -m pip install -r scripts/requirements.txt
+python scripts/backup.py create --verify --keep 7
+```
+
+La capture suspend brièvement le backend. Après son redémarrage, `--verify`
+restaure réellement l’archive dans des conteneurs isolés, sans port publié,
+compare les lignes et les empreintes des fichiers, puis supprime cette copie.
+`--keep 7` conserve les sept dernières archives vérifiées de ce dossier.
+L’administrateur suit ces opérations dans **Administration → Sauvegardes & reprise**.
+
+```sh
+python scripts/backup.py inspect backups/NOM.coprobackup
+python scripts/backup.py verify backups/NOM.coprobackup
+# Remplace les données de la cible après contrôle et sauvegarde de l’état précédent :
+python scripts/backup.py restore backups/NOM.coprobackup --confirm copro
+```
+
+Conserver la phrase secrète, le fichier `.env` original et une copie des archives
+hors du serveur. `DJANGO_SECRET_KEY` est nécessaire pour retrouver les secrets de
+double authentification. Une reprise interrompue laisse l’application arrêtée et
+un journal permettant de reprendre l’opération. Les sessions sont révoquées après
+restauration. Le [guide de sauvegarde et de sécurité](docs/guides/SAUVEGARDE-SECURITE.md)
+explique ces étapes, les cas de panne et la programmation Windows/Linux.
+
+Le lanceur Windows `scripts/backup-scheduled.ps1` accepte un secret protégé par
+Windows et peut être appelé par le Planificateur de tâches. La fréquence, la copie
+hors site et la surveillance des échecs se configurent sur votre serveur.
+
+Dans **Mon compte**, chaque utilisateur peut activer une application
+d’authentification compatible TOTP et obtenir dix codes de secours à usage unique.
+Le QR code est généré sur le serveur, sans service externe. Le mot de passe reste
+requis à chaque nouvelle connexion ; le second facteur doit ensuite être validé
+avant l’accès aux données. Les changements de sécurité révoquent les autres sessions.
+
+Après avoir protégé son propre compte, l’administrateur peut rendre cette protection
+obligatoire pour les gestionnaires dans **Sauvegardes & reprise**. Une procédure
+`recover_access` réservée au serveur permet de récupérer un compte en cas de perte
+du téléphone et des codes, avec motif, mot de passe temporaire et réinscription
+au second facteur si la règle l’impose. Voir le guide avant de l’utiliser.
 
 ## Site de présentation et GitHub Pages
 
@@ -184,6 +249,7 @@ le navigateur n’accède pas directement à PostgreSQL.
 | Organiser sa première assemblée | [Première AG, pas à pas](docs/guides/AG-PREMIERS-PAS.md) |
 | Approfondir les votes et le dossier AG | [Assemblées générales et outils](docs/guides/AG-OUTILS.md) |
 | Attribuer les rôles et contrôler les dépenses | [Conseil syndical et contrôle](docs/guides/CONSEIL-SYNDICAL.md) |
+| Sauvegarder, reprendre et protéger les comptes | [Sauvegarde et sécurité](docs/guides/SAUVEGARDE-SECURITE.md) |
 | Comprendre les alertes et dossiers | [Suivi et analyses métriques](docs/guides/SUIVI-METRIQUES.md) |
 | Connaître les fonctions complètes, partielles et absentes | [Audit du cahier](docs/guides/AUDIT-FONCTIONNALITES.md) |
 | Consulter les priorités restantes | [Prochains chantiers](docs/guides/PROCHAINS-CHANTIERS.md) |
@@ -203,9 +269,10 @@ fonctions utilisables des développements partiels.
 - **Analyses locales** : les alertes sont calculées depuis les données saisies, sans moteur IA externe.
 - **Exports et sauvegardes distincts** : une archive JSON ne contient pas les fichiers des pièces justificatives.
 
-Les priorités suivantes sont la sauvegarde et la restauration vérifiée de la base
-avec les pièces, la double authentification et l’accès de secours, puis la
-fiabilisation des modèles réglementaires. Les chantiers suivants portent notamment
+La sauvegarde/restauration vérifiée, la double authentification et l’accès de secours
+sont disponibles. Leur programmation, les copies hors site et la protection de
+l’hébergement restent à configurer par l’exploitant. La prochaine priorité produit
+est la fiabilisation des modèles réglementaires. Les chantiers suivants portent notamment
 sur les cas comptables complémentaires, le calendrier de gestion, les travaux et
 sinistres, les imports de données et l’extranet. Les réunions et délégations
 collectives du conseil restent également à compléter.
@@ -222,10 +289,12 @@ backend/
   finance/      Comptabilité, banques, fonds et clôture
   governance/   Assemblées générales et calculs de vote
   council/      Mandats, permissions, avis et contrôle indépendant
+  safety/       Double authentification, récupération et suivi des sauvegardes
   documents/    Bibliothèque et versions des pièces
   operations/   Fournisseurs, contrats, dossiers et alertes
 frontend/       Interface React / TypeScript et Nginx
 compose.yaml    Services web, Django et PostgreSQL
+scripts/        Sauvegarde chiffrée, restauration et lanceur de planification
 docs/           Présentation autonome, guides et cahier
 ```
 
@@ -241,6 +310,16 @@ docker compose build frontend
 Les tests utilisent une base séparée et des fichiers temporaires. Le rôle PostgreSQL
 de développement doit pouvoir créer cette base. Le build frontend vérifie TypeScript
 puis compile Vite.
+
+Tests de l’outil de sauvegarde et scénario de reprise sur des conteneurs jetables :
+
+```sh
+python -m unittest discover -s scripts -p test_archive.py
+python scripts/test_restore_integration.py --run-docker
+```
+
+Le scénario Docker vérifie aussi la perte d’une pièce, les données comptables,
+un secret MFA et la reprise après interruption. Il utilise des volumes fictifs.
 
 ### Développement sans Docker
 

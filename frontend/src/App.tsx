@@ -14,6 +14,7 @@ import { Login } from "./components/Login";
 import { Operations, HomeInsights } from "./components/Operations";
 import { Presentation } from "./components/Presentation";
 import { BrandMark } from "./components/BrandMark";
+import { SecurityButton, SecurityPanel, BackupSettings, BackupReminder } from "./components/Security";
 import { Editor } from "./components/Editor";
 import { CredentialsDialog, type Credentials } from "./components/Access";
 import { MemberPortal } from "./components/MemberPortal";
@@ -26,6 +27,7 @@ import {
 } from "./components/Navigation";
 import { Banking } from "./components/Banking";
 import { AccountingCycle } from "./components/AccountingCycle";
+import { Funding } from "./components/Funding";
 import { Documents } from "./components/Documents";
 import { Assemblies } from "./components/Assemblies";
 import { Tools } from "./components/Tools";
@@ -138,7 +140,7 @@ function Application() {
     }
   }
   useEffect(() => {
-    if (user?.is_manager) void load();
+    if (user?.is_manager && !user.must_change_password && (!user.mfa_required || user.mfa_enabled)) void load();
   }, [user]);
   useEffect(() => {
     if (notice) {
@@ -206,6 +208,8 @@ function Application() {
     ) : (
       <Presentation />
     );
+  if (!user.must_change_password && user.mfa_required && !user.mfa_enabled)
+    return <main className="security-onboarding"><a className="brand" href="/"><BrandMark />Copro.</a><h1>Protégez votre accès de gestion</h1><SecurityPanel mandatory onUser={setUser} /><button className="button secondary" onClick={() => void signOut()}>Se déconnecter</button></main>;
   if (!user.is_manager || user.must_change_password)
     return !user.must_change_password &&
       user.capabilities?.includes("council.read") ? (
@@ -235,6 +239,7 @@ function Application() {
             <strong>{title}</strong>
           </span>
           <div className="header-actions">
+            <SecurityButton onUser={setUser} />
             <span className="private-label">
               <span /> Espace privé
             </span>
@@ -303,6 +308,8 @@ function Application() {
             <Operations section="reminders" />
           ) : page === "finance" && section === "banks" ? (
             <Banking />
+          ) : page === "finance" && section === "funding" ? (
+            <Funding />
           ) : (page === "accounting" &&
               [
                 "opening",
@@ -345,6 +352,10 @@ function Application() {
             )
           ) : page === "reporting" ? (
             <AccountingReports section={section} />
+          ) : page === "administration" && section === "backups" ? (
+            <BackupSettings isAdmin={!!user.is_admin} onUser={setUser} />
+          ) : page === "administration" && section === "security" ? (
+            <SecurityPanel onUser={setUser} />
           ) : page === "administration" ? (
             <Accounting
               key="administration"
@@ -362,6 +373,7 @@ function Application() {
           ) : page === "overview" ? (
             <>
               <HomeInsights onNavigate={(p, s) => navigate(p as Page, s)} />
+              {user.is_admin && <BackupReminder onOpen={() => navigate("administration", "backups")} />}
               <section className="welcome-card">
                 <div className="welcome-copy">
                   <span className="pill">VOTRE ESPACE COMMUN</span>

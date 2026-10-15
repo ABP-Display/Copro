@@ -15,19 +15,37 @@ Les réunions propres au conseil, délégations collectives détaillées, person
 propriétaires éligibles, cas dérogatoires et passation complète restent à compléter.
 Les accès permanents de gestion demeurent distincts des droits des mandats.
 
-## Prochain focus recommandé : sauvegarde et restauration vérifiée
+## Sauvegarde, restauration et double authentification : parcours livré
 
-Protéger ensemble PostgreSQL et les pièces, puis prouver la restauration sur une
-instance isolée. Compléter ensuite la double authentification et l’accès de secours.
-La fiabilisation des modèles et cas réglementaires reste l’autre priorité immédiate.
+Le [guide de sauvegarde et de sécurité](SAUVEGARDE-SECURITE.md) décrit les archives
+chiffrées base/pièces, la restauration isolée comparée, la rétention, la reprise
+après interruption, le lanceur Windows et les consignes de programmation Linux.
+La double authentification TOTP, les codes de secours, la règle obligatoire pour
+les gestionnaires et la récupération serveur sont disponibles. La fréquence, les
+copies hors site et la surveillance des échecs restent à configurer sur le serveur.
+
+## Documents et financements : compléments livrés
+
+Les annexes annuelles sont structurées avec comparatifs, tiers non compensés,
+contrôles et empreinte ; les pièces de l’approbation des comptes sont reliées au
+dossier relu. Les minima du fonds/PPT, les seuils cumulatifs de suspension, les
+trois catégories d’avances, la vente, les restitutions et l’affectation PPT aux travaux sont disponibles.
+Voir le [guide](DOCUMENTS-FONDS-AVANCES.md). Une validation métier des modèles reste
+nécessaire ; prêts/aides et situations exceptionnelles restent à compléter.
+
+## Prochain focus recommandé : guider l’année de gestion
+
+Rendre le profil de l’immeuble et le calendrier des obligations compréhensibles,
+puis relier entretien, travaux, pièces et décisions. Maintenir en parallèle la
+validation des modèles sur des dossiers représentatifs.
 
 ## Ordre des autres améliorations
 
 | Priorité | Chantier | Prochain livrable concret | Exigences concernées |
 | --- | --- | --- | --- |
-| P0 | Sauvegarde et reprise | Sauvegarder ensemble PostgreSQL et les pièces, restaurer sur une instance isolée, vérifier l’intégrité et documenter la reprise ; compléter 2FA et accès de secours | 7.06, 7.09 à 7.12, 4.15.05 |
+| P0, exploitation | Configurer la protection du serveur | Programmer les sauvegardes avec l’outil livré, conserver une copie hors site, surveiller les échecs et vérifier périodiquement une reprise ; compléter supervision et audit inaltérable | 7.07, 7.09 à 7.12 |
 | P0 | Fiabiliser les documents et cas réglementaires | Confronter les annexes 1 à 5 et documents AG aux modèles applicables, corriger les écarts, tester des dossiers représentatifs et obtenir une validation métier | 4.2.18, 4.5.04, 4.5.14, 5.01 à 5.04 |
-| P1 | Compléter les règles comptables | Minima/exemptions du fonds selon le profil, avances et remboursements, mode simplifié avec critères d’éligibilité et engagements de fin d’exercice | 4.2.08, 4.2.09, besoin transverse du mode simplifié |
+| P1 | Compléter les règles comptables | Aides/prêts spécifiques, mode simplifié avec critères d’éligibilité et engagements de fin d’exercice | 4.2.08, 4.2.09, besoin transverse du mode simplifié |
 | P1 | Guider l’année de gestion | Profil de l’immeuble, calendrier annuel des comptes/budget/AG, échéances contextualisées, carnet d’entretien et checklist avec sources et statut | 4.8.02 à 4.8.04, 4.8.07, 4.14, 4.15.02 |
 | P1 | Terminer travaux et sinistres | Relier devis, décision, commande, dépenses, chantier, réception, réserves, garanties et dossier d’assurance | 4.7, 4.8.01, 4.8.05, 4.10 |
 | P1 | Faciliter la reprise des données | Import contrôlé des lots/propriétaires/tantièmes, rapprochement des soldes, détection des doublons, aperçu avant import et rapport des anomalies | 4.1.07, 6.08 |

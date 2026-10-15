@@ -12,3 +12,6 @@ backend/media/
 *.tsbuildinfo
 
 dist-pages/
+backups/
+*.coprobackup
+.backup-lock

@@ -8,7 +8,8 @@ from council.access import is_manager, active_mandates, capabilities
 def password_pending(user):
     owner = getattr(user, "owner_profile", None)
     external = getattr(user, "council_identity", None)
-    return bool(owner and owner.must_change_password or external and external.must_change_password)
+    security = getattr(user, "security_credential", None)
+    return bool(owner and owner.must_change_password or external and external.must_change_password or security and security.must_change_password)
 
 
 def former_owner(owner):
@@ -23,8 +24,10 @@ def former_owner(owner):
 
 
 def user_data(user):
+    from safety.authentication import security_data
     owner = getattr(user, "owner_profile", None)
     return {
+        **security_data(user),
         "id": user.pk,
         "username": user.email if owner or getattr(user, "council_identity", None) else user.username,
         "is_manager": is_manager(user),

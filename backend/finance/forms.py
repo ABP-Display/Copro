@@ -18,8 +18,11 @@ class KeyForm(forms.ModelForm):
         model=ChargeKey; fields=["name","general","annual_budget"]
 
 class CallForm(forms.ModelForm):
+    advance_type = forms.ChoiceField(choices=FundCall._meta.get_field('advance_type').choices, required=False)
     class Meta:
-        model=FundCall; fields=["year","key","label","date","due_date","amount","cost_center","kind","project","decision"]
+        model=FundCall; fields=["year","key","label","date","due_date","amount","cost_center","kind","project","decision","advance_type"]
+    def clean_advance_type(self):
+        return self.cleaned_data.get('advance_type') or 'reserve'
     def clean(self):
         data=super().clean()
         if data.get("amount",0)<=0: raise forms.ValidationError("Le montant doit être positif.")

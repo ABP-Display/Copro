@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SecurityButton } from "./Security";
 import { api, type User } from "../api";
 import { Icon, Empty } from "./ui";
 import { CouncilEditor, type CouncilField } from "./CouncilEditor";
@@ -1534,6 +1535,7 @@ export function CouncilPortal({
         </a>
         <div>
           <span className="subtle-badge">Conseil & contrôle</span>
+          <SecurityButton onUser={onUser} />
           {user.has_owner && (
             <button
               className="button secondary"

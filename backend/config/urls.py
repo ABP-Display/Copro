@@ -1,7 +1,10 @@
 from django.urls import path, include
 from core import views
+from safety.views import verify_login
 
 urlpatterns = [
+    path("api/security/", include("safety.urls")),
+    path("api/login/verify/", verify_login),
     path("api/council/", include("council.urls")),
     path("api/operations/",include("operations.urls")),
     path("api/ag/",include("governance.urls")),

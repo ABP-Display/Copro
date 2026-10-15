@@ -10,6 +10,9 @@ export type User = {
   has_owner?: boolean;
   capabilities?: string[];
   roles?: string[];
+  mfa_enabled?: boolean;
+  mfa_required?: boolean;
+  recovery_remaining?: number;
 };
 export type Owner = {
   id: number;
