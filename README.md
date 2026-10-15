@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Copro. — la copropriété, ensemble
+=======
+# Copro. — gestion de copropriété
+>>>>>>> 3e028e5a5dd0ce389a24f3c2dd8cf7a94deaf6b2
 
 Application libre pour les syndics bénévoles et coopératifs, avec React / TypeScript,
 Django / Python et PostgreSQL.
