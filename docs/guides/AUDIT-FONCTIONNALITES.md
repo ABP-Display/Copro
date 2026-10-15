@@ -11,9 +11,13 @@ Une instance gère une copropriété. Le sélecteur visuel ne cloisonne pas plus
 | État des exigences | Nombre |
 | --- | ---: |
 | Complètes dans les limites indiquées | 22 |
-| Partielles | 91 |
-| Absentes | 43 |
+| Partielles | 95 |
+| Absentes | 39 |
 | Total | 156 |
+
+Relecture de cohérence du 15 octobre : quatre exigences déjà couvertes en partie ont été corrigées d’« absent » vers « partiel », sans nouveau développement. Les descriptions des échéances et de la passation ont aussi été mises à jour.
+
+Sur les 156 exigences : **14,1 % complètes**, **60,9 % partielles**, **25.0 % absentes**. **75,0 %** disposent d’au moins un socle. Un indice conventionnel donnant 1 point au complet, 0,5 au partiel et 0 à l’absent donne **44,6 %** ; il ne mesure ni la charge restante ni la conformité juridique, et les exigences partielles peuvent avoir des avancements très différents.
 
 Avant ces parcours : **6 complètes, 84 partielles, 66 absentes**. L’[instantané précédent](../reference/historique/2026-10-14-avant-parcours/audit-fonctionnalites.json) est conservé. Le [premier audit général](../reference/historique/2026-10-14-general/README.md) portait sur un autre cahier, avec fonctions de cabinet.
 
@@ -21,7 +25,7 @@ Avant ces parcours : **6 complètes, 84 partielles, 66 absentes**. L’[instanta
 
 | Thème | Livré | Limites importantes |
 | --- | --- | --- |
-| Comptabilité | Reprise, factures/appels spécialisés, règlements et lettrage, banque CSV, fonds/travaux, régularisation, clôture et reports, mutations, corrections et exports | États annuels préparatoires ; mode simplifié, minima du fonds, fiscalité particulière et SEPA connectés absents |
+| Comptabilité | Reprise, factures/appels spécialisés, règlements et lettrage, banque CSV, fonds/travaux, régularisation, clôture et reports, mutations, corrections et exports | Annexes structurées à valider ; mode simplifié, fiscalité particulière et SEPA connectés absents ; minima du fonds/PPT disponibles après paramétrage |
 | AG | Bibliothèque/pièces, corps électoral figé, convocations/preuves, présences/pouvoirs, votes enregistrés, PV/scans, notifications/recours, décisions et résumé publié | Gestionnaire opérateur ; aucun prestataire de signature/LRE, visio ou vote direct des membres ; modèles et cas particuliers à vérifier |
 | Conseil et coopératif | Mandats datés, droits ciblés, présidence/syndic coopératif, préparation des dépenses, avis motivés, lecture des pièces et contrôle indépendant | Réunions, délégations collectives, personnes/cas dérogatoires et passation à compléter |
 | Immeuble / extranet | Lots/tantièmes/annuaire, compte personnel et publications ; ancien vendeur sans lot limité au compte individuel | Bâtiments, indivision, occupants, messagerie et isolation multi-copropriété à compléter |
@@ -257,7 +261,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.8.03 | Diagnostic technique global (DTG) et projet de plan pluriannuel de travaux (PPT) : stockage, suivi des travaux sur 10 ans, budget prévisionnel, lien avec le fonds travaux. | partiel | GED et dossiers travaux utilisables manuellement. Ajouter diagnostic, programme sur 10 ans, financement et liens avec les fonds. |
 | 4.8.04 | Audit énergétique / DPE collectif : dates, résultats, obligations selon la taille et l'âge de la copropriété. | partiel | Pièces et échéances manuelles disponibles. Ajouter données d’immeuble, résultats et règles d’applicabilité datées. |
 | 4.8.05 | Projets de travaux : cycle complet (idée → devis → vote en AG → ordre de service → suivi de chantier → réception → levée des réserves → garanties), maître d'œuvre, architecte, assurances (dommages-ouvrage). | partiel | Budget indicatif, devis, pièces, résolution et état général présents. Commande, chantier, réception, réserves et garanties manquants. |
-| 4.8.06 | Appels de fonds travaux automatiques selon le vote, suivi des subventions (MaPrimeRénov' Copropriété, CEE, aides locales) et des prêts collectifs. | absent | Créer décisions de financement, échéanciers, subventions et prêts avec suivi comptable. |
+| 4.8.06 | Appels de fonds travaux automatiques selon le vote, suivi des subventions (MaPrimeRénov' Copropriété, CEE, aides locales) et des prêts collectifs. | partiel | Création des projets et appels en brouillon depuis une décision adoptée et un PV signé, calendrier et répartition contrôlés à la publication. Le suivi natif des aides, subventions et prêts collectifs reste absent. |
 | 4.8.07 | Maintenance préventive : planning des vérifications obligatoires (ascenseurs, extincteurs, installations électriques, gaz, chaudières, toitures, désenfumage, etc.). | partiel | Suivi manuel des dates présent. Ajouter équipements, récurrence, attestations et journal des interventions. |
 | 4.8.08 | Cas spécifiques : IRVE (bornes de recharge), accessibilité, sécurité incendie. | partiel | Dossiers génériques possibles. Aucun parcours spécifique IRVE/accessibilité/incendie ni règles contextualisées. |
 
@@ -316,13 +320,13 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | ID | Exigence | État | Constat |
 | --- | --- | --- | --- |
 | 4.14.01 | Immatriculation au registre national des copropriétés : numéro, mise à jour annuelle, alertes. | partiel | Champ immatriculation présent. Ajouter date de mise à jour, contrôle de fiche et rappel annuel contextualisé. |
-| 4.14.02 | Fonds de travaux : cotisation, solde, placement. | absent | Dépend des fonds travaux, de leurs cotisations et des banques dédiées. |
+| 4.14.02 | Fonds de travaux : cotisation, solde, placement. | partiel | Cotisations, soldes appelés/versés/disponibles du fonds 105 par lot, banques dédiées et décisions/minima/PPT disponibles. Le calendrier global de conformité et la vérification du placement bancaire effectif restent à compléter. |
 | 4.14.03 | PPT / DTG / DPE collectif / audit énergétique : échéances selon l'âge et la taille. | partiel | Échéances manuelles et sources disponibles. Aucun calcul des obligations selon âge, taille et situation de l’immeuble. |
 | 4.14.04 | Fiche synthétique : mise à jour annuelle. | absent | Créer fiche synthétique et suivi de sa mise à jour annuelle. |
 | 4.14.05 | Carnet d'entretien : date de dernière mise à jour. | absent | Créer carnet d’entretien et date de dernière révision. |
-| 4.14.06 | Contrat de syndic : date de fin de mandat du syndic bénévole ou coopératif, rappel de la désignation à voter en AG. | partiel | Dates de dossiers/contrats et alertes génériques présentes. Aucun mandat du syndic identifié, fin de mandat dédiée, renouvellement ou résolution de désignation reliée. À traiter avec 4.15.01. |
+| 4.14.06 | Contrat de syndic : date de fin de mandat du syndic bénévole ou coopératif, rappel de la désignation à voter en AG. | partiel | Mandats de syndic/conseil datés, lien avec vote ou pièce, fin de mandat et alerte de renouvellement disponibles. Consolider leur affichage dans le calendrier annuel et compléter les cas particuliers de mandat/passation. |
 | 4.14.07 | Assurance : attestation en cours de validité. | partiel | Attestations fournisseurs et contrats ajoutés. Ajouter attestation d’assurance de la copropriété distincte du fournisseur. |
-| 4.14.08 | Échéances d'AG : délai de convocation, approbation des comptes. | partiel | Dates d’AG et alertes de proximité présentes. Contrôles des convocations/approbations manquants. |
+| 4.14.08 | Échéances d'AG : délai de convocation, approbation des comptes. | partiel | Contrôles des dates de convocation et de l’exercice présenté, calcul des échéances, notifications/PV et alertes AG disponibles. Compléter le calendrier annuel unifié et les situations dérogatoires. |
 | 4.14.09 | Vérifications périodiques obligatoires (ascenseur, sécurité). | partiel | Échéances manuelles présentes. Ajouter référentiel équipements, cycles et contrôles effectués. |
 | 4.14.10 | Calendrier et notifications automatiques vers le gestionnaire. | partiel | Alertes d’accueil sur dates saisies, contrats, attestations, soldes et AG présentes. Ajouter agenda unifié, obligations contextualisées et notifications extérieures. |
 
@@ -334,7 +338,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 4.15.02 | Mode guidé pas à pas : calendrier annuel (clôture, budget, convocation, AG, PV, appels de fonds), checklist des tâches obligatoires, explication en langage simple de la règle juridique à chaque étape. | partiel | Parcours comptables et AG présents. Guide AG intégré en six étapes avec vérifications, FAQ, lexique, mémo et impression. Calendrier et checklist légale annuelle selon tous les profils et régimes encore incomplets. |
 | 4.15.03 | Contrôle croisé par le conseil syndical : validation des paiements, accès en lecture aux comptes, rapport de contrôle des comptes, afin de limiter les erreurs et les soupçons. | partiel | Conseil en lecture des comptes/pièces et avis distincts avant règlement selon une règle documentée ; rapport du contrôleur indépendant avec pièces et empreinte des comptes. Le rapport propre au conseil et les délégations collectives avancées restent à compléter. |
 | 4.15.04 | Responsabilité et assurance : suivi de l'assurance responsabilité civile du syndicat et de la couverture du syndic non professionnel (à vérifier), journal des actions et décisions du syndic. | partiel | Journal technique de certaines actions et dossiers d’échéances manuels présents. Assurance du syndicat/syndic et décisions de mandat non structurées ; journal incomplet et modifiable en base. Les attestations fournisseurs ne couvrent pas cette exigence. |
-| 4.15.05 | Continuité : délégation temporaire, accès de secours, export complet de passation en cas d'indisponibilité, de changement de syndic ou de passage futur à un syndic professionnel. | partiel | Exports CSV de rapports et téléchargements documentaires disponibles individuellement. Pas de délégation temporaire, accès de secours organisé ou export complet et vérifiable de passation. |
+| 4.15.05 | Continuité : délégation temporaire, accès de secours, export complet de passation en cas d'indisponibilité, de changement de syndic ou de passage futur à un syndic professionnel. | partiel | Archives chiffrées complètes base/pièces, exports de rapports et accès temporaire de contrôleur disponibles. La délégation générale de gestion et un dossier standardisé de passation lisible par un successeur restent à développer. |
 | 4.15.06 | Syndic coopératif : séparation claire entre les fonctions de syndic et de président du conseil syndical, vote du quitus sans conflit d'intérêts apparent. | partiel | Mode coopératif, présidence/syndic réunis et dépendants d’un mandat de conseil, vice-présidence, contrôleur indépendant et rapport natifs. Cas dérogatoires des petites copropriétés, personnes non propriétaires éligibles et gouvernance collective détaillée à compléter. |
 | 4.15.07 | Aide intégrée : fiches pratiques, modèles de courriers, FAQ juridique, renvois vers des ressources d'information (par exemple associations de copropriétaires, ADIL). | partiel | Explications des catégories, aide du calculateur et guides du dépôt présents. Guide AG intégré avec six étapes, FAQ d’utilisation, lexique, mémo et impression. Les fiches juridiques, courriers et ressources contextualisées restent à compléter. |
 
@@ -348,7 +352,7 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 5.04 | Fiche synthétique, état daté, pré-état daté. | absent | Dépend du référentiel complet et des mutations/régularisations. |
 | 5.05 | Budget vs réalisé par poste, avec écarts expliqués. | complet | Budget/réalisé et écarts par poste, commentaires persistants saisis par le gestionnaire, comparaison avec l’exercice précédent enregistré (entier), filtres analytiques et export CSV. Les budgets restent annuels ; le réalisé courant suit la période sélectionnée. |
 | 5.06 | Balance des copropriétaires, état des impayés et vieillissement. | partiel | Balances auxiliaires propriétaires et fournisseurs présents. Aucun vieillissement ou preuve de retard sans lettrage et échéances. |
-| 5.07 | Trésorerie prévisionnelle, situation des fonds travaux. | absent | Ajouter soldes d’ouverture, banque, échéanciers futurs et fonds travaux avant projection. |
+| 5.07 | Trésorerie prévisionnelle, situation des fonds travaux. | partiel | Situation du fonds travaux par lot et soldes bancaires comptables disponibles. Le prévisionnel de trésorerie intégrant encaissements et décaissements futurs reste à créer. |
 | 5.08 | Liste des contrats avec échéances, coûts annuels par fournisseur. | complet | Ajout livré : liste de contrats avec fin/préavis et export CSV ; agrégat des coûts annuels déclarés des contrats actifs par fournisseur, avec coûts inconnus signalés. |
 | 5.09 | Suivi des travaux (avancement, coûts engagés / prévus). | partiel | Devis, budget indicatif et statut général présents. Coûts engagés/réels, étapes et évolution manquants. |
 | 5.10 | Indicateurs de qualité : délai de traitement des incidents, délai de réponse, taux d'encaissement. | absent | Ajouter dates d’événements et indicateurs calculés à partir d’historiques fiables. |
@@ -387,5 +391,5 @@ Les preuves et textes source détaillés sont conservés dans l’[audit structu
 | 7.11 | Tests de pénétration, gestion des vulnérabilités, politique de mise à jour. | partiel | 221 tests fonctionnels et compilation passent. Pas de pentest, suivi de dépendances ou politique de mise à jour attestée. |
 | 7.12 | Disponibilité cible (par ex. 99,9 %), supervision, alertes. | partiel | Healthchecks Docker/API présents. Aucun SLO mesuré, supervision externe ni alerte d’incident. |
 | 7.13 | Intégrité comptable : transactions atomiques, contrôles d'équilibre, verrouillage des périodes. | complet | Création atomique et équilibrée des écritures, numérotation verrouillée et refus des dates/exercices verrouillés testés. Ce contrôle technique ne constitue pas une clôture réglementaire. |
-| 7.14 | Traçabilité juridique : horodatage des envois, preuves de notification, conservation des accusés. | absent | Dates de validation interne présentes mais aucun envoi probant, accusé de réception ni preuve de notification. |
+| 7.14 | Traçabilité juridique : horodatage des envois, preuves de notification, conservation des accusés. | partiel | Dates réelles d’envoi et de prise d’effet, destinataires, références, versions des preuves et historique conservés pour convocations/PV ; contrôles des délais. La saisie est déclarative : aucun envoi connecté, horodatage qualifié ou récupération automatique des accusés. |
 | 7.15 | Accessibilité (RGAA / WCAG) et ergonomie, notamment sur mobile. | partiel | Responsive, libellés accessibles et dialogues clavier présents. Pas d’audit de conformité RGAA/WCAG complet ; contrastes et tous parcours à auditer. |

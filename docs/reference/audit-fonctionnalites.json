@@ -9,8 +9,8 @@
   "summary": {
     "total": 156,
     "complete": 22,
-    "partial": 91,
-    "absent": 43,
+    "partial": 95,
+    "absent": 39,
     "usable_features": 66,
     "roles_reviewed": 11,
     "supplementary_needs": 2
@@ -1453,11 +1453,15 @@
       "id": "4.8.06",
       "section": "4.8",
       "text": "Appels de fonds travaux automatiques selon le vote, suivi des subventions (MaPrimeRénov' Copropriété, CEE, aides locales) et des prêts collectifs.",
-      "status": "absent",
-      "assessment": "Créer décisions de financement, échéanciers, subventions et prêts avec suivi comptable.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Création des projets et appels en brouillon depuis une décision adoptée et un PV signé, calendrier et répartition contrôlés à la publication. Le suivi natif des aides, subventions et prêts collectifs reste absent.",
+      "evidence": [
+        "backend/governance/workflow_views.py",
+        "backend/governance/test_workflow.py",
+        "backend/finance/services.py"
+      ],
       "priority": "P1",
-      "next_step": "Créer décisions de financement, échéanciers, subventions et prêts avec suivi comptable.",
+      "next_step": "Création des projets et appels en brouillon depuis une décision adoptée et un PV signé, calendrier et répartition contrôlés à la publication. Le suivi natif des aides, subventions et prêts collectifs reste absent.",
       "delivered_in_this_change": false,
       "source_text": "Appels de fonds travaux automatiques selon le vote, suivi des subventions (MaPrimeRénov' Copropriété, CEE, aides locales) et des prêts collectifs."
     },
@@ -1875,11 +1879,16 @@
       "id": "4.14.02",
       "section": "4.14",
       "text": "Fonds de travaux : cotisation, solde, placement.",
-      "status": "absent",
-      "assessment": "Dépend des fonds travaux, de leurs cotisations et des banques dédiées.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Cotisations, soldes appelés/versés/disponibles du fonds 105 par lot, banques dédiées et décisions/minima/PPT disponibles. Le calendrier global de conformité et la vérification du placement bancaire effectif restent à compléter.",
+      "evidence": [
+        "backend/finance/funding.py",
+        "backend/finance/cycle.py",
+        "backend/finance/banking.py",
+        "frontend/src/components/Funding.tsx"
+      ],
       "priority": "P1",
-      "next_step": "Dépend des fonds travaux, de leurs cotisations et des banques dédiées.",
+      "next_step": "Cotisations, soldes appelés/versés/disponibles du fonds 105 par lot, banques dédiées et décisions/minima/PPT disponibles. Le calendrier global de conformité et la vérification du placement bancaire effectif restent à compléter.",
       "delivered_in_this_change": false,
       "source_text": "Fonds de travaux : cotisation, solde, placement."
     },
@@ -1928,14 +1937,14 @@
       "section": "4.14",
       "text": "Contrat de syndic : date de fin de mandat du syndic bénévole ou coopératif, rappel de la désignation à voter en AG.",
       "status": "partiel",
-      "assessment": "Dates de dossiers/contrats et alertes génériques présentes. Aucun mandat du syndic identifié, fin de mandat dédiée, renouvellement ou résolution de désignation reliée. À traiter avec 4.15.01.",
+      "assessment": "Mandats de syndic/conseil datés, lien avec vote ou pièce, fin de mandat et alerte de renouvellement disponibles. Consolider leur affichage dans le calendrier annuel et compléter les cas particuliers de mandat/passation.",
       "evidence": [
-        "backend/operations/models.py",
-        "backend/operations/partners.py",
+        "backend/council/models.py",
+        "backend/governance/workflow_views.py",
         "backend/operations/views.py"
       ],
       "priority": "P0",
-      "next_step": "Dates de dossiers/contrats et alertes génériques présentes. Aucun mandat du syndic identifié, fin de mandat dédiée, renouvellement ou résolution de désignation reliée. À traiter avec 4.15.01.",
+      "next_step": "Mandats de syndic/conseil datés, lien avec vote ou pièce, fin de mandat et alerte de renouvellement disponibles. Consolider leur affichage dans le calendrier annuel et compléter les cas particuliers de mandat/passation.",
       "delivered_in_this_change": false,
       "source_text": "Contrat de syndic : date de fin de mandat du syndic bénévole ou coopératif, rappel de la désignation à voter en AG."
     },
@@ -1960,15 +1969,14 @@
       "section": "4.14",
       "text": "Échéances d'AG : délai de convocation, approbation des comptes.",
       "status": "partiel",
-      "assessment": "Dates d’AG et alertes de proximité présentes. Contrôles des convocations/approbations manquants.",
+      "assessment": "Contrôles des dates de convocation et de l’exercice présenté, calcul des échéances, notifications/PV et alertes AG disponibles. Compléter le calendrier annuel unifié et les situations dérogatoires.",
       "evidence": [
-        "backend/governance/models.py",
-        "backend/governance/calculations.py",
-        "backend/governance/roster.py",
-        "backend/governance/tests.py"
+        "backend/governance/workflow.py",
+        "backend/governance/deadlines.py",
+        "backend/operations/views.py"
       ],
       "priority": "P1",
-      "next_step": "Dates d’AG et alertes de proximité présentes. Contrôles des convocations/approbations manquants.",
+      "next_step": "Contrôles des dates de convocation et de l’exercice présenté, calcul des échéances, notifications/PV et alertes AG disponibles. Compléter le calendrier annuel unifié et les situations dérogatoires.",
       "delivered_in_this_change": false,
       "source_text": "Échéances d'AG : délai de convocation, approbation des comptes."
     },
@@ -2105,14 +2113,14 @@
       "section": "4.15",
       "text": "Continuité : délégation temporaire, accès de secours, export complet de passation en cas d'indisponibilité, de changement de syndic ou de passage futur à un syndic professionnel.",
       "status": "partiel",
-      "assessment": "Exports CSV de rapports et téléchargements documentaires disponibles individuellement. Pas de délégation temporaire, accès de secours organisé ou export complet et vérifiable de passation.",
+      "assessment": "Archives chiffrées complètes base/pièces, exports de rapports et accès temporaire de contrôleur disponibles. La délégation générale de gestion et un dossier standardisé de passation lisible par un successeur restent à développer.",
       "evidence": [
-        "backend/finance/advanced.py",
-        "backend/documents/views.py",
-        "backend/core/access.py"
+        "scripts/backup.py",
+        "backend/council/models.py",
+        "backend/council/views.py"
       ],
       "priority": "P1",
-      "next_step": "Exports CSV de rapports et téléchargements documentaires disponibles individuellement. Pas de délégation temporaire, accès de secours organisé ou export complet et vérifiable de passation.",
+      "next_step": "Archives chiffrées complètes base/pièces, exports de rapports et accès temporaire de contrôleur disponibles. La délégation générale de gestion et un dossier standardisé de passation lisible par un successeur restent à développer.",
       "delivered_in_this_change": false,
       "source_text": "Continuité : délégation temporaire, accès de secours, export complet de passation en cas d'indisponibilité, de changement de syndic ou de passage futur à un syndic professionnel."
     },
@@ -2258,11 +2266,15 @@
       "id": "5.07",
       "section": "5",
       "text": "Trésorerie prévisionnelle, situation des fonds travaux.",
-      "status": "absent",
-      "assessment": "Ajouter soldes d’ouverture, banque, échéanciers futurs et fonds travaux avant projection.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Situation du fonds travaux par lot et soldes bancaires comptables disponibles. Le prévisionnel de trésorerie intégrant encaissements et décaissements futurs reste à créer.",
+      "evidence": [
+        "backend/finance/cycle.py",
+        "backend/finance/reconciliation.py",
+        "frontend/src/components/AccountingCycle.tsx"
+      ],
       "priority": "P1",
-      "next_step": "Ajouter soldes d’ouverture, banque, échéanciers futurs et fonds travaux avant projection.",
+      "next_step": "Situation du fonds travaux par lot et soldes bancaires comptables disponibles. Le prévisionnel de trésorerie intégrant encaissements et décaissements futurs reste à créer.",
       "delivered_in_this_change": false,
       "source_text": "Trésorerie prévisionnelle, situation des fonds travaux."
     },
@@ -2705,11 +2717,15 @@
       "id": "7.14",
       "section": "7",
       "text": "Traçabilité juridique : horodatage des envois, preuves de notification, conservation des accusés.",
-      "status": "absent",
-      "assessment": "Dates de validation interne présentes mais aucun envoi probant, accusé de réception ni preuve de notification.",
-      "evidence": [],
+      "status": "partiel",
+      "assessment": "Dates réelles d’envoi et de prise d’effet, destinataires, références, versions des preuves et historique conservés pour convocations/PV ; contrôles des délais. La saisie est déclarative : aucun envoi connecté, horodatage qualifié ou récupération automatique des accusés.",
+      "evidence": [
+        "backend/governance/models.py",
+        "backend/governance/workflow.py",
+        "backend/governance/test_workflow.py"
+      ],
       "priority": "P0",
-      "next_step": "Dates de validation interne présentes mais aucun envoi probant, accusé de réception ni preuve de notification.",
+      "next_step": "Dates réelles d’envoi et de prise d’effet, destinataires, références, versions des preuves et historique conservés pour convocations/PV ; contrôles des délais. La saisie est déclarative : aucun envoi connecté, horodatage qualifié ou récupération automatique des accusés.",
       "delivered_in_this_change": false,
       "source_text": "Traçabilité juridique : horodatage des envois, preuves de notification, conservation des accusés."
     },
@@ -3810,6 +3826,24 @@
     {
       "date": "2026-10-15",
       "change": "Annexes structurées, relecture des pièces AG, minima du fonds et suspension, catégories d’avances, vente, restitutions et affectation PPT ; 4.2.09 complète dans les limites documentées."
+    },
+    {
+      "date": "2026-10-15",
+      "change": "Relecture du cahier joint, empreinte identique à la source. Correction de quatre exigences faussement absentes (4.8.06, 4.14.02, 5.07, 7.14) vers partiel, sans ajout fonctionnel ; descriptions de calendrier et passation actualisées. Indicateurs chiffrés explicitement conventionnels."
     }
-  ]
+  ],
+  "progress_indicators": {
+    "basis": "156 exigences des sections 4 à 7, à poids égal ; rôles et besoins transverses évalués séparément sans double comptage. Aucun indicateur de conformité ou estimation de charge restante.",
+    "complete_percent": 14.1,
+    "partial_percent": 60.9,
+    "absent_percent": 25.0,
+    "at_least_partial_percent": 75.0,
+    "illustrative_progress_percent": 44.55,
+    "illustrative_weights": {
+      "complet": 1,
+      "partiel": 0.5,
+      "absent": 0
+    },
+    "caution": "La moitié attribuée à une exigence partielle est une convention, pas une mesure de son achèvement réel."
+  }
 }
